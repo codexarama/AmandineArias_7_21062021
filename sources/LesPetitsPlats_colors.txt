@@ -1,0 +1,11 @@
+bleu
+background: #3282F7;
+
+vert
+background: #68D9A4;
+
+corail
+background: #ED6454;
+
+gris
+background: #E7E7E7;

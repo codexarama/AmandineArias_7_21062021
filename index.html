@@ -1,12 +1,90 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
     <title>Les Petits Plats</title>
-</head>
-<body>
-
-</body>
+  </head>
+  <body>
+    <header>
+      <img
+        src="./images/logo_les-petits-plats.png"
+        alt="logo Les petits plats"
+        class="mx-auto d-block"
+      />
+      <section class="container my-3 search">
+        <form class="input-group">
+          <input
+            class="form-control search-bar"
+            type="text"
+            placeholder="Rechercher un ingrédient, un appareil, des ustensiles ou une recette"
+            aria-describedby="search-icon"
+            onkeyup="search()"
+          />
+          <div class="input-group-append">
+            <button class="input-group-text search-bar-btn" id="search-icon">
+              <i class="fas fa-search p-1"></i>
+            </button>
+          </div>
+        </form>
+      </section>
+      <nav class="search-group">
+        <div class="search-box">
+          <label for="search-ingredients" class="search-nav-btn selected-item">
+              Nom recherche
+            <input
+              id="search-ingredients"
+              class="search-item"
+              type="text"
+              placeholder="Recherche un ..."
+            />
+            <i class="fas fa-chevron-down search-arrow"></i>
+          </label>
+          <ul class="search-options">
+            <li class="option">Item</li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="recipes mt-3">
+        <div class="card">
+          <img
+            src="https://dummyimage.com/600x300/918c91/ffffff"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <div class="card-header">
+              <h5 class="card-title">Nom recette</h5>
+              <div class="card-subtitle">
+                <i class="fas fa-clock"></i>
+                <p class="card-text">40 min</p>
+              </div>
+            </div>
+            <div class="card-content">
+              <ul class="card-list">
+                <li class="card-text">Liste ingredients.</li>
+              </ul>
+              <p class="card-text">Descriptif recette.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
