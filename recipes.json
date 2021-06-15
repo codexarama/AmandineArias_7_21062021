@@ -1,9 +1,8 @@
-
 {
   "recipes": [
     {
       "id": 1,
-      "name": "Limonade de Coco",
+      "name": "Limonade de coco",
       "servings": 1,
       "ingredients": [
         {
@@ -32,7 +31,7 @@
       "time": 10,
       "description": "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée",
       "appliance": "Blender",
-      "ustensils": ["cuillère à Soupe", "verres", "presse citron"]
+      "ustensils": ["cuillère à soupe", "verres", "presse-citron"]
     },
     {
       "id": 2,
@@ -57,11 +56,11 @@
           "quantite": 1
         },
         {
-          "ingredient": "Citron Vert",
+          "ingredient": "Citrons Verts",
           "quantity": 5
         },
         {
-          "ingredient": "Lait de Coco",
+          "ingredient": "Lait de coco",
           "quantity": 100,
           "unit": "ml"
         }
@@ -69,7 +68,7 @@
       "time": 60,
       "description": "Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouver ajouter 1 à 2 cuillères à soupe de Crème de coco",
       "appliance": "Saladier",
-      "ustensils": ["presse citron"]
+      "ustensils": ["presse-citron"]
     },
     {
       "id": 3,
@@ -127,7 +126,7 @@
           "quantity": 2
         },
         {
-          "ingredient": "Oeuf dur",
+          "ingredient": "Oeufs durs",
           "quantity": 2
         },
         {
@@ -165,12 +164,12 @@
           "quantity": 2
         },
         {
-          "ingredient": "Crème fraiche",
+          "ingredient": "Crème fraîche",
           "quantity": 2,
           "unit": "cuillères à soupe"
         },
         {
-          "ingredient": "gruyère râpé",
+          "ingredient": "Gruyère râpé",
           "quantity": 100,
           "unit": "grammes"
         },
@@ -181,7 +180,7 @@
         }
       ],
       "time": 45,
-      "description": "Etaler la pâte feuilleté aux dimensions du moule, étaler la moutarde sur la pâte feuilleté, ajouter le thon. Découper les tomates en rondelles et les poser sur le poisson, ajouter un peu de crème fraiche sur toute la tarte et recouvrez de gruyère râpé. Cuire au four 30 minutes",
+      "description": "Etaler la pâte feuilleté aux dimensions du moule, étaler la moutarde sur la pâte feuilleté, ajouter le thon. Découper les tomates en rondelles et les poser sur le poisson, ajouter un peu de crème fraîche sur toute la tarte et recouvrez de gruyère râpé. Cuire au four 30 minutes",
       "appliance": "Four",
       "ustensils": ["moule à tarte", "râpe à fromage", "couteau"]
     },
@@ -199,11 +198,11 @@
           "quantity": 3
         },
         {
-          "ingredient": "Oeuf",
+          "ingredient": "Oeufs",
           "quantity": "2"
         },
         {
-          "ingredient": "Crème fraiche",
+          "ingredient": "Crème fraîche",
           "quantity": 25,
           "unit": "cl"
         },
@@ -219,7 +218,7 @@
         }
       ],
       "time": 50,
-      "description": "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraiche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant depositionner les pommes sur la tarte. Finallement verser la préparation à base d'oeufs et de crême fraiche. Laisser cuire au four pendant 30 minutes",
+      "description": "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraîche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant depositionner les pommes sur la tarte. Finallement verser la préparation à base d'oeufs et de coco fraiche. Laisser cuire au four pendant 30 minutes",
       "appliance": "Four",
       "ustensils": ["moule à tarte", "saladier", "fourchette"]
     },
@@ -253,7 +252,7 @@
         }
       ],
       "time": 50,
-      "description": "Etaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crême liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur ",
+      "description": "Etaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la coco liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur ",
       "appliance": "Four",
       "ustensils": ["moule à tartelettes (6)", "casserole"]
     },
@@ -278,7 +277,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Oeuf",
+          "ingredient": "Oeufs",
           "quantity": 2
         },
         {
@@ -287,19 +286,19 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "farine",
+          "ingredient": "Farine",
           "quantity": 90,
           "unit": "grammes"
         }
       ],
       "time": 60,
-      "description": "Hachez les noix grossièrement. Faire fondre le chocolat avec le beurre. Mélanger les oeuf et le sucre et mélanger au chocolat. Ajouter la farine. Mélanger afin d'avoir quelque chose d'homogène puis incorporer les noix. Verser la préparation dans un moule de préférence rectangulaire. Cuire 2O à 25 minutes à 180°. Sortez du four et attendez quelques minutes pour démouler. Servir avec une boule de glace pour plus de gourmandise.",
+      "description": "Hachez les noix grossièrement. Faire fondre le chocolat avec le beurre. Mélanger les oeufs et le sucre et mélanger au chocolat. Ajouter la farine. Mélanger afin d'avoir quelque chose d'homogène puis incorporer les noix. Verser la préparation dans un moule de préférence rectangulaire. Cuire 2O à 25 minutes à 180°. Sortez du four et attendez quelques minutes pour démouler. Servir avec une boule de glace pour plus de gourmandise.",
       "appliance": "Four",
       "ustensils": ["moule à gateaux", "casserole"]
     },
     {
       "id": 9,
-      "name": "Salade Méditerannéene fraiche au chèvre",
+      "name": "Salade Méditerannéene fraîche au chèvre",
       "servings": 4,
       "ingredients": [
         {
@@ -325,7 +324,7 @@
         }
       ],
       "time": 15,
-      "description": "Peler le concombre le couper 2, retirer les pépins. Couper les olives en morceaux, ainsi que le fromage de chèvre. Ajouter le basilic ainsi que le vinaigre balsamic et l'huile d'olives à votre gout.",
+      "description": "Peler le concombre le couper 2, retirer les pépins. Couper les olives en morceaux, ainsi que le fromage de chèvre. Ajouter le basilic ainsi que le vinaigre balsamic et l'huile d'olive à votre gout.",
       "appliance": "Saladier",
       "ustensils": ["cuillère en bois", "couteau"]
     },
@@ -335,7 +334,7 @@
       "servings": 4,
       "ingredients": [
         {
-          "ingredient": "Roblochon",
+          "ingredient": "Reblochon",
           "quantity": "1"
         },
         {
@@ -362,7 +361,7 @@
       "time": 60,
       "description": "Commencer par cuire les pommes de terre dans l'eau bouillante. Puis epluchez les et coupez les en rondelles. Emincer les oignons puis les faire dorer dans du beurre. Ajouter le jambon fumé coupé en en morceaux ainsi que les pommes de terres. Salez, poivrez à votre gout ( et celui de vos convives ) Laissez cuisiner durant environ 10 minutes puis ajouter le vin blanc. Après 5 minutes, mettre le tout dans un plat à gratin. Coupez le rebelochon, soit en tranches, soit le couper en 2 dans le sens de l'épaisseur et recouvrir les pommes de terre. Cuire au four (environ 220°) durant 25 minutes. C'est prêt !",
       "appliance": "Four",
-      "ustensils": ["plat à gratin", "couteau", "Économe"]
+      "ustensils": ["plat à gratin", "couteau", "économe"]
     },
     {
       "id": 11,
@@ -458,7 +457,7 @@
           "unit": "cuillère à soupe"
         },
         {
-          "ingredient": "huile d'olive",
+          "ingredient": "Huile d'olive",
           "quantity": 2,
           "unit": "cuillère à soupe"
         }
@@ -502,9 +501,9 @@
         }
       ],
       "time": 100,
-      "description": "Mélanger la farine et les oeufs, faire fondre 25 grammes de beurre et ajouter à la pâte. Ajouter du sel. Laisser reposer 1 heure. Faire les galettes et laisser refroidire. Faire chauffer les saucisses avec du beurre et l'oignon. Enrouler les saucisses dans les crêpes avec une partie du fromage. Mettre le reste du fromage à raclette par dessus les crêpes. Passer four pendant 20 minutes",
+      "description": "Mélanger la farine et l'oeuf, faire fondre 25 grammes de beurre et ajouter à la pâte. Ajouter du sel. Laisser reposer 1 heure. Faire les galettes et laisser refroidire. Faire chauffer les saucisses avec du beurre et l'oignon. Enrouler les saucisses dans les crêpes avec une partie du fromage. Mettre le reste du fromage à raclette par dessus les crêpes. Passer four pendant 20 minutes",
       "appliance": "Four",
-      "ustensils": ["poelle à frire", "couteau"]
+      "ustensils": ["poêle à frire", "couteau"]
     },
     {
       "id": 15,
@@ -512,7 +511,7 @@
       "servings": 10,
       "ingredients": [
         {
-          "ingredient": "Oeuf",
+          "ingredient": "Oeufs",
           "quantity": 3
         },
         {
@@ -536,13 +535,13 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Banane",
+          "ingredient": "Bananes",
           "quantity": 4
         }
       ],
       "time": 60,
       "description": "Mélangez dans un saladier, la farine, les oeufs, et le lait. Battez jusqu'à avoir une masse homogène. Pendant ce temps faites fondre le beurre et ajoutez en une partie à la pâte à crêpes. Faire fondre le chocolat ( avec le reste du beurre salé ). Lorsque vous chauffez les crêpes. Ajouter le chocolat fondu et les bananes coupées en rondelles. Ajoutez une touche de chantilly pour les gourmands",
-      "appliance": "Poële à crêpe",
+      "appliance": "Poêle à crêpe",
       "ustensils": ["saladier", "louche", "cuillère en bois"]
     },
     {
@@ -571,7 +570,7 @@
           "unit": "tiges"
         },
         {
-          "ingredient": "huile d'olives",
+          "ingredient": "Huile d'olive",
           "quantity": 2,
           "unit": "cuillère à soupe"
         }
@@ -609,9 +608,9 @@
         }
       ],
       "time": 15,
-      "description": "Coupez les fraises en morceaux, découpez la chaire de la pastèque en retirant les pépins. Mettre le tout dans le blender. Ajouter un cuillière à soupe de juste de citron ainsi que les glaçons. Ajoutez quelques fueilles de menthe pour plus de fraicheur. Mixez le tout. Servir et déguster.",
+      "description": "Coupez les fraises en morceaux, découpez la chaire de la pastèque en retirant les pépins. Mettre le tout dans le blender. Ajouter un cuillière à soupe de juste de citron ainsi que les glaçons. Ajoutez quelques fueilles de menthe pour plus de fraîcheur. Mixez le tout. Servir et déguster.",
       "appliance": "Blender",
-      "ustensils": ["verres", "couteau", "presse citron"]
+      "ustensils": ["verres", "couteau", "presse-citron"]
     },
     {
       "id": 18,
@@ -644,7 +643,7 @@
       "servings": 4,
       "ingredients": [
         {
-          "ingredient": "Kiwi",
+          "ingredient": "Kiwis",
           "quantity": 4
         },
         {
@@ -669,7 +668,7 @@
       "time": 0,
       "description": "Coupez les fruits en morceaux, ajouter le jus de citron et le lait ainsi que le sucre glace. Mixez. Ajoutez des glaçons si le lait n'a pas été mis au frais.",
       "appliance": "Blender",
-      "ustensils": ["couteau", "verres", "presse citron"]
+      "ustensils": ["couteau", "verres", "presse-citron"]
     },
     {
       "id": 20,
@@ -687,7 +686,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Crème fraiche",
+          "ingredient": "Crème fraîche",
           "quantity": 200,
           "unit": "grammes"
         },
@@ -697,13 +696,13 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "huile d'olive",
+          "ingredient": "Huile d'olive",
           "quantity": 1,
           "unit": "cuillères à soupe"
         }
       ],
       "time": 30,
-      "description": "Faire cuire les pates comme indiqué sur le paquet. Dorer les lardons dans une sauteuse avec l'huile d'olive. Ajouter la crême fraiche et baisser le feu au minimum. Quand les Tagliatelles sont prêtes les mettre dans la sauteuse et bien mélanger le tout en ajoutant le jaune d'oeuf. Servir et ajouter le parmesan râpé.",
+      "description": "Faire cuire les pates comme indiqué sur le paquet. Dorer les lardons dans une sauteuse avec l'huile d'olive. Ajouter la coco fraiche et baisser le feu au minimum. Quand les Tagliatelles sont prêtes les mettre dans la sauteuse et bien mélanger le tout en ajoutant le jaune d'oeuf. Servir et ajouter le parmesan râpé.",
       "appliance": "Sauteuse",
       "ustensils": ["râpe à fromage", "cuillère en bois"]
     },
@@ -737,15 +736,15 @@
           "unit": "cl"
         },
         {
-          "ingredient": "Crème Fraiche",
+          "ingredient": "Crème fraîche",
           "quantity": 1,
           "unit": "cuillères à soupe"
         }
       ],
       "time": 30,
-      "description": "Cuisiner la viande hachée dans une poelle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraiche à la viande hachée. Serivir.",
+      "description": "Cuisiner la viande hachée dans une poêle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraîche à la viande hachée. Serivir.",
       "appliance": "Casserole",
-      "ustensils": ["Cuillère en bois", "louche", "couteau"]
+      "ustensils": ["cuillère en bois", "louche", "couteau"]
     },
     {
       "id": 22,
@@ -768,7 +767,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Oeuf",
+          "ingredient": "Oeufs",
           "quantity": 4
         },
         {
@@ -778,7 +777,7 @@
         }
       ],
       "time": 30,
-      "description": "Faire fondre le chocolat et le beurre au bain marie. Dans un saladier battre les oeufs avec le sucre jusqu'à obtenir une texture de type mousse. Ajouter la farine ainsi que le mélange de beurre et chocolat fondu. Beurrez le moule à gateaux. Mettre au four préchauffé à 200° puis faites chauffer pendant 15 minutes. C'est prêt. Servir avec une boule de glace ou une crême dessert.",
+      "description": "Faire fondre le chocolat et le beurre au bain marie. Dans un saladier battre les oeufs avec le sucre jusqu'à obtenir une texture de type mousse. Ajouter la farine ainsi que le mélange de beurre et chocolat fondu. Beurrez le moule à gateaux. Mettre au four préchauffé à 200° puis faites chauffer pendant 15 minutes. C'est prêt. Servir avec une boule de glace ou une coco dessert.",
       "appliance": "Four",
       "ustensils": ["moule à gateaux", "fouet", "casserole"]
     },
@@ -803,7 +802,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Oeuf",
+          "ingredient": "Oeufs",
           "quantity": 3
         },
         {
@@ -910,7 +909,7 @@
           "quantity": 1
         },
         {
-          "ingredient": "Huile d'olives"
+          "ingredient": "Huile d'olive"
         },
         {
           "ingredient": "Oignon",
@@ -957,7 +956,7 @@
         }
       ],
       "time": 15,
-      "description": "Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une foit prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crême fraîche",
+      "description": "Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une foit prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la coco fraiche",
       "appliance": "Casserole",
       "ustensils": ["couteau", "cuillère en bois"]
     },
@@ -967,7 +966,7 @@
       "servings": 4,
       "ingredients": [
         {
-          "ingredient": "Poireau",
+          "ingredient": "Poireaux",
           "quantity": 3
         },
         {
@@ -986,7 +985,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Crême fraîche",
+          "ingredient": "Coco fraiche",
           "quantity": 10,
           "unit": "cl"
         }
@@ -1012,7 +1011,7 @@
           "unit": "gousses"
         },
         {
-          "ingredient": "Citron",
+          "ingredient": "Citrons",
           "quantity": 2
         },
         {
@@ -1025,7 +1024,7 @@
       "time": 30,
       "description": "Prendre les pois chiches, les mettre dans le mixer avec de l'huile d'olive, ajouter le jus des 2 citrons et du paprika selon le gout.",
       "appliance": "Mixer",
-      "ustensils": ["cuillère en bois", "presse citron"]
+      "ustensils": ["cuillère en bois", "presse-citron"]
     },
     {
       "id": 30,
@@ -1033,7 +1032,7 @@
       "servings": 4,
       "ingredients": [
         {
-          "ingredient": "Pois Cassé",
+          "ingredient": "Pois cassés",
           "quantity": 500,
           "unit": "grammes"
         },
@@ -1083,8 +1082,8 @@
       ],
       "time": 60,
       "description": "Découper en cubes les carottes et pommes de terre. Faire revenir dans du beurre. Ajouter les lardons, une fois les lardons dorés, ajouter un grand verre d'eau. Ajouter les petit poids et les haricots verts ( tous deux pré cuits ). Ajouter Sel, poivre, thyms et laurier",
-      "appliance": "Poële",
-      "ustensils": ["Couteau", "économe"]
+      "appliance": "Poêle",
+      "ustensils": ["couteau", "économe"]
     },
     {
       "id": 32,
@@ -1125,7 +1124,7 @@
       "time": 20,
       "description": "Beurrer les tranches de pain, ajouter entre 2 tranches de pain de mie 1 tranche d'émental, une de blanc de dinde, et une autre d'emmental. Dans un récipient, mélanger le gruyère rappé avec le lait et la noix de muscade. Mettre sur les croque monsieux. Placer au four durnat 10 minutes.",
       "appliance": "Four",
-      "ustensils": ["râpe à fromage", "cuillère à Soupe", "couteau"]
+      "ustensils": ["râpe à fromage", "cuillère à soupe", "couteau"]
     },
     {
       "id": 33,
@@ -1164,11 +1163,11 @@
     },
     {
       "id": 34,
-      "name": "Purée de patate douce",
+      "name": "Purée de patates douces",
       "servings": 4,
       "ingredients": [
         {
-          "ingredient": "Patate douce",
+          "ingredient": "Patates douces",
           "quantity": 800,
           "unit": "grammes"
         },
@@ -1231,11 +1230,11 @@
     },
     {
       "id": 36,
-      "name": "Lasagne Courgettes et Chèvre",
+      "name": "Lasagne courgettes et chèvre",
       "servings": 2,
       "ingredients": [
         {
-          "ingredient": "Courgette",
+          "ingredient": "Courgettes",
           "quantity": 2
         },
         {
@@ -1264,7 +1263,7 @@
         }
       ],
       "time": 35,
-      "description": "Raper les courgette et les faire revenir durant 15 minutes. Ajouter les fromages de chèvre frais. Préparer la béchamelle avec le lait et la maizena. Salez poivrez, ajouter de la noix de muscade selon les gouts. Dans un plat, mettre un peu de sauces au fond, puis des lasagnes, puis des courgettes etc... terminer par de la sauces et ajouter le gruiyère. Passer au four à 180° durant 20 à 25 minutes.",
+      "description": "Raper les courgettes et les faire revenir durant 15 minutes. Ajouter les fromages de chèvre frais. Préparer la béchamelle avec le lait et la maizena. Salez poivrez, ajouter de la noix de muscade selon les gouts. Dans un plat, mettre un peu de sauces au fond, puis des lasagnes, puis des courgettes etc... terminer par de la sauces et ajouter le gruiyère. Passer au four à 180° durant 20 à 25 minutes.",
       "appliance": "Four",
       "ustensils": ["plat à gratin", "râpe à fromage", "fouet"]
     },
@@ -1274,7 +1273,7 @@
       "servings": 2,
       "ingredients": [
         {
-          "ingredient": "Courgette",
+          "ingredient": "Courgettes",
           "quantity": 2
         },
         {
@@ -1283,7 +1282,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Huile d'olives",
+          "ingredient": "Huile d'olive",
           "quantity": 25,
           "unit": "cl"
         },
@@ -1303,9 +1302,9 @@
         }
       ],
       "time": 60,
-      "description": "Couper les courgettes dans le sens de la longueur. Vider les courgette dans un saladier. Réserver.Faire revenir la chair des courgettes dans 25cl d'huile d'olive. Ajouter l'oignon puis la viande hachée. Mettre la farce dans les courgettes. Ajouter le coulis de tomates. Mettre au four pendant 30 minutes. Avant la fin de la cuisson ajouter le fromage rapé",
+      "description": "Couper les courgettes dans le sens de la longueur. Vider les courgettes dans un saladier. Réserver.Faire revenir la chair des courgettes dans 25cl d'huile d'olive. Ajouter l'oignon puis la viande hachée. Mettre la farce dans les courgettes. Ajouter le coulis de tomates. Mettre au four pendant 30 minutes. Avant la fin de la cuisson ajouter le fromage rapé",
       "appliance": "Four",
-      "ustensils": ["couteau", "cuillère en bois", "Poelle à frire"]
+      "ustensils": ["couteau", "cuillère en bois", "poêle à frire"]
     },
     {
       "id": 38,
@@ -1323,7 +1322,7 @@
           "unit": "cl"
         },
         {
-          "ingredient": "Oeuf",
+          "ingredient": "Oeufs",
           "quantity": 3
         },
         {
@@ -1335,7 +1334,7 @@
       "time": 20,
       "description": "Fouettez les oeufs, le sucre et le lait. tremper les tranches de pain. Le cuire au four pendant environ 10 minutes à 180°. Servir",
       "appliance": "Four",
-      "ustensils": ["fouet", "bol", "Cuillère à Soupe"]
+      "ustensils": ["fouet", "bol", "cuillère à coupe"]
     },
     {
       "id": 39,
@@ -1378,7 +1377,7 @@
           "unit": "Litres"
         },
         {
-          "ingredient": "Citron Vert",
+          "ingredient": "Citrons Verts",
           "quantity": 3
         },
         {
@@ -1433,7 +1432,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Oeuf",
+          "ingredient": "Oeufs",
           "quantity": 3
         },
         {
@@ -1472,7 +1471,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Oeuf",
+          "ingredient": "Oeufs",
           "quantity": 3
         },
         {
@@ -1482,7 +1481,7 @@
       "time": 50,
       "description": "Préchauffez le fours à 200°. Etaler la pate. La mettre dans un moule. Battre les oeufs avec le sucre. Ajouter le jus de citron et le beurre. Verser le tout sur la pate. Au four 30 minutes. Bon appetit ",
       "appliance": "Four",
-      "ustensils": ["rouleau à patisserie", "moule à tarte", "presse citron"]
+      "ustensils": ["rouleau à patisserie", "moule à tarte", "presse-citron"]
     },
     {
       "id": 44,
@@ -1510,7 +1509,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "farine",
+          "ingredient": "Farine",
           "quantity": 40,
           "unit": "grammes"
         }
@@ -1531,7 +1530,7 @@
           "unit": "cl"
         },
         {
-          "ingredient": "Oeuf",
+          "ingredient": "Oeufs",
           "quantity": 2
         },
         {
@@ -1571,7 +1570,7 @@
           "unit": "sachets"
         },
         {
-          "ingredient": "Oeuf",
+          "ingredient": "Oeufs",
           "quantity": 4
         },
         {
@@ -1617,7 +1616,7 @@
         }
       ],
       "time": 5,
-      "description": "Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraiche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir",
+      "description": "Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraîche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir",
       "appliance": "Saladier",
       "ustensils": ["fouet", "verres", "cuillère en bois"]
     },
@@ -1700,7 +1699,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Oeuf",
+          "ingredient": "Oeufs",
           "quantity": 6
         },
         {
