@@ -14,15 +14,20 @@ fetch('recipes.json')
           if (!ingredients.includes(item.ingredient)) {
             ingredients.push(item.ingredient);
             // cree DOM elements
-            const ingredientsOption = (option) => {
-              option = document.createElement('li');
-              option.setAttribute('id', recipe.id);
-              option.setAttribute('role', 'option');
-              option.setAttribute('class', 'ingredients-option');
-              option.textContent = item.ingredient;
-              ingredientsChoice.append(option);
-            };
-            ingredientsOption();
+            const ingredientsOption = elmtFactory(
+              'li',
+              {
+                id: recipe.id,
+                role: 'option',
+                class: 'ingredients-option options-list',
+              },
+              elmtFactory(
+                'a',
+                { class: 'ingredients-link option-link' },
+                item.ingredient
+              )
+            );
+            ingredientsChoice.append(ingredientsOption);
           }
         });
       });
@@ -33,34 +38,39 @@ fetch('recipes.json')
     // console.log(ingredientsAll);
 
     // AFFICHE LISTE APPAREILS (sans doublons)
-    const applianceChoice = document.getElementById('appliances-list');
-    const appliancesList = () => {
+    const appliancesChoice = document.getElementById('appliances-list');
+    const setAppliances = () => {
       let appliances = [];
       recipes.forEach((recipe) => {
         if (!appliances.includes(recipe.appliance)) {
           // supprime doublons
           appliances.push(recipe.appliance);
           // cree DOM elements
-          const appliancesOption = (option) => {
-            option = document.createElement('li');
-            option.setAttribute('id', recipe.id);
-            option.setAttribute('role', 'option');
-            option.setAttribute('class', 'appliances-option');
-            option.textContent = recipe.appliance;
-            applianceChoice.append(option);
-          };
-          appliancesOption();
+          const appliancesOption = elmtFactory(
+            'li',
+            {
+              id: recipe.id,
+              role: 'option',
+              class: 'appliances-option options-list',
+            },
+            elmtFactory(
+              'a',
+              { class: 'appliances-link option-link' },
+              recipe.appliance
+            )
+          );
+          appliancesChoice.append(appliancesOption);
         }
       });
       return appliances;
     };
-    appliancesList();
+    setAppliances()
     // const appliancesAll = document.querySelectorAll('.appliances-option')
     // console.log(appliancesAll);
 
     // AFFICHE LISTE USTENSILS (sans doublons)
     const ustensilsChoice = document.getElementById('ustensils-list');
-    const ustensilsList = () => {
+    const setUstensils = () => {
       let ustensils = [];
       recipes.forEach((recipe) => {
         recipe.ustensils.forEach((ustensil) => {
@@ -68,21 +78,26 @@ fetch('recipes.json')
           if (!ustensils.includes(ustensil)) {
             ustensils.push(ustensil);
             // cree DOM elements
-            const ustensilsOption = (option) => {
-              option = document.createElement('li');
-              option.setAttribute('id', recipe.id);
-              option.setAttribute('role', 'option');
-              option.setAttribute('class', 'ustensils-list');
-              option.textContent = ustensil;
-              ustensilsChoice.append(option);
-            };
-            ustensilsOption();
+            const ustensilsOption = elmtFactory(
+              'li',
+              {
+                id: recipe.id,
+                role: 'option',
+                class: 'ustensils-option options-list',
+              },
+              elmtFactory(
+                'a',
+                { class: 'ustensils-link option-link' },
+                ustensil
+              )
+            );
+            ustensilsChoice.append(ustensilsOption);
           }
         });
       });
       return ustensils;
     };
-    ustensilsList();
+    setUstensils();
     // const ustensilsAll = document.querySelectorAll('.ustensils-option')
     // console.log(ustensilsAll);
   });
