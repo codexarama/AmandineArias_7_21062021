@@ -61,8 +61,17 @@ a:visited {
 
 /* NAVIGATION STYLES */
 /* navigation section */
+/* .container {
+  max-width: 1345px;
+} */
+.input-group {
+  width: 70%;
+  margin: auto;
+}
 .search-group {
+  width: 100%;
   display: inline-flex;
+  justify-content: center;
 }
 
 /* filters buttons */
@@ -116,6 +125,12 @@ a:visited {
   color: white;
   opacity: 65%;
 }
+/* SUPPRIMER CONTOUR INPUT */
+.search-item::placeholder:active,
+.search-item::placeholder:focus {
+  border: none;
+  outline: none;
+}
 
 /* filters options */
 .search-options {
@@ -143,7 +158,6 @@ a:visited {
   color: white;
   opacity: 65%;
 }
-
 
 /* ingredients */
 #ingredients-list {
@@ -193,10 +207,17 @@ a:visited {
 }
 
 /* card styles */
+#recipes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
 .card {
   width: 30%;
+  margin: 1rem auto;
+  height: fit-content;
 }
-
 .card-body {
   background: #e7e7e7;
 }
@@ -208,25 +229,31 @@ a:visited {
   background-color: rgba(0, 0, 0, 0);
   padding: 0.5rem 0;
 }
-
-.fa-clock {
-  margin-right: 5px;
+.card-title {
+  width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
 .card-subtitle {
   display: inline-flex;
   align-items: center;
 }
-
+.fa-clock {
+  margin-right: 5px;
+}
 .card-content {
   display: inline-flex;
   width: 100%;
 }
-
 .card-subcontent {
   width: 50%;
 }
-
 .card-list {
   padding-right: 5px;
+  display: grid;
+  height: fit-content;
+}
+.card-text{
+  height: fit-content;
 }

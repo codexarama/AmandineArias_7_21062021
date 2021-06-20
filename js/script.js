@@ -4,6 +4,11 @@ fetch('recipes.json')
     const recipes = data.recipes;
     console.log(recipes);
 
+    for (let i = 0; i < recipes.length; i++) {
+      // console.log(recipes[i].ingredients[0].ingredient);
+      setRecipe(recipes[i]);
+    }
+
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     const ingredientsChoice = document.getElementById('ingredients-list');
     const setIngredients = () => {
@@ -23,8 +28,8 @@ fetch('recipes.json')
               },
               elmtFactory(
                 'a',
-                { class: 'ingredients-link option-link' },
-                item.ingredient
+                { href: '#', class: 'ingredients-link option-link' },
+                `${item.ingredient}`
               )
             );
             ingredientsChoice.append(ingredientsOption);
@@ -34,8 +39,6 @@ fetch('recipes.json')
       return ingredients;
     };
     setIngredients();
-    // const ingredientsAll = document.querySelectorAll('.ingredients-option')
-    // console.log(ingredientsAll);
 
     // AFFICHE LISTE APPAREILS (sans doublons)
     const appliancesChoice = document.getElementById('appliances-list');
@@ -55,8 +58,8 @@ fetch('recipes.json')
             },
             elmtFactory(
               'a',
-              { class: 'appliances-link option-link' },
-              recipe.appliance
+              { href: '#', class: 'appliances-link option-link' },
+              `${recipe.appliance}`
             )
           );
           appliancesChoice.append(appliancesOption);
@@ -64,9 +67,7 @@ fetch('recipes.json')
       });
       return appliances;
     };
-    setAppliances()
-    // const appliancesAll = document.querySelectorAll('.appliances-option')
-    // console.log(appliancesAll);
+    setAppliances();
 
     // AFFICHE LISTE USTENSILS (sans doublons)
     const ustensilsChoice = document.getElementById('ustensils-list');
@@ -87,8 +88,8 @@ fetch('recipes.json')
               },
               elmtFactory(
                 'a',
-                { class: 'ustensils-link option-link' },
-                ustensil
+                { href: '#', class: 'ustensils-link option-link' },
+                `${ustensil}`
               )
             );
             ustensilsChoice.append(ustensilsOption);
@@ -98,6 +99,12 @@ fetch('recipes.json')
       return ustensils;
     };
     setUstensils();
-    // const ustensilsAll = document.querySelectorAll('.ustensils-option')
+
+    // DOM ELEMENTS : OPTIONS OF EACH
+    // const ingredientsAll = document.querySelectorAll('.ingredients-option a')
+    // console.log(ingredientsAll);
+    // const appliancesAll = document.querySelectorAll('.appliances-option a')
+    // console.log(appliancesAll);
+    // const ustensilsAll = document.querySelectorAll('.ustensils-option a')
     // console.log(ustensilsAll);
   });
