@@ -138,7 +138,7 @@ a:visited {
   flex-wrap: wrap;
   justify-content: space-between;
   width: 40rem;
-  max-height: 15.8rem;
+  max-height: 15.1rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0 0 0.25rem 0.25rem;
   z-index: 1;
@@ -159,14 +159,14 @@ a:visited {
   opacity: 65%;
 }
 
-/* ingredients */
+/* ingredients dropdown list*/
 #ingredients-list {
   background-color: #3282f7;
   position: absolute;
   overflow: auto;
 }
 
-/* appliances */
+/* appliances dropdown list */
 #appliances-list {
   background-color: #68d9a4;
   margin: 0 20px;
@@ -174,14 +174,14 @@ a:visited {
   overflow: auto;
 }
 
-/* ustensils */
+/* ustensils dropdown list */
 #ustensils-list {
   background-color: #ed6454;
   position: absolute;
   overflow: auto;
 }
 
-/* scrollbars */
+/* dropdown list scrollbars */
 #ingredients-list::-webkit-scrollbar {
   width: 5px;
   height: 15.8rem;
@@ -208,15 +208,13 @@ a:visited {
 
 /* card styles */
 #recipes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 1rem 0;
+  column-count: 3;
+  column-gap: 1rem;
 }
 .card {
-  width: 30%;
-  margin: 1rem auto;
-  height: fit-content;
+  width: 100%;
+  margin: 0.5rem;
+  display: inline-block;
 }
 .card-body {
   background: #e7e7e7;
@@ -254,6 +252,6 @@ a:visited {
   display: grid;
   height: fit-content;
 }
-.card-text{
+.card-text {
   height: fit-content;
 }
