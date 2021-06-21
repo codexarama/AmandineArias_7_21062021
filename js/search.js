@@ -3,7 +3,7 @@ fetch('recipes.json')
   .then((data) => {
     const recipes = data.recipes;
 
-    // RECHERCHE RECETTES (nom, ingrédients, description)
+    // RECHERCHE RECETTES PAR : nom, ingrédients, description (sans doublons)
     let mainSearch = [];
     recipes.forEach((recipe) => {
       if (!mainSearch.includes(recipe.name)) mainSearch.push(recipe.name);
@@ -14,8 +14,15 @@ fetch('recipes.json')
           mainSearch.push(item.ingredient);
       });
     });
-    // console.log(mainSearch);
-    // console.log(ingredients); // is not defined
+    // FIXER "mot,"
+    mainSearch = mainSearch.toString().split(' ');
+
+    // CONVERTIT DONNEES EN MOTS SEPARES (sans doublons)
+    let wordSearch = [];
+    mainSearch.forEach((word) => {
+      if (!wordSearch.includes(word)) wordSearch.push(word);
+    });
+    console.log(wordSearch);
 
     // DOM ELEMENT
     const generalSearch = document.querySelector('.search-bar');
