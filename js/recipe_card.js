@@ -2,7 +2,7 @@
 const recipesSection = document.querySelector('#recipes');
 
 // RECIPE CARD CREATION (model)
-const setRecipe = (recipes) => {
+function setRecipe (recipes) {
   const recipeCard = elmtFactory(
     'div',
     { class: 'card' },
@@ -23,7 +23,7 @@ const setRecipe = (recipes) => {
           'div',
           { class: 'card-subtitle' },
           elmtFactory('i', { class: 'fas fa-clock' }),
-          elmtFactory('p', { class: 'card-text' }, `${recipes.time} minutes`)
+          elmtFactory('p', { class: 'subtitle-text' }, `${recipes.time} minutes`)
         )
       ),
       elmtFactory(
@@ -32,7 +32,7 @@ const setRecipe = (recipes) => {
         elmtFactory('ul', { class: 'card-subcontent card-list' }),
         elmtFactory(
           'p',
-          { class: 'card-subcontent card-text' },
+          { class: 'card-subcontent subcontent-text' },
           `${recipes.description}`
         )
       )
@@ -48,7 +48,6 @@ const setRecipe = (recipes) => {
       `${recipes.ingredients[i].ingredient}`
     );
     cardListItem.appendChild(cardItem);
-    console.log(cardItem);
   }
 
   // DOM INTEGRATION

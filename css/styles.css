@@ -12,6 +12,9 @@ body {
   max-width: 1440px;
   margin: 50px auto;
 }
+p {
+  margin-bottom: 0.25rem;
+}
 ul {
   padding: 0;
   margin-bottom: 0;
@@ -238,20 +241,21 @@ a:visited {
   align-items: center;
 }
 .fa-clock {
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 .card-content {
   display: inline-flex;
   width: 100%;
-}
-.card-subcontent {
-  width: 50%;
+  margin-top: 0.5rem;
 }
 .card-list {
-  padding-right: 5px;
+  padding-right: 0.5rem;
   display: grid;
+  width: 30%;
   height: fit-content;
 }
-.card-text {
+.subcontent-text {
+  width: 70%;
   height: fit-content;
+  text-align: justify;
 }
