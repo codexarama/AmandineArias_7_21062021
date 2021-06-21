@@ -1,9 +1,13 @@
+// DOM ELEMENT
 const recipesSection = document.querySelector('#recipes');
+
+// RECIPE CARD CREATION (model)
 const setRecipe = (recipes) => {
   const recipeCard = elmtFactory(
     'div',
     { class: 'card' },
     elmtFactory('img', {
+      // src: 'http://lorempixel.com/400/200/food',
       src: 'https://dummyimage.com/600x300/918c91/ffffff',
       class: 'card-img-top',
       alt: '...',
@@ -25,23 +29,7 @@ const setRecipe = (recipes) => {
       elmtFactory(
         'div',
         { class: 'card-content' },
-        elmtFactory(
-          'ul',
-          { class: 'card-subcontent card-list' }
-          //   elmtFactory('li', { class: 'card-text' }, `${recipes.ingredients}`)
-
-          ///////////////////////////////////
-          //   elmtFactory(
-          //     'li',
-          //     { class: 'card-text' },
-          //     `${recipes.ingredients
-          //       .map((ingredient) =>
-          //         elmtFactory('li', { class: 'ingredient' }, `${ingredient}`)
-          //       )
-          //       .join(' ')}`
-          //   )
-          ////////////////////////////////////
-        ),
+        elmtFactory('ul', { class: 'card-subcontent card-list' }),
         elmtFactory(
           'p',
           { class: 'card-subcontent card-text' },
@@ -51,8 +39,8 @@ const setRecipe = (recipes) => {
     )
   );
 
+  // INGREDIENTS LIST CREATION
   const cardListItem = recipeCard.getElementsByClassName('card-list')[0];
-
   for (i = 0; i < recipes.ingredients.length; i++) {
     const cardItem = elmtFactory(
       'li',
@@ -61,6 +49,8 @@ const setRecipe = (recipes) => {
     );
     cardListItem.appendChild(cardItem);
     console.log(cardItem);
-}
+  }
+
+  // DOM INTEGRATION
   recipesSection.appendChild(recipeCard);
 };
