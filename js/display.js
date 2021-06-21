@@ -4,14 +4,9 @@ fetch('recipes.json')
     const recipes = data.recipes;
     console.log(recipes);
 
-    for (let i = 0; i < recipes.length; i++) {
-      // console.log(recipes[i].ingredients[0].ingredient);
-      setRecipe(recipes[i]);
-    }
-
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     const ingredientsChoice = document.getElementById('ingredients-list');
-    const setIngredients = () => {
+    function setIngredients() {
       let ingredients = [];
       recipes.forEach((recipe) => {
         recipe.ingredients.forEach((item) => {
@@ -37,12 +32,14 @@ fetch('recipes.json')
         });
       });
       return ingredients;
-    };
+    }
     setIngredients();
+    // ne fonctionne pas
+    // setIngredients().sort(filterBy('ingredient')); // ne fonctionne pas
 
     // AFFICHE LISTE APPAREILS (sans doublons)
     const appliancesChoice = document.getElementById('appliances-list');
-    const setAppliances = () => {
+    function setAppliances() {
       let appliances = [];
       recipes.forEach((recipe) => {
         if (!appliances.includes(recipe.appliance)) {
@@ -66,12 +63,12 @@ fetch('recipes.json')
         }
       });
       return appliances;
-    };
+    }
     setAppliances();
 
     // AFFICHE LISTE USTENSILS (sans doublons)
     const ustensilsChoice = document.getElementById('ustensils-list');
-    const setUstensils = () => {
+    function setUstensils() {
       let ustensils = [];
       recipes.forEach((recipe) => {
         recipe.ustensils.forEach((ustensil) => {
@@ -97,14 +94,23 @@ fetch('recipes.json')
         });
       });
       return ustensils;
-    };
+    }
     setUstensils();
 
-    // DOM ELEMENTS : OPTIONS OF EACH
+    // DOM ELEMENTS : ALL OPTIONS
+    // const allOptions = document.querySelectorAll('.options-list')
+    // console.log(allOptions);
+    // DOM ELEMENTS : OPTIONS FOR EACH FILTER
     // const ingredientsAll = document.querySelectorAll('.ingredients-option a')
     // console.log(ingredientsAll);
     // const appliancesAll = document.querySelectorAll('.appliances-option a')
     // console.log(appliancesAll);
     // const ustensilsAll = document.querySelectorAll('.ustensils-option a')
     // console.log(ustensilsAll);
+
+    // AFFICHE LES CARTES RECETTES (ordre alphabetique)
+    for (let i = 0; i < recipes.length; i++) {
+      // console.log(recipes[i].ingredients[0].ingredient);
+      setRecipe(recipes.sort(filterBy('name'))[i]);
+    }
   });
