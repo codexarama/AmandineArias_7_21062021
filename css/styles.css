@@ -129,11 +129,8 @@ a:visited {
   color: white;
   opacity: 65%;
 }
-/* SUPPRIMER CONTOUR INPUT */
-.search-tag::placeholder:active,
-.search-tag::placeholder:focus {
-  border: none;
-  outline: none;
+.search-tag:focus {
+  color: white;
 }
 
 /* tags list wrapper */
