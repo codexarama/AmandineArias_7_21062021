@@ -35,7 +35,7 @@
     },
     {
       "id": 2,
-      "name": "Poisson Cru à la tahitienne",
+      "name": "Poisson cru à la tahitienne",
       "servings": 2,
       "ingredients": [
         {
@@ -507,7 +507,7 @@
     },
     {
       "id": 15,
-      "name": "Crêpes Chocolat Banane",
+      "name": "Crêpes chocolat banane",
       "servings": 10,
       "ingredients": [
         {
@@ -1230,7 +1230,7 @@
     },
     {
       "id": 36,
-      "name": "Lasagne courgettes et chèvre",
+      "name": "Lasagnes courgettes et chèvre",
       "servings": 2,
       "ingredients": [
         {
@@ -1247,7 +1247,7 @@
           "unit": "cl"
         },
         {
-          "ingredient": "Lasagnes",
+          "ingredient": "ss",
           "quantity": 5,
           "unit": "feuilles"
         },
@@ -1263,7 +1263,7 @@
         }
       ],
       "time": 35,
-      "description": "Raper les courgettes et les faire revenir durant 15 minutes. Ajouter les fromages de chèvre frais. Préparer la béchamelle avec le lait et la maizena. Salez poivrez, ajouter de la noix de muscade selon les gouts. Dans un plat, mettre un peu de sauces au fond, puis des lasagnes, puis des courgettes etc... terminer par de la sauces et ajouter le gruiyère. Passer au four à 180° durant 20 à 25 minutes.",
+      "description": "Raper les courgettes et les faire revenir durant 15 minutes. Ajouter les fromages de chèvre frais. Préparer la béchamelle avec le lait et la maizena. Salez poivrez, ajouter de la noix de muscade selon les gouts. Dans un plat, mettre un peu de sauces au fond, puis des ss, puis des courgettes etc... terminer par de la sauces et ajouter le gruiyère. Passer au four à 180° durant 20 à 25 minutes.",
       "appliance": "Four",
       "ustensils": ["plat à gratin", "râpe à fromage", "fouet"]
     },
@@ -1485,7 +1485,7 @@
     },
     {
       "id": 44,
-      "name": "Crème déssert au chocolat",
+      "name": "Crème dessert au chocolat",
       "servings": 6,
       "ingredients": [
         {
@@ -1521,7 +1521,7 @@
     },
     {
       "id": 45,
-      "name": "Crème patissière",
+      "name": "Crème pâtissière",
       "servings": 8,
       "ingredients": [
         {
