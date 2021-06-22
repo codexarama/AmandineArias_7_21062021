@@ -14,10 +14,27 @@ fetch('recipes.json')
           mainSearch.push(item.ingredient);
       });
     });
-    // FIXER "mot,"
-    mainSearch = mainSearch.toString().split(' ');
 
     // CONVERTIT DONNEES EN MOTS SEPARES (sans doublons)
+    const separators = [
+      ' ',
+      '\\,',
+      '\\, ',
+      '\\. ',
+      '\\+',
+      '-',
+      '\\(',
+      '\\)',
+      '\\*',
+      '/',
+      ':',
+      '\\?',
+    ];
+    mainSearch = mainSearch
+      .toString()
+      .trim()
+      .split(new RegExp(separators.join('|'), 'g'));
+
     let wordSearch = [];
     mainSearch.forEach((word) => {
       if (!wordSearch.includes(word)) wordSearch.push(word);
