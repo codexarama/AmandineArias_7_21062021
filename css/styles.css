@@ -148,17 +148,17 @@ a:visited {
   z-index: 1;
   display: none;
 }
-.options-list {
+.tag {
   color: white;
   width: 30%;
 }
-.option-link {
+.tag-link {
   color: white;
   cursor: pointer;
 }
-.option-link:hover,
-.option-link:focus,
-.option-link:active {
+.tag-link:hover,
+.tag-link:focus,
+.tag-link:active {
   color: white;
   opacity: 65%;
 }

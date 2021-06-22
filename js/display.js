@@ -19,11 +19,11 @@ fetch('recipes.json')
               {
                 id: recipe.id,
                 role: 'option',
-                class: 'ingredients-option options-list',
+                class: 'ingredients-option tag',
               },
               elmtFactory(
                 'a',
-                { href: '#', class: 'ingredients-link option-link' },
+                { href: '#', class: 'ingredients-link tag-link' },
                 `${item.ingredient}`
               )
             );
@@ -51,11 +51,11 @@ fetch('recipes.json')
             {
               id: recipe.id,
               role: 'option',
-              class: 'appliances-option options-list',
+              class: 'appliances-option tag',
             },
             elmtFactory(
               'a',
-              { href: '#', class: 'appliances-link option-link' },
+              { href: '#', class: 'appliances-link tag-link' },
               `${recipe.appliance}`
             )
           );
@@ -81,11 +81,11 @@ fetch('recipes.json')
               {
                 id: recipe.id,
                 role: 'option',
-                class: 'ustensils-option options-list',
+                class: 'ustensils-option tag',
               },
               elmtFactory(
                 'a',
-                { href: '#', class: 'ustensils-link option-link' },
+                { href: '#', class: 'ustensils-link tag-link' },
                 `${ustensil}`
               )
             );
@@ -98,7 +98,7 @@ fetch('recipes.json')
     setUstensils();
 
     // DOM ELEMENTS : ALL OPTIONS
-    // const allOptions = document.querySelectorAll('.options-list')
+    // const allOptions = document.querySelectorAll('.tag')
     // console.log(allOptions);
     // DOM ELEMENTS : OPTIONS FOR EACH FILTER
     // const ingredientsAll = document.querySelectorAll('.ingredients-option a')
