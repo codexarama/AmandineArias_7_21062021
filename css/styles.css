@@ -71,14 +71,14 @@ a:visited {
   width: 70%;
   margin: auto;
 }
-.search-group {
+.tags-group {
   width: 100%;
   display: inline-flex;
   justify-content: center;
 }
 
-/* filters buttons */
-.search-nav-btn {
+/* tags buttons */
+.tag-btn {
   border-color: transparent;
   display: inline-flex;
   justify-content: space-between;
@@ -100,48 +100,49 @@ a:visited {
   background-color: #ed6454;
 }
 
-/* search boxes */
-.search-box.open .search-options {
+/* tags boxes */
+.tag-box.open .tags-list {
   display: flex;
 }
-.search-box.open .search-nav-btn {
+.tag-box.open .tag-btn {
   border-radius: 0.25rem 0.25rem 0 0;
 }
 
-/* filters arrows */
-.search-arrow {
+/* tags arrows */
+.tag-arrow {
   margin-top: 3px;
   transition: all 0.5s;
 }
-.search-box.open .search-arrow {
+.tag-box.open .tag-arrow {
   transform: rotateX(180deg);
 }
 
-/* filters serach bars */
-.search-item {
+/* tags search bars */
+.search-tag {
+  width: 20rem;
   display: none;
   border: none;
+  outline: none;
   background-color: transparent;
-  width: 20rem;
 }
-.search-item::placeholder {
+.search-tag::placeholder {
   color: white;
   opacity: 65%;
 }
 /* SUPPRIMER CONTOUR INPUT */
-.search-item::placeholder:active,
-.search-item::placeholder:focus {
+.search-tag::placeholder:active,
+.search-tag::placeholder:focus {
   border: none;
   outline: none;
 }
 
-/* filters options */
-.search-options {
+/* tags list wrapper */
+.tags-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 40rem;
-  max-height: 15.1rem;
+  max-height: 15.8rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0 0 0.25rem 0.25rem;
   z-index: 1;
@@ -251,11 +252,11 @@ a:visited {
 .card-list {
   padding-right: 0.5rem;
   display: grid;
-  width: 30%;
+  width: 50%;
   height: fit-content;
 }
 .subcontent-text {
-  width: 70%;
+  width: 50%;
   height: fit-content;
   text-align: justify;
 }
