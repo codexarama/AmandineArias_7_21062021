@@ -37,6 +37,7 @@ tagArrow.forEach((arrow) => {
       'Rechercher des ' + tagBtn.textContent.toLowerCase().trim()
     );
     searchTag.style.display = 'block';
+    searchTag.focus();
     tagsList.style.display = 'block';
   });
   // CLOSE FILTER BOXES WITHOUT TARGET
