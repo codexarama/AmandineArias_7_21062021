@@ -59,7 +59,7 @@ fetch('recipes.json')
       );
       searchList.append(recipesNames);
     });
-    // EVENEMENTS
+    // EVENEMENT
     // DOM main ELEMENTS
     const generalSearch = document.querySelector('.search-bar');
     generalSearch.addEventListener('keyup', searchRecipe);
