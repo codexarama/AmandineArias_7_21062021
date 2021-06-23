@@ -7,8 +7,6 @@ tagLabel.forEach((label) => {
   // HANDLE TEXT INPUT ACCESS
   label.addEventListener('click', (event) => {
     event.preventDefault();
-    console.log(label);
-    console.log(tagInput);
     label.style.display = 'none'
     tagInput.setAttribute('placeholder', 'Rechercher')
     tagInput.style.display = 'block'
