@@ -2,7 +2,6 @@ fetch('recipes.json')
   .then((response) => response.json())
   .then((data) => {
     const recipes = data.recipes;
-    console.log(recipes);
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     const ingredientsChoice = document.getElementById('ingredients-list');
@@ -97,20 +96,9 @@ fetch('recipes.json')
     }
     setUstensils();
 
-    // DOM ELEMENTS : ALL OPTIONS
-    // const allOptions = document.querySelectorAll('.tag')
-    // console.log(allOptions);
-    // DOM ELEMENTS : OPTIONS FOR EACH FILTER
-    // const ingredientsAll = document.querySelectorAll('.ingredients-option a')
-    // console.log(ingredientsAll);
-    // const appliancesAll = document.querySelectorAll('.appliances-option a')
-    // console.log(appliancesAll);
-    // const ustensilsAll = document.querySelectorAll('.ustensils-option a')
-    // console.log(ustensilsAll);
-
-    // AFFICHE LES CARTES RECETTES (ordre alphabetique)
+    // AFFICHE LES CARTES RECETTES (ordre alphabétique)
     for (let i = 0; i < recipes.length; i++) {
-      // console.log(recipes[i].ingredients[0].ingredient);
-      setRecipe(recipes.sort(filterBy('name'))[i]);
+      // toutes les recettes par defaut
+      setRecipe(quickSort(recipes)[i]);
     }
   });
