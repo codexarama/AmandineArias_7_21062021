@@ -100,5 +100,6 @@ fetch('recipes.json')
     for (let i = 0; i < recipes.length; i++) {
       // toutes les recettes par defaut
       setRecipe(quickSort(recipes)[i]);
+      // setRecipe(partitionHoare(recipes)[i])
     }
   });
