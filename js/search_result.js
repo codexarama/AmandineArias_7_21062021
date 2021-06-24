@@ -51,12 +51,20 @@ fetch('recipes.json')
       // affecte "selected" sur nouveau choix
       selectedItem.classList.add('selected');
       // cree tag correspondant au choix
+      // tagsResult.innerHTML = "" // affiche selection unique
       createTag(selectedItem);
-      const recipesTags = document.querySelectorAll('.tag-btn');
+      const recipesTags = document.querySelectorAll('.selected-tag');
       recipesTags.forEach((tag) => tag.classList.add('recipes-result-btn'));
 
       // SUPPRIME DOUBLONS ---------------------------------------------------------
-
+      // NE FONCTIONNE PAS ---------------------------------------------------------
+      // const selectionList = [];
+      // recipesTags.forEach((tag) => {
+      //   tag.classList.add('recipes-result-btn');
+      //   if (tag && !selectionList.includes(tag)) selectionList.push(tag);
+      // });
+      // console.log(selectionList);
+      // selectionList.forEach((selection) => createTag(selection));
     });
 
     // // AFFICHE RECETTE(S) CHOISIE(S)
