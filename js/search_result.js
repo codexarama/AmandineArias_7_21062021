@@ -41,39 +41,24 @@ fetch('recipes.json')
 
     // AFFICHE RESULTATS RECHERCHE
     // DOM element
-    const tagsCollection = document.querySelector('#tags-result');
-    // affiche tags recette(s) choisie(s)
-    for (let i = 0; i < recipeName.length; i++) {
-      recipeName[i].addEventListener('click', (event) => {
-        event.preventDefault();
-        recipeName[i].classList.toggle('selected');
-        const recipeTag = elmtFactory(
-          'button',
-          { class: 'tag-btn recipes-result-btn' },
-          recipeName[i].textContent,
-          elmtFactory('i', { class: 'far fa-times-circle' })
-        );
-        tagsCollection.append(recipeTag);
+    const searchListItems = [...searchList.children];
+    // Affiche tag(s) correspondant au(x) choi(x)
+    searchList.addEventListener('click', (event) => {
+      const selectedItem = event.target.closest('li');
+      if (!selectedItem) return;
+      // retire "selected" sur ancien choix
+      searchListItems.forEach((item) => item.classList.remove('selected'));
+      // affecte "selected" sur nouveau choix
+      selectedItem.classList.add('selected');
+      // cree tag correspondant au choix
+      createTag(selectedItem);
+      const recipesTags = document.querySelectorAll('.tag-btn');
+      recipesTags.forEach((tag) => tag.classList.add('recipes-result-btn'));
 
-        // // NE FONCTIONNE PAS ---------------------------------------------------------
-        // // actualise tableau recette(s) choisie(s)
-        // // affiche tag(s) correspondant(s)
-        // // recipeTag.forEach is not a function
-        // const selectedRecipes = [];
-        // const selected = recipeName[i].classList.contains('selected');
-        // if (selected && !selectedRecipes.includes(selected)) {
-        //   selectedRecipes.push(selected);
-        //   recipeTag.forEach((tag) => {
-        //     tagsCollection.append(tag);
-        //   });
-        //   // console.log(selectedRecipes);
-        // }
-      });
-    }
+      // SUPPRIME DOUBLONS ---------------------------------------------------------
 
-    // AFFICHE RECETTE(S) CHOISIE(S)
-    //   // for (let i = 0; i < recipes.length; i++) {
-    //   //   setRecipe(quickSort(recipes)[i]);
-    //   // }
-    // }
+    });
+
+    // // AFFICHE RECETTE(S) CHOISIE(S)
+    // for (let i = 0; i < recipes.length; i++) {}
   });
