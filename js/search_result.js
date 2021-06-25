@@ -42,6 +42,7 @@ fetch('recipes.json')
     // AFFICHE RESULTATS RECHERCHE
     // DOM element
     const searchListItems = [...searchList.children];
+    const selectionList = [];
     // Affiche tag(s) correspondant au(x) choi(x)
     searchList.addEventListener('click', (event) => {
       const selectedItem = event.target.closest('li');
@@ -50,21 +51,17 @@ fetch('recipes.json')
       searchListItems.forEach((item) => item.classList.remove('selected'));
       // affecte "selected" sur nouveau choix
       selectedItem.classList.add('selected');
-      // cree tag correspondant au choix
-      // tagsResult.innerHTML = "" // affiche selection unique
-      createTag(selectedItem);
+      // tableau choix (sans doublons)
+      if (!selectionList.includes(selectedItem)) {
+        selectionList.push(selectedItem);
+        // cree tag(s) correspondant(s)
+        createTag(selectedItem);
+      }
+      // affecte style "rselection recette" au tag
       const recipesTags = document.querySelectorAll('.selected-tag');
-      recipesTags.forEach((tag) => tag.classList.add('recipes-result-btn'));
-
-      // SUPPRIME DOUBLONS ---------------------------------------------------------
-      // NE FONCTIONNE PAS ---------------------------------------------------------
-      // const selectionList = [];
-      // recipesTags.forEach((tag) => {
-      //   tag.classList.add('recipes-result-btn');
-      //   if (tag && !selectionList.includes(tag)) selectionList.push(tag);
-      // });
-      // console.log(selectionList);
-      // selectionList.forEach((selection) => createTag(selection));
+      recipesTags.forEach((tag) => {
+        tag.classList.add('recipes-result-btn');
+      });
     });
 
     // // AFFICHE RECETTE(S) CHOISIE(S)
