@@ -1,4 +1,26 @@
+// GENERATEUR element
+// cree tag recette(s) choisie(s) dans liste barre recherche principale
+const tagsCollection = document.querySelector('#tags-result');
+function createTag(selectedTag) {
+  const tag = elmtFactory(
+    'button',
+    { class: 'selected-tag tag-btn' },
+    selectedTag.textContent,
+    elmtFactory('i', { class: 'far fa-times-circle' })
+  );
+  tagsCollection.append(tag);
+  // supprime tag
+  removeTag = document.querySelectorAll('.selected-tag');
+  removeTag.forEach((btn) =>
+    btn.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (tag.contains(event.target)) tag.style.display = 'none';
+    })
+  );
+}
+
 // TYPE TEXT IN TAG INPUT
+// ingredients, appareils, ustensiles
 // MAIN DOM ELEMENT
 const tagLabel = document.querySelectorAll('.tag-label');
 // DEPENDANT DOM ELEMENTS
@@ -7,6 +29,7 @@ tagLabel.forEach((label) => {
   // HANDLE TEXT INPUT ACCESS
   label.addEventListener('click', (event) => {
     event.preventDefault();
+<<<<<<< Updated upstream
     console.log(label);
     console.log(tagInput);
     label.style.display = 'none'
@@ -15,6 +38,14 @@ tagLabel.forEach((label) => {
     tagInput.style.width = '5rem'
   })
 })
+=======
+    label.style.display = 'none';
+    tagInput.setAttribute('placeholder', 'Rechercher');
+    tagInput.style.display = 'block';
+    tagInput.style.width = '5rem';
+  });
+});
+>>>>>>> Stashed changes
 
 // OPEN / CLOSE FILTER BOXES by clicking on the arrow
 // MAIN DOM ELEMENT
@@ -49,7 +80,7 @@ tagArrow.forEach((arrow) => {
       searchTag.style.display = 'none';
       tagsList.style.display = 'none';
     }
-    if(tagLabel.contains(e.target)) {
+    if (tagLabel.contains(e.target)) {
       tagLabel.style.display = 'none';
       searchTag.style.display = 'flex';
       searchTag.focus();
