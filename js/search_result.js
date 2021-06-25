@@ -1,20 +1,20 @@
+// CREE LISTE RECETTES
+// DOM main element
+const searchList = document.querySelector('#search-list');
+// GENERATEUR DOM element : liste noms recettes
+function createRecipesList(recipe) {
+  const recipesList = elmtFactory(
+    'li',
+    { class: 'recipe-name' },
+    elmtFactory('a', { class: 'name' }, `${recipe.name}`)
+  );
+  searchList.append(recipesList);
+}
+
 fetch('recipes.json')
   .then((response) => response.json())
   .then((data) => {
-    let recipes = data.recipes;
-
-    // CREE LISTE RECETTES
-    // DOM main element
-    const searchList = document.querySelector('#search-list');
-    // cree DOM elements : liste noms recettes
-    recipes.forEach((recipe) => {
-      const recipesNames = elmtFactory(
-        'li',
-        { class: 'recipe-name' },
-        elmtFactory('a', { class: 'name' }, `${recipe.name}`)
-      );
-      searchList.append(recipesNames);
-    });
+    console.log(data);
 
     // CHERCHE RECETTES
     // DOM main elements
@@ -63,7 +63,4 @@ fetch('recipes.json')
         tag.classList.add('recipes-result-btn');
       });
     });
-
-    // // AFFICHE RECETTE(S) CHOISIE(S)
-    // for (let i = 0; i < recipes.length; i++) {}
   });

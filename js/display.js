@@ -96,6 +96,11 @@ fetch('recipes.json')
     }
     setUstensils();
 
+    // AFFICHE LISTE NOMS RECETTES sous barre de recherche principale
+    recipes.forEach((recipe) => {
+      createRecipesList(recipe);
+    });
+
     // AFFICHE LES CARTES RECETTES (ordre alphabétique)
     for (let i = 0; i < recipes.length; i++) {
       // toutes les recettes par defaut
