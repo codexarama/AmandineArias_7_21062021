@@ -29,23 +29,12 @@ tagLabel.forEach((label) => {
   // HANDLE TEXT INPUT ACCESS
   label.addEventListener('click', (event) => {
     event.preventDefault();
-<<<<<<< Updated upstream
-    console.log(label);
-    console.log(tagInput);
-    label.style.display = 'none'
-    tagInput.setAttribute('placeholder', 'Rechercher')
-    tagInput.style.display = 'block'
-    tagInput.style.width = '5rem'
-  })
-})
-=======
     label.style.display = 'none';
     tagInput.setAttribute('placeholder', 'Rechercher');
     tagInput.style.display = 'block';
     tagInput.style.width = '5rem';
   });
 });
->>>>>>> Stashed changes
 
 // OPEN / CLOSE FILTER BOXES by clicking on the arrow
 // MAIN DOM ELEMENT
