@@ -1,5 +1,4 @@
-// GENERATEUR element
-// cree tag recette(s) choisie(s) dans liste barre recherche principale
+// GENERATEUR DOM element : selected tag btn
 const tagsCollection = document.querySelector('#tags-result');
 function createTag(selectedTag) {
   const tag = elmtFactory(
@@ -14,7 +13,9 @@ function createTag(selectedTag) {
   removeTag.forEach((btn) =>
     btn.addEventListener('click', (event) => {
       event.preventDefault();
-      if (tag.contains(event.target)) tag.style.display = 'none';
+      if (tag.contains(event.target)) {
+        tag.style.display = 'none';
+      }
     })
   );
 }
@@ -28,12 +29,12 @@ tagLabel.forEach((label) => {
   // HANDLE TEXT INPUT ACCESS
   label.addEventListener('click', (event) => {
     event.preventDefault();
-    label.style.display = 'none'
-    tagInput.setAttribute('placeholder', 'Rechercher')
-    tagInput.style.display = 'block'
-    tagInput.style.width = '5rem'
-  })
-})
+    label.style.display = 'none';
+    tagInput.setAttribute('placeholder', 'Rechercher');
+    tagInput.style.display = 'block';
+    tagInput.style.width = '5rem';
+  });
+});
 
 // OPEN / CLOSE FILTER BOXES by clicking on the arrow
 // MAIN DOM ELEMENT
@@ -68,7 +69,7 @@ tagArrow.forEach((arrow) => {
       searchTag.style.display = 'none';
       tagsList.style.display = 'none';
     }
-    if(tagLabel.contains(e.target)) {
+    if (tagLabel.contains(e.target)) {
       tagLabel.style.display = 'none';
       searchTag.style.display = 'flex';
       searchTag.focus();
