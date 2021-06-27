@@ -59,11 +59,11 @@ a:visited {
 }
 .fa-search:hover,
 .fa-search:focus {
-  color: white;
+  color: #fff;
 }
 
 /* search dropdown list : exemple noms recettes */
-#search-list {
+#search-recipe {
   overflow: auto;
   display: flex;
   flex-wrap: wrap;
@@ -72,16 +72,16 @@ a:visited {
   max-height: 15.8rem;
   padding: 0.25rem 1rem;
   border-radius: 0 0 0.25rem 0.25rem;
-  background-color: white;
+  background-color: #fff;
   z-index: 1;
   display: none;
 }
-#search-list::-webkit-scrollbar {
+#search-recipe::-webkit-scrollbar {
   width: 1px;
   height: 15.8rem;
   color: #212529;
 }
-#search-list::-webkit-scrollbar-thumb {
+#search-recipe::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.25);
 }
 .recipe-name {
@@ -114,8 +114,16 @@ a:visited {
   display: inline-flex;
   justify-content: center;
 }
+.middle-box {
+  margin: 0 20px;
+}
 
 /* tags buttons */
+#tags-collection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .tag-btn {
   border-color: transparent;
   display: inline-flex;
@@ -124,17 +132,36 @@ a:visited {
   width: 8.25rem;
   padding: 0.75rem;
   border-radius: 0.25rem;
-  color: white;
+  color: #fff;
   font-weight: 600;
 }
-#ingredients-btn {
+.tag-btn:hover{
+  background-color: #918c91;
+}
+.recipes-result-btn,
+.ingredients-result-btn,
+.appliances-result-btn,
+.ustensils-result-btn {
+  width: auto;
+  margin: 5px;
+}
+.recipes-result-btn {
+  background-color: #212529;
+}
+.fa-times-circle {
+  margin-top: 3px;
+  margin-left: 10px;
+}
+#ingredients-btn,
+.ingredients-result-btn {
   background-color: #3282f7;
 }
-#appliance-btn {
+#appliances-btn,
+.appliances-result-btn {
   background-color: #68d9a4;
-  margin: 0 20px;
 }
-#ustensils-btn {
+#ustensils-btn,
+.ustensils-result-btn {
   background-color: #ed6454;
 }
 
@@ -164,11 +191,11 @@ a:visited {
   background-color: transparent;
 }
 .search-tag::placeholder {
-  color: white;
+  color: #fff;
   opacity: 65%;
 }
 .search-tag:focus {
-  color: white;
+  color: #fff;
 }
 
 /* tags list wrapper */
@@ -189,13 +216,13 @@ a:visited {
   width: 30%;
 }
 .tag-link {
-  color: white;
+  color: #fff;
   cursor: pointer;
 }
 .tag-link:hover,
 .tag-link:focus,
 .tag-link:active {
-  color: white;
+  color: #fff;
   opacity: 65%;
 }
 

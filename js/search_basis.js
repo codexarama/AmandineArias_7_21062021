@@ -49,7 +49,7 @@ fetch('recipes.json')
       if (!nameSearch.includes(recipe.name)) nameSearch.push(recipe.name);
     });
     // DOM main ELEMENTS
-    const searchList = document.querySelector('#search-list');
+    const searchList = document.querySelector('#search-recipe');
     // cree DOM elements
     recipes.forEach((recipe) => {
       const recipesNames = elmtFactory(
