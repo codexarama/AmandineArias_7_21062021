@@ -1,14 +1,14 @@
 // CREE LISTE RECETTES
 // DOM main element
-const searchList = document.querySelector('#search-list');
+const recipeList = document.querySelector('#search-recipe');
 // GENERATEUR DOM element : liste noms recettes
 function createRecipesList(recipe) {
   const recipesList = elmtFactory(
     'li',
-    { class: 'recipe-name' },
+    { role: 'option', class: 'recipe-name' },
     elmtFactory('a', { class: 'name' }, `${recipe.name}`)
   );
-  searchList.append(recipesList);
+  recipeList.append(recipesList);
 }
 
 fetch('recipes.json')
@@ -29,7 +29,7 @@ fetch('recipes.json')
         const name = recipeName[i].getElementsByTagName('a')[0];
         const textValue = name.textContent || name.innerText;
         if (textValue.toUpperCase().indexOf(filter) > -1) {
-          searchList.style.display = 'flex';
+          recipeList.style.display = 'flex';
           recipeName[i].style.display = '';
           recipeName[i].classList.add('matches');
         } else {
@@ -41,26 +41,37 @@ fetch('recipes.json')
 
     // AFFICHE RESULTATS RECHERCHE
     // DOM element
-    const searchListItems = [...searchList.children];
+    const searchList = document.querySelectorAll('[role="option"]');
     const selectionList = [];
     // Affiche tag(s) correspondant au(x) choi(x)
-    searchList.addEventListener('click', (event) => {
-      const selectedItem = event.target.closest('li');
-      if (!selectedItem) return;
-      // retire "selected" sur ancien choix
-      searchListItems.forEach((item) => item.classList.remove('selected'));
-      // affecte "selected" sur nouveau choix
-      selectedItem.classList.add('selected');
-      // tableau choix (sans doublons)
-      if (!selectionList.includes(selectedItem)) {
-        selectionList.push(selectedItem);
-        // cree tag(s) correspondant(s)
-        createTag(selectedItem);
-      }
-      // affecte style "rselection recette" au tag
-      const recipesTags = document.querySelectorAll('.selected-tag');
-      recipesTags.forEach((tag) => {
-        tag.classList.add('recipes-result-btn');
-      });
-    });
+    searchList.forEach((item) =>
+      item.addEventListener('click', (event) => {
+        event.preventDefault();
+        // retire "selected" au choix precedent
+        if (item.classList.contains('selected'))
+          item.classList.remove('selected');
+        // affecte "selected" au nouveau choix
+        item.classList.add('selected');
+        // tableau choix (sans doublons)
+        if (!selectionList.includes(item)) {
+          selectionList.push(item);
+          // cree tag(s) correspondant(s)
+          createTag(item);
+        }
+        // affecte couleur au tag selon correspondance
+        // (recette, ingredient, appareil, ustensile)
+        const selectedItem = document.querySelectorAll('.selected');
+        const tagsCollection = document.querySelectorAll('.selected-result');
+        for (let i = 0; i < selectedItem.length; i++) {
+          if (selectedItem[i].classList.contains('recipe-name'))
+            tagsCollection[i].classList.add('recipes-result-btn');
+          if (selectedItem[i].classList.contains('ingredients-option'))
+            tagsCollection[i].classList.add('ingredients-result-btn');
+          if (selectedItem[i].classList.contains('appliances-option'))
+            tagsCollection[i].classList.add('appliances-result-btn');
+          if (selectedItem[i].classList.contains('ustensils-option'))
+            tagsCollection[i].classList.add('ustensils-result-btn');
+        }
+      })
+    );
   });

@@ -2,6 +2,7 @@ fetch('recipes.json')
   .then((response) => response.json())
   .then((data) => {
     const recipes = data.recipes;
+    console.log(recipes);
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     const ingredientsChoice = document.getElementById('ingredients-list');
@@ -96,14 +97,10 @@ fetch('recipes.json')
     }
     setUstensils();
 
-    // AFFICHE LISTE NOMS RECETTES sous barre de recherche principale
-    recipes.forEach((recipe) => {
-      createRecipesList(recipe);
-    });
-
-    // AFFICHE LES CARTES RECETTES (ordre alphabétique)
+    // AFFICHE LES CARTES RECETTES (ordre alphabetique)
     for (let i = 0; i < recipes.length; i++) {
-      // toutes les recettes par defaut
-      setRecipe(quickSort(recipes)[i]);
+      createRecipesList(recipes[i])
+      // console.log(recipes[i].ingredients[0].ingredient);
+      setRecipe(recipes.sort(filterBy('name'))[i]);
     }
   });

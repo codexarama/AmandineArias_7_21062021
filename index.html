@@ -40,16 +40,13 @@
             </button>
           </div>
         </form>
-        <ul id="search-list" role="listbox"></ul>
+        <ul role="listbox" id="search-recipe"></ul>
       </section>
-      <section id="tags-result" class="my-3">
-      </section>
-      <nav id="tags-group" class="my-3">
+      <section id="tags-collection" class="my-3"></section>
+      <nav class="my-3 tags-group">
         <div class="tag-box">
           <button id="ingredients-btn" class="tag-btn">
-            <label for="search-ingredients" class="tag-label"
-              >Ingrédients</label
-            >
+            <label for="search-ingredients" class="tag-label">Ingrédients</label>
             <input
               id="search-ingredients"
               class="search-tag"
@@ -58,17 +55,13 @@
             />
             <i class="fas fa-chevron-down tag-arrow"></i>
           </button>
-          <ul
-            role="listbox"
-            id="ingredients-list"
-            class="tags-list scroll"
-          ></ul>
+          <ul role="listbox" id="ingredients-list" class="tags-list scroll"></ul>
         </div>
-        <div class="tag-box">
-          <button id="appliance-btn" class="tag-btn">
-            <label for="search-appliance" class="tag-label">Appareils</label>
+        <div class="tag-box middle-box">
+          <button id="appliances-btn" class="tag-btn">
+            <label for="search-appliances" class="tag-label">Appareils</label>
             <input
-              id="search-appliance"
+              id="search-appliances"
               class="search-tag"
               type="text"
               placeholder=""
@@ -93,13 +86,13 @@
       </nav>
     </header>
     <main>
-      <section id="recipes"></section>
+      <section id="recipes">
+      </section>
     </main>
     <script type="text/javascript" src="./js/utils.js"></script>
     <script type="text/javascript" src="./js/recipe_card.js"></script>
     <script type="text/javascript" src="./js/display.js"></script>
     <script type="text/javascript" src="./js/search_result.js"></script>
     <script type="text/javascript" src="./js/tags.js"></script>
-    <script type="text/javascript" src="./js/quick_sort.js"></script>
   </body>
 </html>
