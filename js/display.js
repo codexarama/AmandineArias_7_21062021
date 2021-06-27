@@ -104,6 +104,6 @@ fetch('recipes.json')
     // AFFICHE LES CARTES RECETTES (ordre alphabétique)
     for (let i = 0; i < recipes.length; i++) {
       // toutes les recettes par defaut
-      setRecipe(quickSort(recipes)[i]);
+      setRecipe(insertionSort(recipes)[i]);
     }
   });
