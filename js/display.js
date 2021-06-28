@@ -4,6 +4,44 @@ fetch('recipes.json')
     const recipes = data.recipes;
     console.log(recipes);
 
+    // RECHERCHE RECETTES PAR : nom, ingrédients, description (sans doublons)
+    let mainSearch = [];
+    recipes.forEach((recipe) => {
+      if (!mainSearch.includes(recipe.name)) mainSearch.push(recipe.name);
+      if (!mainSearch.includes(recipe.description))
+        mainSearch.push(recipe.description);
+      recipe.ingredients.forEach((item) => {
+        if (!mainSearch.includes(item.ingredient))
+          mainSearch.push(item.ingredient);
+      });
+    });
+
+    // CONVERTIT DONNEES EN MOTS SEPARES (sans doublons)
+    const separators = [
+      ' ',
+      '\\,',
+      '\\, ',
+      '\\. ',
+      '\\+',
+      '-',
+      '\\(',
+      '\\)',
+      '\\*',
+      '/',
+      ':',
+      '\\?',
+    ];
+    mainSearch = mainSearch
+      .toString()
+      .trim()
+      .split(new RegExp(separators.join('|'), 'g'));
+
+    let wordSearch = [];
+    mainSearch.forEach((word) => {
+      if (!wordSearch.includes(word)) wordSearch.push(word);
+    });
+    console.log(wordSearch);
+
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     const ingredientsChoice = document.getElementById('ingredients-list');
     function setIngredients() {
@@ -115,9 +153,8 @@ fetch('recipes.json')
     for (let i = 0; i < recipes.length; i++) {
       createRecipesList(recipes[i]);
       // console.log(recipes[i].ingredients[0].ingredient);
-      // setRecipe(recipes.sort(filterBy('name'))[i]);
-      setRecipe(recipes.sort((recipe) => recipe = recipe.name)[i]); // ne fonctionne pas
+      setRecipe(recipes.sort(filterBy('name'))[i]);
+      // setRecipe(recipes.sort((recipe) => recipe.name)[i]); // ne fonctionne pas
       // console.log(recipes.sort());
-      // setRecipe(recipes[i].name.sort())
     }
   });
