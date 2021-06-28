@@ -119,7 +119,7 @@ function searchRecipe() {
 fetch('recipes.json')
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
+    // console.log(data);
 
     // AFFICHE RESULTATS RECHERCHE
     // DOM elements
