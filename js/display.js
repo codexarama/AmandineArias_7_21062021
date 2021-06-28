@@ -31,6 +31,7 @@ fetch('recipes.json')
           }
         });
       });
+      console.log(ingredients.sort());
       return ingredients;
     }
     setIngredients();
@@ -43,6 +44,7 @@ fetch('recipes.json')
         if (!appliances.includes(recipe.appliance)) {
           // supprime doublons
           appliances.push(recipe.appliance);
+          // appliances.sort().push(recipe.appliance);
           // cree DOM elements
           const appliancesOption = elmtFactory(
             'li',
@@ -60,7 +62,9 @@ fetch('recipes.json')
           appliancesChoice.append(appliancesOption);
         }
       });
-      return appliances;
+      console.log(appliances.sort());
+      return appliances.sort(); // ne fonctionne pas
+      // return appliances;
     }
     setAppliances();
 
@@ -91,6 +95,7 @@ fetch('recipes.json')
           }
         });
       });
+      console.log(ustensils.sort());
       return ustensils;
     }
     setUstensils();
@@ -110,6 +115,9 @@ fetch('recipes.json')
     for (let i = 0; i < recipes.length; i++) {
       createRecipesList(recipes[i]);
       // console.log(recipes[i].ingredients[0].ingredient);
-      setRecipe(recipes.sort(filterBy('name'))[i]);
+      // setRecipe(recipes.sort(filterBy('name'))[i]);
+      setRecipe(recipes.sort((recipe) => recipe = recipe.name)[i]); // ne fonctionne pas
+      // console.log(recipes.sort());
+      // setRecipe(recipes[i].name.sort())
     }
   });

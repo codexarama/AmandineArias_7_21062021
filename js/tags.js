@@ -37,7 +37,7 @@ tagArrow.forEach((arrow) => {
     );
     searchTag.style.display = 'block';
     searchTag.focus();
-    tagsList.style.display = 'block';
+    tagsList.style.display = 'flex';
   });
   // CLOSE FILTER BOXES WITHOUT TARGET
   window.addEventListener('click', function (e) {
