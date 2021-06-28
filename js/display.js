@@ -34,8 +34,6 @@ fetch('recipes.json')
       return ingredients;
     }
     setIngredients();
-    // ne fonctionne pas
-    // setIngredients().sort(filterBy('ingredient')); // ne fonctionne pas
 
     // AFFICHE LISTE APPAREILS (sans doublons)
     const appliancesChoice = document.getElementById('appliances-list');
@@ -97,9 +95,20 @@ fetch('recipes.json')
     }
     setUstensils();
 
-    // AFFICHE LES CARTES RECETTES (ordre alphabetique)
+    // AFFICHE LISTE RESULTATS RECHERCHES
+    generalSearch.addEventListener('keyup', searchRecipe);
+
+    // AFFICHE TAG(S) CORRESPONDANT AU(X) CHOI(X)
+    // searchList.forEach((item) =>
+    //   item.addEventListener('click', resultsSelection)
+    // );
+    // console.log(searchList) // NodeList []
+
+    // resultsSelection()
+
+    // AFFICHE CARTES RECETTES (ordre alphabetique)
     for (let i = 0; i < recipes.length; i++) {
-      createRecipesList(recipes[i])
+      createRecipesList(recipes[i]);
       // console.log(recipes[i].ingredients[0].ingredient);
       setRecipe(recipes.sort(filterBy('name'))[i]);
     }
