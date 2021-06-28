@@ -34,13 +34,16 @@ fetch('recipes.json')
     mainSearch = mainSearch
       .toString()
       .trim()
-      .split(new RegExp(separators.join('|'), 'g'));
+      .split(new RegExp(separators.join('|'), 'g'))
 
-    let wordSearch = [];
+    let allWords = [];
     mainSearch.forEach((word) => {
-      if (!wordSearch.includes(word)) wordSearch.push(word);
+      // word = word.slice(2, 30)
+      if (!allWords.includes(word)) allWords.push(word);
     });
-    console.log(wordSearch);
+    console.log(allWords);
+    const mainWords = allWords.filter(word => word.length > 6);
+    console.log(mainWords);
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     const ingredientsChoice = document.getElementById('ingredients-list');
@@ -100,12 +103,15 @@ fetch('recipes.json')
           appliancesChoice.append(appliancesOption);
         }
       });
-      // console.log(appliances.sort());
+      console.log(appliances.sort());
       // appliances.sort() // ne fonctionne pas
       // return appliances.sort(); // ne fonctionne pas
+      // for (let i = 0; i < appliances.length; i++) {
+      //   appliances.sort(filterBy('appliance'))[i];
+      // } // ne fonctionne pas
       return appliances;
     }
-    setAppliances();
+    setAppliances()
 
     // AFFICHE LISTE USTENSILS (sans doublons)
     const ustensilsChoice = document.getElementById('ustensils-list');
