@@ -55,8 +55,8 @@ fetch('recipes.json')
             const ingredientsOption = elmtFactory(
               'li',
               {
-                id: recipe.id,
                 role: 'option',
+                id: recipe.id,
                 class: 'ingredients-option tag',
               },
               elmtFactory(
@@ -87,8 +87,8 @@ fetch('recipes.json')
           const appliancesOption = elmtFactory(
             'li',
             {
-              id: recipe.id,
               role: 'option',
+              id: recipe.id,
               class: 'appliances-option tag',
             },
             elmtFactory(
@@ -100,9 +100,10 @@ fetch('recipes.json')
           appliancesChoice.append(appliancesOption);
         }
       });
-      console.log(appliances.sort());
-      return appliances.sort(); // ne fonctionne pas
-      // return appliances;
+      // console.log(appliances.sort());
+      // appliances.sort() // ne fonctionne pas
+      // return appliances.sort(); // ne fonctionne pas
+      return appliances;
     }
     setAppliances();
 
@@ -119,8 +120,8 @@ fetch('recipes.json')
             const ustensilsOption = elmtFactory(
               'li',
               {
-                id: recipe.id,
                 role: 'option',
+                id: recipe.id,
                 class: 'ustensils-option tag',
               },
               elmtFactory(
