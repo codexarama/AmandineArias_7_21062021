@@ -448,7 +448,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Échalote",
+          "ingredient": "Echalote",
           "quantity": 2
         },
         {
@@ -1247,7 +1247,7 @@
           "unit": "cl"
         },
         {
-          "ingredient": "ss",
+          "ingredient": "brick",
           "quantity": 5,
           "unit": "feuilles"
         },
@@ -1263,7 +1263,7 @@
         }
       ],
       "time": 35,
-      "description": "Raper les courgettes et les faire revenir durant 15 minutes. Ajouter les fromages de chèvre frais. Préparer la béchamelle avec le lait et la maizena. Salez poivrez, ajouter de la noix de muscade selon les gouts. Dans un plat, mettre un peu de sauces au fond, puis des ss, puis des courgettes etc... terminer par de la sauces et ajouter le gruiyère. Passer au four à 180° durant 20 à 25 minutes.",
+      "description": "Raper les courgettes et les faire revenir durant 15 minutes. Ajouter les fromages de chèvre frais. Préparer la béchamelle avec le lait et la maizena. Salez poivrez, ajouter de la noix de muscade selon les gouts. Dans un plat, mettre un peu de sauce au fond, puis les feuilles de brick, puis des courgettes etc... terminer par de la sauces et ajouter le gruyère. Passer au four à 180° durant 20 à 25 minutes.",
       "appliance": "Four",
       "ustensils": ["Plat à gratin", "Râpe à fromage", "Fouet"]
     },

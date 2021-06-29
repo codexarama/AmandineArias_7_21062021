@@ -30,3 +30,69 @@ function createTag(selectedTag) {
     })
   );
 }
+
+// cree DOM elements : liste ingredients
+const ingredientsChoice = document.getElementById('ingredients-list');
+function createIngredient(item) {
+  const ingredientsOption = elmtFactory(
+    'li',
+    {
+      role: 'option',
+      class: 'ingredients-option tag',
+      // id: `${recipe.id}`,
+    },
+    elmtFactory(
+      'a',
+      {
+        href: '#',
+        class: 'ingredients-link tag-link'
+      },
+      `${item}`
+    )
+  );
+  ingredientsChoice.append(ingredientsOption);
+}
+
+// cree DOM elements : liste appareils
+const appliancesChoice = document.getElementById('appliances-list');
+function createAppliance(item) {
+  const appliancesOption = elmtFactory(
+    'li',
+    {
+      role: 'option',
+      class: 'appliances-option tag',
+      // id: `${recipe.id}`,
+    },
+    elmtFactory(
+      'a',
+      {
+        href: '#',
+        class: 'appliances-link tag-link'
+      },
+      `${item}`
+    )
+  );
+  appliancesChoice.append(appliancesOption);
+}
+
+// cree DOM elements : liste ustensiles
+const ustensilsChoice = document.getElementById('ustensils-list');
+function createUstensil(item) {
+  const ustensilsOption = elmtFactory(
+    'li',
+    {
+      role: 'option',
+      class: 'ustensils-option tag',
+      // id: `${recipe.id}`,
+    },
+    elmtFactory(
+      'a',
+      {
+        href: '#',
+        class: 'ustensils-link tag-link',
+      },
+      `${item}`
+    )
+  );
+  ustensilsChoice.append(ustensilsOption);
+}
