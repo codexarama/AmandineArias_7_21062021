@@ -52,9 +52,9 @@ fetch('recipes.json')
     // console.log(mainWords); // 673 occurrences
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
+    let ingredients = [];
     function setIngredients() {
       // cree tableau ingredients
-      let ingredients = [];
       recipes.forEach((recipe) => {
         recipe.ingredients.forEach((item) => {
           // supprime doublons
@@ -70,12 +70,13 @@ fetch('recipes.json')
         createIngredient(item);
       });
     }
+    console.log(ingredients);
     setIngredients();
 
     // AFFICHE LISTE APPAREILS (sans doublons)
+    let appliances = [];
     function setAppliances() {
       // cree tableau appareils
-      let appliances = [];
       recipes.forEach((recipe) => {
         // supprime doublons
         if (!appliances.includes(recipe.appliance)) {
@@ -92,8 +93,8 @@ fetch('recipes.json')
     setAppliances();
 
     // AFFICHE LISTE USTENSILES (sans doublons)
+    let ustensils = [];
     function setUstensils() {
-      let ustensils = [];
       recipes.forEach((recipe) => {
         recipe.ustensils.forEach((ustensil) => {
           // supprime doublons
@@ -113,18 +114,31 @@ fetch('recipes.json')
 
     // AFFICHE LISTE RESULTATS RECHERCHES
     generalSearch.addEventListener('keyup', searchRecipe);
-
-    // AFFICHE TAG(S) CORRESPONDANT AU(X) CHOI(X)
-    // searchList.forEach((item) =>
-    //   item.addEventListener('click', resultsSelection)
-    // );
-    // console.log(searchList) // NodeList []
-
-    // resultsSelection()
+    // searches.forEach((search) => {
+    //   search.addEventListener('keyup', searchRecipe);
+    //   // console.log(search);
+    // });
 
     // AFFICHE CARTES RECETTES (ordre alphabetique)
+    const sortedIngredients = [];
+    const sortedAppliances = [];
+    const sortedUstensils = [];
     for (let i = 0; i < recipes.length; i++) {
+      const sortIngredients = recipes[i].ingredients.sort(() => {
+        for (let j = 0; j < ingredients.length; j++) {
+          ingredients.sort(filterBy('ingredient')[j]);
+        }
+      });
+      console.log(sortIngredients);
+      // tableau recettes trié par ordre alphabetique des appareils
+      const sortAppliances = recipes.sort(filterBy('appliance'))[i];
+      sortedAppliances.push(sortAppliances);
+
+      // cree liste recettes (DOM)
       createRecipesList(recipes[i]);
+      // affiche par defaut recettes triees par ordre alphabetique
       setRecipe(recipes.sort(filterBy('name'))[i]);
     }
+    console.log(sortedIngredients);
+    console.log(sortedAppliances);
   });

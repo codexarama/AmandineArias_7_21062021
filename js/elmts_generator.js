@@ -1,14 +1,14 @@
 // GENERATEUR ELEMENTS
 
 // cree liste recettes
-const recipeList = document.querySelector('#search-recipe');
+const recipeChoice = document.querySelector('#search-recipe');
 function createRecipesList(recipe) {
   const recipesList = elmtFactory(
     'li',
-    { role: 'option', id: `${recipe.id}`, class: 'recipe-name' },
+    { role: 'option', id: recipe.id, class: 'recipe-name' },
     elmtFactory('a', { class: 'name' }, `${recipe.name}`)
   );
-  recipeList.append(recipesList);
+  recipeChoice.append(recipesList);
 }
 
 // cree tag recette(s) choisie(s) dans liste barre recherche principale
@@ -26,9 +26,18 @@ function createTag(selectedTag) {
   removeTag.forEach((btn) =>
     btn.addEventListener('click', (event) => {
       event.preventDefault();
-      if (tag.contains(event.target)) tag.style.display = 'none';
+      if (tag.contains(event.target)) btn.remove(tag);
     })
   );
+}
+// cree message d'alerte si aucun critère de recherche ne correspond
+function createAlert() {
+  const alert = elmtFactory(
+    'p',
+    { class: 'alert-msg' },
+    'Aucun résultat ne correspond à votre critère... Vous pouvez chercher « Tarte aux pommes », « Poisson », etc.'
+  );
+  tagsCollection.appendChild(alert);
 }
 
 // cree DOM elements : liste ingredients
@@ -39,13 +48,13 @@ function createIngredient(item) {
     {
       role: 'option',
       class: 'ingredients-option tag',
-      // id: `${recipe.id}`,
+      // id: recipe.id,
     },
     elmtFactory(
       'a',
       {
         href: '#',
-        class: 'ingredients-link tag-link'
+        class: 'ingredients-link tag-link',
       },
       `${item}`
     )
@@ -61,13 +70,13 @@ function createAppliance(item) {
     {
       role: 'option',
       class: 'appliances-option tag',
-      // id: `${recipe.id}`,
+      // id: recipe.id,
     },
     elmtFactory(
       'a',
       {
         href: '#',
-        class: 'appliances-link tag-link'
+        class: 'appliances-link tag-link',
       },
       `${item}`
     )
@@ -83,7 +92,7 @@ function createUstensil(item) {
     {
       role: 'option',
       class: 'ustensils-option tag',
-      // id: `${recipe.id}`,
+      // id: recipe.id,
     },
     elmtFactory(
       'a',
