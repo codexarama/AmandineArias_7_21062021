@@ -85,7 +85,7 @@
           "unit": "ml"
         },
         {
-          "ingredient": "Coulis de tomate",
+          "ingredient": "Coulis de tomates",
           "quantity": 25,
           "unit": "cl"
         },
@@ -102,7 +102,7 @@
         }
       ],
       "time": 80,
-      "description": "Découper le poulet en morceaux, les faire dorer dans une cocotte avec de l'huile d'olive. Salez et poivrez. Une fois doré, laisser cuire en ajoutant de l'eau. Au bout de 30 minutes, ajouter le coulis de tomate, le lait de coco ainsi que le poivron et l'oignon découpés en morceaux. Laisser cuisiner 30 minutes de plus. Servir avec du riz",
+      "description": "Découper le poulet en morceaux, les faire dorer dans une cocotte avec de l'huile d'olive. Salez et poivrez. Une fois doré, laisser cuire en ajoutant de l'eau. Au bout de 30 minutes, ajouter le Coulis de tomates, le lait de coco ainsi que le poivron et l'oignon découpés en morceaux. Laisser cuisiner 30 minutes de plus. Servir avec du riz",
       "appliance": "Cocotte",
       "ustensils": ["Couteau"]
     },
@@ -448,7 +448,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Échalote",
+          "ingredient": "Echalote",
           "quantity": 2
         },
         {
@@ -721,7 +721,7 @@
           "quantity": 2
         },
         {
-          "ingredient": "Coulis de tomate",
+          "ingredient": "Coulis de tomates",
           "quantity": 300,
           "unit": "grammes"
         },
@@ -742,7 +742,7 @@
         }
       ],
       "time": 30,
-      "description": "Cuisiner la viande hachée dans une poêle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraîche à la viande hachée. Serivir.",
+      "description": "Cuisiner la viande hachée dans une poêle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le Coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraîche à la viande hachée. Serivir.",
       "appliance": "Casserole",
       "ustensils": ["Cuillère en bois", "Louche", "Couteau"]
     },
@@ -1247,7 +1247,7 @@
           "unit": "cl"
         },
         {
-          "ingredient": "ss",
+          "ingredient": "brick",
           "quantity": 5,
           "unit": "feuilles"
         },
@@ -1263,7 +1263,7 @@
         }
       ],
       "time": 35,
-      "description": "Raper les courgettes et les faire revenir durant 15 minutes. Ajouter les fromages de chèvre frais. Préparer la béchamelle avec le lait et la maizena. Salez poivrez, ajouter de la noix de muscade selon les gouts. Dans un plat, mettre un peu de sauces au fond, puis des ss, puis des courgettes etc... terminer par de la sauces et ajouter le gruiyère. Passer au four à 180° durant 20 à 25 minutes.",
+      "description": "Raper les courgettes et les faire revenir durant 15 minutes. Ajouter les fromages de chèvre frais. Préparer la béchamelle avec le lait et la maizena. Salez poivrez, ajouter de la noix de muscade selon les gouts. Dans un plat, mettre un peu de sauce au fond, puis les feuilles de brick, puis des courgettes etc... terminer par de la sauces et ajouter le gruyère. Passer au four à 180° durant 20 à 25 minutes.",
       "appliance": "Four",
       "ustensils": ["Plat à gratin", "Râpe à fromage", "Fouet"]
     },
@@ -1302,7 +1302,7 @@
         }
       ],
       "time": 60,
-      "description": "Couper les courgettes dans le sens de la longueur. Vider les courgettes dans un saladier. Réserver.Faire revenir la chair des courgettes dans 25cl d'huile d'olive. Ajouter l'oignon puis la viande hachée. Mettre la farce dans les courgettes. Ajouter le coulis de tomates. Mettre au four pendant 30 minutes. Avant la fin de la cuisson ajouter le fromage rapé",
+      "description": "Couper les courgettes dans le sens de la longueur. Vider les courgettes dans un saladier. Réserver.Faire revenir la chair des courgettes dans 25cl d'huile d'olive. Ajouter l'oignon puis la viande hachée. Mettre la farce dans les courgettes. Ajouter le Coulis de tomates. Mettre au four pendant 30 minutes. Avant la fin de la cuisson ajouter le fromage rapé",
       "appliance": "Four",
       "ustensils": ["Couteau", "Cuillère en bois", "Poêle à frire"]
     },

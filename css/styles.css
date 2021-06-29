@@ -212,7 +212,9 @@ a:visited {
   z-index: 1;
   display: none;
 }
-.tag {
+.ingredients-option,
+.appliances-option,
+.ustensils-option {
   width: 30%;
 }
 .tag-link {

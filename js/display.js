@@ -5,12 +5,16 @@ fetch('recipes.json')
     console.log(recipes);
 
     // RECHERCHE RECETTES PAR : nom, ingrédients, description (sans doublons)
+    // cree tableau principal
     let mainSearch = [];
     recipes.forEach((recipe) => {
+      // ajoute noms recettes (sans doublons)
       if (!mainSearch.includes(recipe.name)) mainSearch.push(recipe.name);
+      // ajoute descriptions (sans doublons)
       if (!mainSearch.includes(recipe.description))
         mainSearch.push(recipe.description);
       recipe.ingredients.forEach((item) => {
+        // ajoute ingredients (sans doublons)
         if (!mainSearch.includes(item.ingredient))
           mainSearch.push(item.ingredient);
       });
@@ -34,134 +38,107 @@ fetch('recipes.json')
     mainSearch = mainSearch
       .toString()
       .trim()
-      .split(new RegExp(separators.join('|'), 'g'))
+      .split(new RegExp(separators.join('|'), 'g'));
 
+    // cree tableau principal
     let allWords = [];
     mainSearch.forEach((word) => {
-      // word = word.slice(2, 30)
       if (!allWords.includes(word)) allWords.push(word);
     });
-    console.log(allWords);
-    const mainWords = allWords.filter(word => word.length > 6);
-    console.log(mainWords);
+    // console.log(allWords); // 752 occurrences
+
+    // supprime mots < 3 lettres
+    const mainWords = allWords.filter((word) => word.length > 3);
+    // console.log(mainWords); // 673 occurrences
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
-    const ingredientsChoice = document.getElementById('ingredients-list');
+    let ingredients = [];
     function setIngredients() {
-      let ingredients = [];
+      // cree tableau ingredients
       recipes.forEach((recipe) => {
         recipe.ingredients.forEach((item) => {
           // supprime doublons
           if (!ingredients.includes(item.ingredient)) {
             ingredients.push(item.ingredient);
-            // cree DOM elements
-            const ingredientsOption = elmtFactory(
-              'li',
-              {
-                role: 'option',
-                id: recipe.id,
-                class: 'ingredients-option tag',
-              },
-              elmtFactory(
-                'a',
-                { href: '#', class: 'ingredients-link tag-link' },
-                `${item.ingredient}`
-              )
-            );
-            ingredientsChoice.append(ingredientsOption);
           }
         });
       });
-      console.log(ingredients.sort());
-      return ingredients;
+      // trie ingredients par ordre alphabétique
+      ingredients.sort();
+      // cree liste ingredients (DOM)
+      ingredients.forEach((item) => {
+        createIngredient(item);
+      });
     }
+    console.log(ingredients);
     setIngredients();
 
     // AFFICHE LISTE APPAREILS (sans doublons)
-    const appliancesChoice = document.getElementById('appliances-list');
+    let appliances = [];
     function setAppliances() {
-      let appliances = [];
+      // cree tableau appareils
       recipes.forEach((recipe) => {
+        // supprime doublons
         if (!appliances.includes(recipe.appliance)) {
-          // supprime doublons
           appliances.push(recipe.appliance);
-          // appliances.sort().push(recipe.appliance);
-          // cree DOM elements
-          const appliancesOption = elmtFactory(
-            'li',
-            {
-              role: 'option',
-              id: recipe.id,
-              class: 'appliances-option tag',
-            },
-            elmtFactory(
-              'a',
-              { href: '#', class: 'appliances-link tag-link' },
-              `${recipe.appliance}`
-            )
-          );
-          appliancesChoice.append(appliancesOption);
         }
       });
-      console.log(appliances.sort());
-      // appliances.sort() // ne fonctionne pas
-      // return appliances.sort(); // ne fonctionne pas
-      // for (let i = 0; i < appliances.length; i++) {
-      //   appliances.sort(filterBy('appliance'))[i];
-      // } // ne fonctionne pas
-      return appliances;
+      // trie ingredients par ordre alphabétique
+      appliances.sort();
+      // cree liste appareils (DOM)
+      appliances.forEach((item) => {
+        createAppliance(item);
+      });
     }
-    setAppliances()
+    setAppliances();
 
-    // AFFICHE LISTE USTENSILS (sans doublons)
-    const ustensilsChoice = document.getElementById('ustensils-list');
+    // AFFICHE LISTE USTENSILES (sans doublons)
+    let ustensils = [];
     function setUstensils() {
-      let ustensils = [];
       recipes.forEach((recipe) => {
         recipe.ustensils.forEach((ustensil) => {
           // supprime doublons
           if (!ustensils.includes(ustensil)) {
             ustensils.push(ustensil);
-            // cree DOM elements
-            const ustensilsOption = elmtFactory(
-              'li',
-              {
-                role: 'option',
-                id: recipe.id,
-                class: 'ustensils-option tag',
-              },
-              elmtFactory(
-                'a',
-                { href: '#', class: 'ustensils-link tag-link' },
-                `${ustensil}`
-              )
-            );
-            ustensilsChoice.append(ustensilsOption);
           }
         });
       });
-      console.log(ustensils.sort());
-      return ustensils;
+      // trie ustensiles par ordre alphabétique
+      ustensils.sort();
+      // cree liste appareils (DOM)
+      ustensils.forEach((item) => {
+        createUstensil(item);
+      });
     }
     setUstensils();
 
     // AFFICHE LISTE RESULTATS RECHERCHES
     generalSearch.addEventListener('keyup', searchRecipe);
-
-    // AFFICHE TAG(S) CORRESPONDANT AU(X) CHOI(X)
-    // searchList.forEach((item) =>
-    //   item.addEventListener('click', resultsSelection)
-    // );
-    // console.log(searchList) // NodeList []
-
-    // resultsSelection()
+    // searches.forEach((search) => {
+    //   search.addEventListener('keyup', searchRecipe);
+    //   // console.log(search);
+    // });
 
     // AFFICHE CARTES RECETTES (ordre alphabetique)
+    const sortedIngredients = [];
+    const sortedAppliances = [];
+    const sortedUstensils = [];
     for (let i = 0; i < recipes.length; i++) {
+      const sortIngredients = recipes[i].ingredients.sort(() => {
+        for (let j = 0; j < ingredients.length; j++) {
+          ingredients.sort(filterBy('ingredient')[j]);
+        }
+      });
+      console.log(sortIngredients);
+      // tableau recettes trié par ordre alphabetique des appareils
+      const sortAppliances = recipes.sort(filterBy('appliance'))[i];
+      sortedAppliances.push(sortAppliances);
+
+      // cree liste recettes (DOM)
       createRecipesList(recipes[i]);
-      // console.log(recipes[i].ingredients[0].ingredient);
+      // affiche par defaut recettes triees par ordre alphabetique
       setRecipe(recipes.sort(filterBy('name'))[i]);
-      // setRecipe(recipes.sort((recipe) => recipe.name)[i]); // ne fonctionne pas
-      // console.log(recipes.sort());
     }
+    console.log(sortedIngredients);
+    console.log(sortedAppliances);
   });
