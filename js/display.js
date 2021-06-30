@@ -128,8 +128,8 @@ fetch('recipes.json')
 
     // AFFICHE CARTES RECETTES (ordre alphabetique)
     for (let i = 0; i < recipes.length; i++) {
-      // cree liste recettes (DOM)
-      createRecipesList(recipes[i]);
+      // cree liste recettes (DOM) triees par ordre alphabetique
+      createRecipesList(recipes.sort(filterBy('name'))[i]);
       // affiche par defaut recettes triees par ordre alphabetique
       setRecipe(recipes.sort(filterBy('name'))[i]);
     }
