@@ -30,28 +30,37 @@ function createTag(selectedTag) {
     })
   );
 }
+
 // cree message d'alerte si aucun critère de recherche ne correspond
 function createAlert() {
   const alert = elmtFactory(
     'div',
     { class: 'alert-msg' },
-    elmtFactory('img', {src : '/images/oops.png'}),
+    elmtFactory('img', { src: '/images/oops.png' }),
     elmtFactory('p', {}, 'OOPS'),
     elmtFactory('p', {}, 'Aucun résultat ne correspond à votre critère...'),
-    elmtFactory('p', {}, 'Vous pouvez chercher « Tarte aux pommes », « Poisson », etc.')
+    elmtFactory(
+      'p',
+      {},
+      'Vous pouvez chercher « Tarte aux pommes », « Poisson », etc.'
+    )
   );
   tagsCollection.appendChild(alert);
 }
 
+// -----------------------------------------------------------------------------
+// // CREATION DOM ELEMENT : LISTE INGREDIENTS
+// // PROBLEME : IMPOSSIBLE DE TRIER PAR ODRE ALPHABTIQUE UNE FOIS GENERE
+// -----------------------------------------------------------------------------
 // cree DOM elements : liste ingredients
 const ingredientsChoice = document.getElementById('ingredients-list');
-function createIngredient(item) {
+function createIngredient(recipe, item) {
   const ingredientsOption = elmtFactory(
     'li',
     {
       role: 'option',
+      id: recipe.id,
       class: 'ingredients-option tag',
-      // id: recipe.id,
     },
     elmtFactory(
       'a',
@@ -59,11 +68,38 @@ function createIngredient(item) {
         href: '#',
         class: 'ingredients-link tag-link',
       },
-      `${item}`
+      `${item.ingredient}`
     )
   );
   ingredientsChoice.append(ingredientsOption);
 }
+
+// -----------------------------------------------------------------------------
+// // CREATION DOM ELEMENT : LISTE INGREDIENTS
+// // PROBLEME : IMPOSSIBLE D'AFFECTER L'ATTRIBUT "id" CORRESPONDANT A LA RECETTE A LAQUELLE IL APPARTIENT
+// -----------------------------------------------------------------------------
+// // cree DOM elements : liste ingredients
+// const ingredientsChoice = document.getElementById('ingredients-list');
+// function createIngredient(item) {
+//   const ingredientsOption = elmtFactory(
+//     'li',
+//     {
+//       role: 'option',
+//       class: 'ingredients-option tag',
+//       // id: recipe.id,
+//     },
+//     elmtFactory(
+//       'a',
+//       {
+//         href: '#',
+//         class: 'ingredients-link tag-link',
+//       },
+//       `${item}`
+//     )
+//   );
+//   ingredientsChoice.append(ingredientsOption);
+// }
+// -----------------------------------------------------------------------------
 
 // cree DOM elements : liste appareils
 const appliancesChoice = document.getElementById('appliances-list');
