@@ -48,13 +48,9 @@ function createAlert() {
   tagsCollection.appendChild(alert);
 }
 
-// -----------------------------------------------------------------------------
-// // CREATION DOM ELEMENT : LISTE INGREDIENTS
-// // PROBLEME : IMPOSSIBLE DE TRIER PAR ODRE ALPHABTIQUE UNE FOIS GENERE
-// -----------------------------------------------------------------------------
 // cree DOM elements : liste ingredients
 const ingredientsChoice = document.getElementById('ingredients-list');
-function createIngredient(recipe, item) {
+function createIngredient(recipe) {
   const ingredientsOption = elmtFactory(
     'li',
     {
@@ -62,54 +58,23 @@ function createIngredient(recipe, item) {
       id: recipe.id,
       class: 'ingredients-option tag',
     },
-    elmtFactory(
-      'a',
-      {
-        href: '#',
-        class: 'ingredients-link tag-link',
-      },
-      `${item.ingredient}`
-    )
+    elmtFactory('a', {
+      href: '#',
+      class: 'ingredients-link tag-link',
+    })
   );
   ingredientsChoice.append(ingredientsOption);
 }
 
-// -----------------------------------------------------------------------------
-// // CREATION DOM ELEMENT : LISTE INGREDIENTS
-// // PROBLEME : IMPOSSIBLE D'AFFECTER L'ATTRIBUT "id" CORRESPONDANT A LA RECETTE A LAQUELLE IL APPARTIENT
-// -----------------------------------------------------------------------------
-// // cree DOM elements : liste ingredients
-// const ingredientsChoice = document.getElementById('ingredients-list');
-// function createIngredient(item) {
-//   const ingredientsOption = elmtFactory(
-//     'li',
-//     {
-//       role: 'option',
-//       class: 'ingredients-option tag',
-//       // id: recipe.id,
-//     },
-//     elmtFactory(
-//       'a',
-//       {
-//         href: '#',
-//         class: 'ingredients-link tag-link',
-//       },
-//       `${item}`
-//     )
-//   );
-//   ingredientsChoice.append(ingredientsOption);
-// }
-// -----------------------------------------------------------------------------
-
 // cree DOM elements : liste appareils
 const appliancesChoice = document.getElementById('appliances-list');
-function createAppliance(item) {
+function createAppliance(recipe) {
   const appliancesOption = elmtFactory(
     'li',
     {
       role: 'option',
+      id: recipe.id,
       class: 'appliances-option tag',
-      // id: recipe.id,
     },
     elmtFactory(
       'a',
@@ -117,7 +82,6 @@ function createAppliance(item) {
         href: '#',
         class: 'appliances-link tag-link',
       },
-      `${item}`
     )
   );
   appliancesChoice.append(appliancesOption);
@@ -125,13 +89,13 @@ function createAppliance(item) {
 
 // cree DOM elements : liste ustensiles
 const ustensilsChoice = document.getElementById('ustensils-list');
-function createUstensil(item) {
+function createUstensil(recipe) {
   const ustensilsOption = elmtFactory(
     'li',
     {
       role: 'option',
+      id: recipe.id,
       class: 'ustensils-option tag',
-      // id: recipe.id,
     },
     elmtFactory(
       'a',
@@ -139,7 +103,6 @@ function createUstensil(item) {
         href: '#',
         class: 'ustensils-link tag-link',
       },
-      `${item}`
     )
   );
   ustensilsChoice.append(ustensilsOption);
