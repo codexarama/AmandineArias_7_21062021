@@ -1,4 +1,4 @@
-// RESULTATS RECHERCHES (from main search bar)
+// RESULTATS RECHERCHE (from main search bar)
 const generalSearch = document.querySelector('.search-bar');
 // detecte et montre correspondances
 function searchRecipe() {
@@ -16,14 +16,10 @@ function searchRecipe() {
       recipeName[i].classList.remove('matches');
     }
   }
+}
 
-  // AFFICHE MESSAGE SI AUCUN CRITERE DE RECHERCHE NE CORRESPOND
-  // recipeName.forEach((item) => {
-  //   if (!item.classList.contains('matches')) createAlert();
-  // });
-
-
-  // AFFICHE RESULTATS RECHERCHE
+// AFFICHE SELECTION(S)
+function displaySelection() {
   // DOM elements
   const selectionList = [];
   const searchList = document.querySelectorAll('[role="option"]');
@@ -31,7 +27,7 @@ function searchRecipe() {
   searchList.forEach((item) =>
     item.addEventListener('click', (event) => {
       event.preventDefault();
-      // retire "selected" au choix precedent
+      // retire "selected" du choix precedent
       if (item.classList.contains('selected'))
         item.classList.remove('selected');
       // affecte "selected" au nouveau choix
@@ -55,4 +51,15 @@ function searchRecipe() {
       }
     })
   );
+}
+
+// AFFICHE MESSAGE SI AUCUN CRITERE DE RECHERCHE NE CORRESPOND
+// MASQUE MESSAGE DANS LE CAS CONTRAIRE
+function checkMatches() {
+  const searchMatches = document.querySelectorAll('.matches');
+  const alert = document.querySelector('.alert-msg')
+  createAlert();
+  if (searchMatches.length === 0)
+  alert.style.display = 'block';
+  else alert.style.display = 'none';
 }

@@ -30,47 +30,51 @@ function createTag(selectedTag) {
     })
   );
 }
+
 // cree message d'alerte si aucun critère de recherche ne correspond
 function createAlert() {
   const alert = elmtFactory(
-    'p',
+    'div',
     { class: 'alert-msg' },
-    'Aucun résultat ne correspond à votre critère... Vous pouvez chercher « Tarte aux pommes », « Poisson », etc.'
+    elmtFactory('img', { src: '/images/oops.png' }),
+    elmtFactory('p', {}, 'OOPS'),
+    elmtFactory('p', {}, 'Aucun résultat ne correspond à votre critère...'),
+    elmtFactory(
+      'p',
+      {},
+      'Vous pouvez chercher « Tarte aux pommes », « Poisson », etc.'
+    )
   );
   tagsCollection.appendChild(alert);
 }
 
 // cree DOM elements : liste ingredients
 const ingredientsChoice = document.getElementById('ingredients-list');
-function createIngredient(item) {
+function createIngredient(recipe) {
   const ingredientsOption = elmtFactory(
     'li',
     {
       role: 'option',
+      id: recipe.id,
       class: 'ingredients-option tag',
-      // id: recipe.id,
     },
-    elmtFactory(
-      'a',
-      {
-        href: '#',
-        class: 'ingredients-link tag-link',
-      },
-      `${item}`
-    )
+    elmtFactory('a', {
+      href: '#',
+      class: 'ingredients-link tag-link',
+    })
   );
   ingredientsChoice.append(ingredientsOption);
 }
 
 // cree DOM elements : liste appareils
 const appliancesChoice = document.getElementById('appliances-list');
-function createAppliance(item) {
+function createAppliance(recipe) {
   const appliancesOption = elmtFactory(
     'li',
     {
       role: 'option',
+      id: recipe.id,
       class: 'appliances-option tag',
-      // id: recipe.id,
     },
     elmtFactory(
       'a',
@@ -78,7 +82,6 @@ function createAppliance(item) {
         href: '#',
         class: 'appliances-link tag-link',
       },
-      `${item}`
     )
   );
   appliancesChoice.append(appliancesOption);
@@ -86,13 +89,13 @@ function createAppliance(item) {
 
 // cree DOM elements : liste ustensiles
 const ustensilsChoice = document.getElementById('ustensils-list');
-function createUstensil(item) {
+function createUstensil(recipe) {
   const ustensilsOption = elmtFactory(
     'li',
     {
       role: 'option',
+      id: recipe.id,
       class: 'ustensils-option tag',
-      // id: recipe.id,
     },
     elmtFactory(
       'a',
@@ -100,7 +103,6 @@ function createUstensil(item) {
         href: '#',
         class: 'ustensils-link tag-link',
       },
-      `${item}`
     )
   );
   ustensilsChoice.append(ustensilsOption);

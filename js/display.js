@@ -60,17 +60,18 @@ fetch('recipes.json')
           // supprime doublons
           if (!ingredients.includes(item.ingredient)) {
             ingredients.push(item.ingredient);
+            createIngredient(recipe);
           }
         });
       });
       // trie ingredients par ordre alphabétique
       ingredients.sort();
       // cree liste ingredients (DOM)
-      ingredients.forEach((item) => {
-        createIngredient(item);
-      });
+      const ingredientsLink = document.querySelectorAll('.ingredients-link');
+      for (let i = 0; i < ingredientsLink.length; i++) {
+        ingredientsLink[i].textContent = ingredients[i];
+      }
     }
-    console.log(ingredients);
     setIngredients();
 
     // AFFICHE LISTE APPAREILS (sans doublons)
@@ -81,14 +82,16 @@ fetch('recipes.json')
         // supprime doublons
         if (!appliances.includes(recipe.appliance)) {
           appliances.push(recipe.appliance);
+          createAppliance(recipe);
         }
       });
       // trie ingredients par ordre alphabétique
       appliances.sort();
       // cree liste appareils (DOM)
-      appliances.forEach((item) => {
-        createAppliance(item);
-      });
+      const appliancesLink = document.querySelectorAll('.appliances-link');
+      for (let i = 0; i < appliancesLink.length; i++) {
+        appliancesLink[i].textContent = appliances[i];
+      }
     }
     setAppliances();
 
@@ -100,45 +103,34 @@ fetch('recipes.json')
           // supprime doublons
           if (!ustensils.includes(ustensil)) {
             ustensils.push(ustensil);
+            createUstensil(recipe);
           }
         });
       });
       // trie ustensiles par ordre alphabétique
       ustensils.sort();
       // cree liste appareils (DOM)
-      ustensils.forEach((item) => {
-        createUstensil(item);
-      });
+      const ustensilsLink = document.querySelectorAll('.ustensils-link');
+      for (let i = 0; i < ustensilsLink.length; i++) {
+        ustensilsLink[i].textContent = ustensils[i];
+      }
     }
     setUstensils();
 
     // AFFICHE LISTE RESULTATS RECHERCHES
     generalSearch.addEventListener('keyup', searchRecipe);
+    generalSearch.addEventListener('keyup', displaySelection);
+    generalSearch.addEventListener('keyup', checkMatches);
     // searches.forEach((search) => {
     //   search.addEventListener('keyup', searchRecipe);
     //   // console.log(search);
     // });
 
     // AFFICHE CARTES RECETTES (ordre alphabetique)
-    const sortedIngredients = [];
-    const sortedAppliances = [];
-    const sortedUstensils = [];
     for (let i = 0; i < recipes.length; i++) {
-      const sortIngredients = recipes[i].ingredients.sort(() => {
-        for (let j = 0; j < ingredients.length; j++) {
-          ingredients.sort(filterBy('ingredient')[j]);
-        }
-      });
-      console.log(sortIngredients);
-      // tableau recettes trié par ordre alphabetique des appareils
-      const sortAppliances = recipes.sort(filterBy('appliance'))[i];
-      sortedAppliances.push(sortAppliances);
-
-      // cree liste recettes (DOM)
-      createRecipesList(recipes[i]);
+      // cree liste recettes (DOM) triees par ordre alphabetique
+      createRecipesList(recipes.sort(filterBy('name'))[i]);
       // affiche par defaut recettes triees par ordre alphabetique
       setRecipe(recipes.sort(filterBy('name'))[i]);
     }
-    console.log(sortedIngredients);
-    console.log(sortedAppliances);
   });
