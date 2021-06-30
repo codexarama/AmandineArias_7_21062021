@@ -33,9 +33,12 @@ function createTag(selectedTag) {
 // cree message d'alerte si aucun critère de recherche ne correspond
 function createAlert() {
   const alert = elmtFactory(
-    'p',
+    'div',
     { class: 'alert-msg' },
-    'Aucun résultat ne correspond à votre critère... Vous pouvez chercher « Tarte aux pommes », « Poisson », etc.'
+    elmtFactory('img', {src : '/images/oops.png'}),
+    elmtFactory('p', {}, 'OOPS'),
+    elmtFactory('p', {}, 'Aucun résultat ne correspond à votre critère...'),
+    elmtFactory('p', {}, 'Vous pouvez chercher « Tarte aux pommes », « Poisson », etc.')
   );
   tagsCollection.appendChild(alert);
 }

@@ -100,7 +100,20 @@ a:visited {
   opacity: 100%;
 }
 
-/* NAVIGATION STYLES */
+/* MESSAGE ALERTE */
+.alert-msg {
+  width: 75%;
+  text-align: center;
+  display: none;
+}
+.alert-msg img {
+  width: 9%;
+}
+.alert-msg p {
+  font-weight: 700;
+}
+
+/* NAVIGATION */
 /* navigation section */
 /* .container {
   max-width: 1345px;
@@ -135,7 +148,7 @@ a:visited {
   color: #fff;
   font-weight: 600;
 }
-.tag-btn:hover{
+.tag-btn:hover {
   background-color: #918c91;
 }
 .recipes-result-btn,

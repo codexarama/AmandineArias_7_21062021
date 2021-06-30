@@ -118,18 +118,26 @@ fetch('recipes.json')
     //   search.addEventListener('keyup', searchRecipe);
     //   // console.log(search);
     // });
+    generalSearch.addEventListener('keyup', displaySelection);
+    generalSearch.addEventListener('keyup', checkMatches);
+
+
 
     // AFFICHE CARTES RECETTES (ordre alphabetique)
     const sortedIngredients = [];
     const sortedAppliances = [];
     const sortedUstensils = [];
     for (let i = 0; i < recipes.length; i++) {
-      const sortIngredients = recipes[i].ingredients.sort(() => {
-        for (let j = 0; j < ingredients.length; j++) {
-          ingredients.sort(filterBy('ingredient')[j]);
-        }
-      });
-      console.log(sortIngredients);
+      // console.log(recipes[i].ingredients[0].ingredient);
+      // const allIngredients = recipes[i].ingredients[0].ingredient
+      // const allIngredients = recipes.filter(ingredients.forEach((ingredient => ingredient.sort(filterBy('ingredient')))) )
+      // console.log(allIngredients);
+      // const sortIngredients = []
+      // allIngredients.forEach((ingredient) => {sortIngredients.push(ingredient)})
+      // sortIngredients.push(allIngredients)
+      // console.log(sortIngredients);
+
+      // console.log(sortIngredients);
       // tableau recettes trié par ordre alphabetique des appareils
       const sortAppliances = recipes.sort(filterBy('appliance'))[i];
       sortedAppliances.push(sortAppliances);
@@ -139,6 +147,13 @@ fetch('recipes.json')
       // affiche par defaut recettes triees par ordre alphabetique
       setRecipe(recipes.sort(filterBy('name'))[i]);
     }
-    console.log(sortedIngredients);
-    console.log(sortedAppliances);
+    // console.log(sortedIngredients);
+    // console.log(sortedAppliances);
+
+    // const recipeName = document.querySelectorAll('.recipe-name');
+    // console.log(recipeName);
+    // recipeName.addEventListener('change', (event) => {
+    //   event.preventDefault();
+    // })
+
   });
