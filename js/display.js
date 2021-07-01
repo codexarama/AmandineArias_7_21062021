@@ -4,21 +4,32 @@ fetch('recipes.json')
     const recipes = data.recipes;
     console.log(recipes);
 
-    // RECHERCHE RECETTES PAR : nom, ingrédients, description (sans doublons)
-    // cree tableau principal
+    // RECHERCHE RECETTES PAR : nom, ingrédients, description
+    // cree tableau recettes triees par ordre alphabetique
+    let sortedRecipes = [];
+    for (let i = 0; i < recipes.length; i++) {
+      sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
+    }
+
+    // cree tableau recherche principale
     let mainSearch = [];
-    recipes.forEach((recipe) => {
-      // ajoute noms recettes (sans doublons)
-      if (!mainSearch.includes(recipe.name)) mainSearch.push(recipe.name);
-      // ajoute descriptions (sans doublons)
-      if (!mainSearch.includes(recipe.description))
-        mainSearch.push(recipe.description);
+    sortedRecipes.forEach((recipe) => {
+      // ajoute noms recettes
+      mainSearch.push(recipe.name);
+      // ajoute descriptions
+      mainSearch.push(recipe.description);
       recipe.ingredients.forEach((item) => {
-        // ajoute ingredients (sans doublons)
-        if (!mainSearch.includes(item.ingredient))
-          mainSearch.push(item.ingredient);
+        // ajoute ingredients
+        mainSearch.push(item.ingredient);
+        createmainList(recipe);
       });
     });
+    // console.log(mainSearch); // 354 occurrences
+
+    const recipeLink = document.querySelectorAll('.recipe-link');
+    for (let i = 0; i < recipeLink.length; i++) {
+      recipeLink[i].textContent = mainSearch[i];
+    }
 
     // CONVERTIT DONNEES EN MOTS SEPARES (sans doublons)
     const separators = [
@@ -119,7 +130,7 @@ fetch('recipes.json')
 
     // AFFICHE LISTE RESULTATS RECHERCHES
     generalSearch.addEventListener('keyup', searchRecipe);
-    generalSearch.addEventListener('keyup', displaySelection);
+    displaySelection();
     generalSearch.addEventListener('keyup', checkMatches);
     // searches.forEach((search) => {
     //   search.addEventListener('keyup', searchRecipe);
@@ -128,8 +139,6 @@ fetch('recipes.json')
 
     // AFFICHE CARTES RECETTES (ordre alphabetique)
     for (let i = 0; i < recipes.length; i++) {
-      // cree liste recettes (DOM) triees par ordre alphabetique
-      createRecipesList(recipes.sort(filterBy('name'))[i]);
       // affiche par defaut recettes triees par ordre alphabetique
       setRecipe(recipes.sort(filterBy('name'))[i]);
     }

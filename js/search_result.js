@@ -2,18 +2,19 @@
 const generalSearch = document.querySelector('.search-bar');
 // detecte et montre correspondances
 function searchRecipe() {
-  const recipeName = document.querySelectorAll('.recipe-name');
+  const recipeOption = document.querySelectorAll('.recipe-option');
   const filter = generalSearch.value.toUpperCase();
-  for (let i = 0; i < recipeName.length; i++) {
-    const name = recipeName[i].getElementsByTagName('a')[0];
+  for (let i = 0; i < recipeOption.length; i++) {
+    const name = recipeOption[i].getElementsByTagName('a')[0];
     const textValue = name.textContent || name.innerText;
+    // if (textValue.length > 3 && textValue.toUpperCase().indexOf(filter) > -1) {
     if (textValue.toUpperCase().indexOf(filter) > -1) {
-      recipeChoice.style.display = 'flex';
-      recipeName[i].style.display = '';
-      recipeName[i].classList.add('matches');
+      mainChoice.style.display = 'flex';
+      recipeOption[i].style.display = '';
+      recipeOption[i].classList.add('matches');
     } else {
-      recipeName[i].style.display = 'none';
-      recipeName[i].classList.remove('matches');
+      recipeOption[i].style.display = 'none';
+      recipeOption[i].classList.remove('matches');
     }
   }
 }
@@ -40,7 +41,7 @@ function displaySelection() {
         const lastSelection =
           document.querySelector('#tags-collection').lastChild;
         // affecte couleur au tag selon correspondance
-        if (item.classList.contains('recipe-name'))
+        if (item.classList.contains('recipe-option'))
           lastSelection.classList.add('recipes-result-btn');
         if (item.classList.contains('ingredients-option'))
           lastSelection.classList.add('ingredients-result-btn');
@@ -55,10 +56,10 @@ function displaySelection() {
 
 // AFFICHE MESSAGE SI AUCUN CRITERE DE RECHERCHE NE CORRESPOND
 // MASQUE MESSAGE DANS LE CAS CONTRAIRE
+createAlert();
 function checkMatches() {
   const searchMatches = document.querySelectorAll('.matches');
   const alert = document.querySelector('.alert-msg')
-  createAlert();
   if (searchMatches.length === 0)
   alert.style.display = 'block';
   else alert.style.display = 'none';

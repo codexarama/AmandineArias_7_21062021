@@ -84,17 +84,17 @@ a:visited {
 #search-recipe::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.25);
 }
-.recipe-name {
+.recipe-option {
   width: 100%;
   border-bottom: 1px solid #ced4da;
 }
-.name {
+.recipe-link {
   color: #212529;
   opacity: 50%;
 }
-.name:hover,
-.name:focus,
-.name:active {
+.recipe-link:hover,
+.recipe-link:focus,
+.recipe-link:active {
   cursor: pointer;
   color: #212529;
   opacity: 100%;
@@ -102,9 +102,10 @@ a:visited {
 
 /* MESSAGE ALERTE */
 .alert-msg {
-  width: 75%;
-  text-align: center;
   display: none;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 .alert-msg img {
   width: 9%;

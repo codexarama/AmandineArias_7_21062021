@@ -1,14 +1,14 @@
-// GENERATEUR ELEMENTS
+// GENERATEUR ELEMENTS DOM
 
 // cree liste recettes
-const recipeChoice = document.querySelector('#search-recipe');
-function createRecipesList(recipe) {
-  const recipesList = elmtFactory(
+const mainChoice = document.querySelector('#search-recipe');
+function createmainList(recipe) {
+  const mainList = elmtFactory(
     'li',
-    { role: 'option', id: recipe.id, class: 'recipe-name' },
-    elmtFactory('a', { class: 'name' }, `${recipe.name}`)
+    { role: 'option', id: recipe.id, class: 'recipe-option' },
+    elmtFactory('a', { class: 'recipe-link' })
   );
-  recipeChoice.append(recipesList);
+  mainChoice.append(mainList);
 }
 
 // cree tag recette(s) choisie(s) dans liste barre recherche principale
@@ -48,7 +48,7 @@ function createAlert() {
   tagsCollection.appendChild(alert);
 }
 
-// cree DOM elements : liste ingredients
+// cree liste ingredients
 const ingredientsChoice = document.getElementById('ingredients-list');
 function createIngredient(recipe) {
   const ingredientsOption = elmtFactory(
@@ -66,7 +66,7 @@ function createIngredient(recipe) {
   ingredientsChoice.append(ingredientsOption);
 }
 
-// cree DOM elements : liste appareils
+// cree liste appareils
 const appliancesChoice = document.getElementById('appliances-list');
 function createAppliance(recipe) {
   const appliancesOption = elmtFactory(
@@ -87,7 +87,7 @@ function createAppliance(recipe) {
   appliancesChoice.append(appliancesOption);
 }
 
-// cree DOM elements : liste ustensiles
+// cree liste ustensiles
 const ustensilsChoice = document.getElementById('ustensils-list');
 function createUstensil(recipe) {
   const ustensilsOption = elmtFactory(
