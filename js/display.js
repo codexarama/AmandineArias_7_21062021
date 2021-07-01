@@ -2,144 +2,115 @@ fetch('recipes.json')
   .then((response) => response.json())
   .then((data) => {
     const recipes = data.recipes;
-    console.log(recipes);
 
-    // RECHERCHE RECETTES PAR : nom, ingrédients, description
-    // cree tableau recettes triees par ordre alphabetique
+    // for (let i = 0; i < recipes.length; i++) {
+    //   setRecipe(recipes[i]);
+    // }
+
+    // AFFICHE CARTES RECETTES (ordre alphabetique)
     let sortedRecipes = [];
     for (let i = 0; i < recipes.length; i++) {
       sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
+      setRecipe(sortedRecipes[i]);
     }
+    console.log(recipes);
 
-    // cree tableau recherche principale
+    // RECHERCHE RECETTES PAR : nom, description, ingrédients
+    // cree tableau recherche principale (ordre alphabetique)
     let mainSearch = [];
-    sortedRecipes.forEach((recipe) => {
-      // ajoute noms recettes
-      mainSearch.push(recipe.name);
-      // ajoute descriptions
-      mainSearch.push(recipe.description);
-      recipe.ingredients.forEach((item) => {
-        // ajoute ingredients
-        mainSearch.push(item.ingredient);
-        createmainList(recipe);
+    function setMainSearch() {
+      recipes.forEach((recipe) => {
+        // ajoute noms recettes
+        mainSearch.push(recipe.name);
+        // ajoute descriptions
+        mainSearch.push(recipe.description);
+        recipe.ingredients.forEach((item) => {
+          // ajoute ingredients
+          mainSearch.push(item.ingredient);
+        });
       });
-    });
-    // console.log(mainSearch); // 354 occurrences
-
-    const recipeLink = document.querySelectorAll('.recipe-link');
-    for (let i = 0; i < recipeLink.length; i++) {
-      recipeLink[i].textContent = mainSearch[i];
+      // cree liste nom, description, ingrédients (DOM)
+      mainSearch.forEach((item) => {
+        createmainList(item);
+      });
     }
-
-    // CONVERTIT DONNEES EN MOTS SEPARES (sans doublons)
-    const separators = [
-      ' ',
-      '\\,',
-      '\\, ',
-      '\\. ',
-      '\\+',
-      '-',
-      '\\(',
-      '\\)',
-      '\\*',
-      '/',
-      ':',
-      '\\?',
-    ];
-    mainSearch = mainSearch
-      .toString()
-      .trim()
-      .split(new RegExp(separators.join('|'), 'g'));
-
-    // cree tableau principal
-    let allWords = [];
-    mainSearch.forEach((word) => {
-      if (!allWords.includes(word)) allWords.push(word);
-    });
-    // console.log(allWords); // 752 occurrences
-
-    // supprime mots < 3 lettres
-    const mainWords = allWords.filter((word) => word.length > 3);
-    // console.log(mainWords); // 673 occurrences
+    setMainSearch();
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
+    // cree tableau ingredients
     let ingredients = [];
     function setIngredients() {
-      // cree tableau ingredients
       recipes.forEach((recipe) => {
         recipe.ingredients.forEach((item) => {
           // supprime doublons
           if (!ingredients.includes(item.ingredient)) {
+            // ajoute ingredients
             ingredients.push(item.ingredient);
-            createIngredient(recipe);
           }
         });
       });
       // trie ingredients par ordre alphabétique
       ingredients.sort();
       // cree liste ingredients (DOM)
-      const ingredientsLink = document.querySelectorAll('.ingredients-link');
-      for (let i = 0; i < ingredientsLink.length; i++) {
-        ingredientsLink[i].textContent = ingredients[i];
-      }
+      ingredients.forEach((item) => {
+        createIngredient(item);
+      });
     }
     setIngredients();
 
     // AFFICHE LISTE APPAREILS (sans doublons)
+    // cree tableau appareils
     let appliances = [];
     function setAppliances() {
-      // cree tableau appareils
       recipes.forEach((recipe) => {
         // supprime doublons
         if (!appliances.includes(recipe.appliance)) {
+          // ajoute appareils
           appliances.push(recipe.appliance);
-          createAppliance(recipe);
         }
       });
       // trie ingredients par ordre alphabétique
       appliances.sort();
       // cree liste appareils (DOM)
-      const appliancesLink = document.querySelectorAll('.appliances-link');
-      for (let i = 0; i < appliancesLink.length; i++) {
-        appliancesLink[i].textContent = appliances[i];
-      }
+      appliances.forEach((item) => {
+        createAppliance(item);
+      });
     }
     setAppliances();
 
     // AFFICHE LISTE USTENSILES (sans doublons)
+    // cree tableau ustensiles
     let ustensils = [];
     function setUstensils() {
       recipes.forEach((recipe) => {
         recipe.ustensils.forEach((ustensil) => {
           // supprime doublons
           if (!ustensils.includes(ustensil)) {
+            // ajoute ustensiles
             ustensils.push(ustensil);
-            createUstensil(recipe);
           }
         });
       });
       // trie ustensiles par ordre alphabétique
       ustensils.sort();
       // cree liste appareils (DOM)
-      const ustensilsLink = document.querySelectorAll('.ustensils-link');
-      for (let i = 0; i < ustensilsLink.length; i++) {
-        ustensilsLink[i].textContent = ustensils[i];
-      }
+      ustensils.forEach((item) => {
+        createUstensil(item);
+      });
     }
     setUstensils();
 
     // AFFICHE LISTE RESULTATS RECHERCHES
     generalSearch.addEventListener('keyup', searchRecipe);
-    displaySelection();
-    generalSearch.addEventListener('keyup', checkMatches);
     // searches.forEach((search) => {
     //   search.addEventListener('keyup', searchRecipe);
     //   // console.log(search);
     // });
-
-    // AFFICHE CARTES RECETTES (ordre alphabetique)
-    for (let i = 0; i < recipes.length; i++) {
-      // affiche par defaut recettes triees par ordre alphabetique
-      setRecipe(recipes.sort(filterBy('name'))[i]);
-    }
+    // AFFICHE SELECTION(S)
+    const searchList = document.querySelectorAll('[role="option"]');
+    searchList.forEach((item) =>
+      item.addEventListener('click', displaySelection)
+    );
+    // AFFICHE MESSAGE ERREUR SI AUCUN CRITERE NE CORRESPOND
+    generalSearch.addEventListener('keyup', checkMatches);
   });
