@@ -1,65 +1,95 @@
+// FONCTION
 // RESULTATS RECHERCHE (from main search bar)
 const generalSearch = document.querySelector('.search-bar');
 // detecte et montre correspondances
 function searchRecipe() {
-  const recipeName = document.querySelectorAll('.recipe-name');
+  const recipeOption = document.querySelectorAll('.recipe-option');
   const filter = generalSearch.value.toUpperCase();
-  for (let i = 0; i < recipeName.length; i++) {
-    const name = recipeName[i].getElementsByTagName('a')[0];
+  for (let i = 0; i < recipeOption.length; i++) {
+    const name = recipeOption[i].getElementsByTagName('a')[0];
     const textValue = name.textContent || name.innerText;
+    // if (textValue.length > 3 && textValue.toUpperCase().indexOf(filter) > -1) {
     if (textValue.toUpperCase().indexOf(filter) > -1) {
-      recipeChoice.style.display = 'flex';
-      recipeName[i].style.display = '';
-      recipeName[i].classList.add('matches');
+      mainChoice.style.display = 'flex';
+      recipeOption[i].style.display = '';
+      recipeOption[i].classList.add('matches');
     } else {
-      recipeName[i].style.display = 'none';
-      recipeName[i].classList.remove('matches');
+      recipeOption[i].style.display = 'none';
+      recipeOption[i].classList.remove('matches');
     }
   }
 }
 
+// FONCTION
 // AFFICHE SELECTION(S)
-function displaySelection() {
-  // DOM elements
-  const selectionList = [];
-  const searchList = document.querySelectorAll('[role="option"]');
-  // Affiche tag(s) correspondant au(x) choi(x)
-  searchList.forEach((item) =>
-    item.addEventListener('click', (event) => {
-      event.preventDefault();
-      // retire "selected" du choix precedent
-      if (item.classList.contains('selected'))
-        item.classList.remove('selected');
-      // affecte "selected" au nouveau choix
-      item.classList.add('selected');
-      // tableau choix (sans doublons)
-      if (!selectionList.includes(item)) {
-        selectionList.push(item);
-        // cree tag(s) correspondant(s)
-        createTag(item);
-        const lastSelection =
-          document.querySelector('#tags-collection').lastChild;
-        // affecte couleur au tag selon correspondance
-        if (item.classList.contains('recipe-name'))
-          lastSelection.classList.add('recipes-result-btn');
-        if (item.classList.contains('ingredients-option'))
-          lastSelection.classList.add('ingredients-result-btn');
-        if (item.classList.contains('appliances-option'))
-          lastSelection.classList.add('appliances-result-btn');
-        if (item.classList.contains('ustensils-option'))
-          lastSelection.classList.add('ustensils-result-btn');
+function displaySelection(event) {
+  const selected = event.target;
+  // retire "selected" du choix precedent
+  if (selected.classList.contains('selected'))
+    selected.classList.remove('selected');
+  // affecte "selected" au nouveau choix
+  selected.classList.add('selected');
+  // tableau choix
+  const choices = document.querySelectorAll('.selected');
+  // supprime cartes deja affichees
+  const recipeSection = document.querySelector('#recipes');
+  recipeSection.innerHTML = '';
+  // AFFICHE RECETTES CORRESPONDANTES
+  fetch('recipes.json')
+    .then((response) => response.json())
+    .then((data) => {
+      const recipes = data.recipes;
+      let recipesToDisplay = [];
+      choices.forEach((choice) => {
+        recipesToDisplay.push(getRecipesByChoice(recipes, choice.textContent));
+      });
+      console.log(recipesToDisplay);
+    });
+
+  // RECUPERE RECETTES CORRESPONDANT AU(X) CHOI(X)
+  function getRecipesByChoice(recipes, choice) {
+    recipesByChoice = [];
+    recipes.forEach((recipe) => {
+      let isIngredient = false;
+      recipe.ingredients.forEach((i) => {
+        if (i.ingredient === choice) {
+          isIngredient = true;
+        }
+      });
+      console.log(choice);
+      if (
+        recipe.name === choice ||
+        recipe.description === choice ||
+        isIngredient == true
+      ) {
+        recipesByChoice.push(recipe);
       }
-    })
-  );
+    });
+    return recipesByChoice;
+  }
+
+  // cree tag(s) correspondant(s)
+  createTag(selected);
+  // detecte dernier choix
+  const lastSelection = document.querySelector('#tags-collection').lastChild;
+  // attribue code couleur selon categorie
+  if (selected.classList.contains('recipe-link'))
+    lastSelection.classList.add('recipes-result-btn');
+  if (selected.classList.contains('ingredients-link'))
+    lastSelection.classList.add('ingredients-result-btn');
+  if (selected.classList.contains('appliances-link'))
+    lastSelection.classList.add('appliances-result-btn');
+  if (selected.classList.contains('ustensils-link'))
+    lastSelection.classList.add('ustensils-result-btn');
 }
 
+// FONCTION
 // AFFICHE MESSAGE SI AUCUN CRITERE DE RECHERCHE NE CORRESPOND
-// MASQUE MESSAGE DANS LE CAS CONTRAIRE
+createAlert();
 function checkMatches() {
   const searchMatches = document.querySelectorAll('.matches');
-  const alert = document.querySelector('.alert-msg')
-  createAlert();
-  if (searchMatches.length === 0)
-  alert.style.display = 'block';
+  const alert = document.querySelector('.alert-msg');
+  if (searchMatches.length === 0) alert.style.display = 'block';
+  // masque message dans le cas contraire
   else alert.style.display = 'none';
 }
