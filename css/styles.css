@@ -108,7 +108,7 @@ a:visited {
   margin-bottom: 1rem;
 }
 .alert-msg img {
-  width: 9%;
+  width: 50px;
 }
 .alert-msg p {
   font-weight: 700;
@@ -160,7 +160,7 @@ a:visited {
   margin: 5px;
 }
 .recipes-result-btn {
-  background-color: #212529;
+  background-color: rgb(255, 175, 28);
 }
 .fa-times-circle {
   margin-top: 3px;
