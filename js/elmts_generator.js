@@ -6,7 +6,7 @@ function createmainList(item) {
   const mainList = elmtFactory(
     'li',
     { role: 'option', class: 'recipe-option' },
-    elmtFactory('a', { class: 'recipe-link' }, `${item}`)
+    `${item}`
   );
   mainChoice.append(mainList);
 }
@@ -18,16 +18,9 @@ function createIngredient(item) {
     'li',
     {
       role: 'option',
-      class: 'ingredients-option tag',
+      class: 'ingredients-option',
     },
-    elmtFactory(
-      'a',
-      {
-        href: '#',
-        class: 'ingredients-link tag-link',
-      },
-      `${item}`
-    )
+    `${item}`
   );
   ingredientsChoice.append(ingredientsOption);
 }
@@ -39,16 +32,9 @@ function createAppliance(item) {
     'li',
     {
       role: 'option',
-      class: 'appliances-option tag',
+      class: 'appliances-option',
     },
-    elmtFactory(
-      'a',
-      {
-        href: '#',
-        class: 'appliances-link tag-link',
-      },
-      `${item}`
-    )
+    `${item}`
   );
   appliancesChoice.append(appliancesOption);
 }
@@ -60,21 +46,15 @@ function createUstensil(item) {
     'li',
     {
       role: 'option',
-      class: 'ustensils-option tag',
+      class: 'ustensils-option',
     },
-    elmtFactory(
-      'a',
-      {
-        href: '#',
-        class: 'ustensils-link tag-link',
-      },
-      `${item}`
-    )
+    `${item}`
   );
   ustensilsChoice.append(ustensilsOption);
 }
 
 // cree tag selection(s)
+const searchList = document.querySelectorAll('[role="option"]');
 const tagsCollection = document.querySelector('#tags-collection');
 function createTag(selectedTag) {
   const tag = elmtFactory(
@@ -85,11 +65,21 @@ function createTag(selectedTag) {
   );
   tagsCollection.append(tag);
   // supprime tag
+  // retire attribut 'selected' de l'element dans liste options
   removeTag = document.querySelectorAll('.selected-result');
   removeTag.forEach((btn) =>
     btn.addEventListener('click', (event) => {
       event.preventDefault();
-      if (tag.contains(event.target)) btn.remove(tag);
+      if (tag.contains(event.target)) {
+        selectedTag.classList.remove('selected');
+        const selectedTagIndex = choices.indexOf(selectedTag);
+        console.log(selectedTagIndex);
+        // choices.forEach((choice) => {if (!choice.classList.contains('selected')) choices.splice})
+        // choices.splice(selectedTagIndex)
+        // if (selectedTagIndex) choices.splice(selectedTagIndex)
+        btn.remove(tag);
+      }
+      console.log(choices);
     })
   );
 }
@@ -110,4 +100,3 @@ function createAlert() {
   );
   tagsCollection.appendChild(alert);
 }
-

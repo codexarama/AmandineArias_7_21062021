@@ -6,8 +6,7 @@ function searchRecipe() {
   const recipeOption = document.querySelectorAll('.recipe-option');
   const filter = generalSearch.value.toUpperCase();
   for (let i = 0; i < recipeOption.length; i++) {
-    const name = recipeOption[i].getElementsByTagName('a')[0];
-    const textValue = name.textContent || name.innerText;
+    const textValue = recipeOption[i].textContent || recipeOption[i].innerText;
     // if (textValue.length > 3 && textValue.toUpperCase().indexOf(filter) > -1) {
     if (textValue.toUpperCase().indexOf(filter) > -1) {
       mainChoice.style.display = 'flex';
@@ -22,6 +21,8 @@ function searchRecipe() {
 
 // FONCTION
 // AFFICHE SELECTION(S)
+// cree tableau choix
+const choices = [];
 function displaySelection(event) {
   const selected = event.target;
   // retire "selected" du choix precedent
@@ -29,24 +30,49 @@ function displaySelection(event) {
     selected.classList.remove('selected');
   // affecte "selected" au nouveau choix
   selected.classList.add('selected');
-  // tableau choix
-  const choices = document.querySelectorAll('.selected');
-  // supprime cartes deja affichees
-  const recipeSection = document.querySelector('#recipes');
-  recipeSection.innerHTML = '';
-  // AFFICHE RECETTES CORRESPONDANTES
+  // ajoute au tableau choix (sans doublons)
+  if (!choices.includes(selected)) {
+    choices.push(selected);
+    console.log(choices);
+    // cree tag(s) correspondant(s)
+    createTag(selected);
+    // detecte dernier choix
+    const lastSelection = document.querySelector('#tags-collection').lastChild;
+    // attribue code couleur selon categorie
+    if (selected.classList.contains('recipe-option'))
+      lastSelection.classList.add('recipes-result-btn');
+    if (selected.classList.contains('ingredients-option'))
+      lastSelection.classList.add('ingredients-result-btn');
+    if (selected.classList.contains('appliances-option'))
+      lastSelection.classList.add('appliances-result-btn');
+    if (selected.classList.contains('ustensils-option'))
+      lastSelection.classList.add('ustensils-result-btn');
+  }
   fetch('recipes.json')
     .then((response) => response.json())
     .then((data) => {
       const recipes = data.recipes;
+      // cree tableau(x) recette(s) choisie(s)
       let recipesToDisplay = [];
+      // ajoute recette(s) correspondant au(x) choix
       choices.forEach((choice) => {
         recipesToDisplay.push(getRecipesByChoice(recipes, choice.textContent));
       });
-      console.log(recipesToDisplay);
+      // fusionne tableaux recettes choisie(s)
+      function merge(recipesToDisplay) {
+        return recipesToDisplay.reduce(
+          (acc, val) => acc.concat(Array.isArray(val) ? merge(val) : val),
+          []
+        );
+      }
+      // supprime doublons
+      const uniqueRecipe = [...new Set(merge(recipesToDisplay))];
+      // affiche recettes correspondant au(x) choix
+      for (let i = 0; i < uniqueRecipe.length; i++) {
+        setRecipe(uniqueRecipe[i]);
+      }
     });
-
-  // RECUPERE RECETTES CORRESPONDANT AU(X) CHOI(X)
+  // recupere recettes correspondant au(x) choix
   function getRecipesByChoice(recipes, choice) {
     recipesByChoice = [];
     recipes.forEach((recipe) => {
@@ -67,20 +93,9 @@ function displaySelection(event) {
     });
     return recipesByChoice;
   }
-
-  // cree tag(s) correspondant(s)
-  createTag(selected);
-  // detecte dernier choix
-  const lastSelection = document.querySelector('#tags-collection').lastChild;
-  // attribue code couleur selon categorie
-  if (selected.classList.contains('recipe-link'))
-    lastSelection.classList.add('recipes-result-btn');
-  if (selected.classList.contains('ingredients-link'))
-    lastSelection.classList.add('ingredients-result-btn');
-  if (selected.classList.contains('appliances-link'))
-    lastSelection.classList.add('appliances-result-btn');
-  if (selected.classList.contains('ustensils-link'))
-    lastSelection.classList.add('ustensils-result-btn');
+  // supprime cartes deja affichees
+  const recipeSection = document.querySelector('#recipes');
+  recipeSection.innerHTML = '';
 }
 
 // FONCTION
