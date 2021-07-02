@@ -5,7 +5,8 @@ const mainChoice = document.querySelector('#search-recipe');
 function createmainList(item) {
   const mainList = elmtFactory(
     'li',
-    { role: 'option', class: 'recipe-option' }, `${item}`
+    { role: 'option', class: 'recipe-option' },
+    `${item}`
   );
   mainChoice.append(mainList);
 }
@@ -19,7 +20,7 @@ function createIngredient(item) {
       role: 'option',
       class: 'ingredients-option',
     },
-      `${item}`
+    `${item}`
   );
   ingredientsChoice.append(ingredientsOption);
 }
@@ -34,7 +35,7 @@ function createAppliance(item) {
       class: 'appliances-option',
     },
     `${item}`
-    );
+  );
   appliancesChoice.append(appliancesOption);
 }
 
@@ -48,11 +49,12 @@ function createUstensil(item) {
       class: 'ustensils-option',
     },
     `${item}`
-    );
+  );
   ustensilsChoice.append(ustensilsOption);
 }
 
 // cree tag selection(s)
+const searchList = document.querySelectorAll('[role="option"]');
 const tagsCollection = document.querySelector('#tags-collection');
 function createTag(selectedTag) {
   const tag = elmtFactory(
@@ -63,11 +65,21 @@ function createTag(selectedTag) {
   );
   tagsCollection.append(tag);
   // supprime tag
+  // retire attribut 'selected' de l'element dans liste options
   removeTag = document.querySelectorAll('.selected-result');
   removeTag.forEach((btn) =>
     btn.addEventListener('click', (event) => {
       event.preventDefault();
-      if (tag.contains(event.target)) btn.remove(tag);
+      if (tag.contains(event.target)) {
+        selectedTag.classList.remove('selected');
+        const selectedTagIndex = choices.indexOf(selectedTag);
+        console.log(selectedTagIndex);
+        // choices.forEach((choice) => {if (!choice.classList.contains('selected')) choices.splice})
+        // choices.splice(selectedTagIndex)
+        // if (selectedTagIndex) choices.splice(selectedTagIndex)
+        btn.remove(tag);
+      }
+      console.log(choices);
     })
   );
 }
@@ -88,4 +100,3 @@ function createAlert() {
   );
   tagsCollection.appendChild(alert);
 }
-
