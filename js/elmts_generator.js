@@ -5,8 +5,7 @@ const mainChoice = document.querySelector('#search-recipe');
 function createmainList(item) {
   const mainList = elmtFactory(
     'li',
-    { role: 'option', class: 'recipe-option' },
-    elmtFactory('a', { class: 'recipe-link' }, `${item}`)
+    { role: 'option', class: 'recipe-option' }, `${item}`
   );
   mainChoice.append(mainList);
 }
@@ -18,16 +17,9 @@ function createIngredient(item) {
     'li',
     {
       role: 'option',
-      class: 'ingredients-option tag',
+      class: 'ingredients-option',
     },
-    elmtFactory(
-      'a',
-      {
-        href: '#',
-        class: 'ingredients-link tag-link',
-      },
       `${item}`
-    )
   );
   ingredientsChoice.append(ingredientsOption);
 }
@@ -39,17 +31,10 @@ function createAppliance(item) {
     'li',
     {
       role: 'option',
-      class: 'appliances-option tag',
+      class: 'appliances-option',
     },
-    elmtFactory(
-      'a',
-      {
-        href: '#',
-        class: 'appliances-link tag-link',
-      },
-      `${item}`
-    )
-  );
+    `${item}`
+    );
   appliancesChoice.append(appliancesOption);
 }
 
@@ -60,17 +45,10 @@ function createUstensil(item) {
     'li',
     {
       role: 'option',
-      class: 'ustensils-option tag',
+      class: 'ustensils-option',
     },
-    elmtFactory(
-      'a',
-      {
-        href: '#',
-        class: 'ustensils-link tag-link',
-      },
-      `${item}`
-    )
-  );
+    `${item}`
+    );
   ustensilsChoice.append(ustensilsOption);
 }
 

@@ -87,14 +87,12 @@ a:visited {
 .recipe-option {
   width: 100%;
   border-bottom: 1px solid #ced4da;
-}
-.recipe-link {
   color: #212529;
   opacity: 50%;
 }
-.recipe-link:hover,
-.recipe-link:focus,
-.recipe-link:active {
+.recipe-option:hover,
+.recipe-option:focus,
+.recipe-option:active {
   cursor: pointer;
   color: #212529;
   opacity: 100%;
@@ -230,14 +228,15 @@ a:visited {
 .appliances-option,
 .ustensils-option {
   width: 30%;
-}
-.tag-link {
   color: #fff;
   cursor: pointer;
 }
-.tag-link:hover,
-.tag-link:focus,
-.tag-link:active {
+.ingredients-option:hover,
+.appliances-option:hover,
+.ustensils-option:hover,
+.ingredients-option:focus,
+.appliances-option:focus,
+.ustensils-option:focus {
   color: #fff;
   opacity: 65%;
 }
