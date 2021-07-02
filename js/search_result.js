@@ -48,16 +48,29 @@ function displaySelection(event) {
     if (selected.classList.contains('ustensils-option'))
       lastSelection.classList.add('ustensils-result-btn');
   }
-  // cree tableau recettes a afficher
   fetch('recipes.json')
     .then((response) => response.json())
     .then((data) => {
       const recipes = data.recipes;
+      // cree tableau(x) recette(s) choisie(s)
       let recipesToDisplay = [];
+      // ajoute recette(s) correspondant au(x) choix
       choices.forEach((choice) => {
         recipesToDisplay.push(getRecipesByChoice(recipes, choice.textContent));
       });
-      console.log(recipesToDisplay);
+      // fusionne tableaux recettes choisie(s)
+      function merge(recipesToDisplay) {
+        return recipesToDisplay.reduce(
+          (acc, val) => acc.concat(Array.isArray(val) ? merge(val) : val),
+          []
+        );
+      }
+      // supprime doublons
+      const uniqueRecipe = [...new Set(merge(recipesToDisplay))];
+      // affiche recettes correspondant au(x) choix
+      for (let i = 0; i < uniqueRecipe.length; i++) {
+        setRecipe(uniqueRecipe[i]);
+      }
     });
   // recupere recettes correspondant au(x) choix
   function getRecipesByChoice(recipes, choice) {
