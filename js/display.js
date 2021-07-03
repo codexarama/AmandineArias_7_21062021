@@ -15,8 +15,16 @@ fetch('recipes.json')
     }
     console.log(recipes);
 
+    // recupere taille de chaque carte (px)
+    const cards = document.querySelectorAll('.card')
+      const cardHeight = []
+      cards.forEach((card) => cardHeight.push(card.offsetHeight))
+      console.log(cardHeight);
+
+
+
     // RECHERCHE RECETTES PAR : nom, description, ingrédients
-    // cree tableau recherche principale (ordre alphabetique)
+    // cree tableau [recherche principale] (ordre alphabetique)
     let mainSearch = [];
     function setMainSearch() {
       recipes.forEach((recipe) => {
@@ -37,7 +45,7 @@ fetch('recipes.json')
     setMainSearch();
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
-    // cree tableau ingredients
+    // cree tableau [ingredients]
     let ingredients = [];
     function setIngredients() {
       recipes.forEach((recipe) => {
@@ -59,7 +67,7 @@ fetch('recipes.json')
     setIngredients();
 
     // AFFICHE LISTE APPAREILS (sans doublons)
-    // cree tableau appareils
+    // cree tableau [appareils]
     let appliances = [];
     function setAppliances() {
       recipes.forEach((recipe) => {
@@ -79,7 +87,7 @@ fetch('recipes.json')
     setAppliances();
 
     // AFFICHE LISTE USTENSILES (sans doublons)
-    // cree tableau ustensiles
+    // cree tableau [ustensiles]
     let ustensils = [];
     function setUstensils() {
       recipes.forEach((recipe) => {
