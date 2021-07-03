@@ -1,11 +1,16 @@
 // DOM ELEMENT
 const recipesSection = document.querySelector('#recipes');
+// var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
+// const bricksizer =  document.querySelector('.bricklayer-column-sizer')
 
 // RECIPE CARD CREATION (model)
-function setRecipe (recipes) {
-  const recipeCard = elmtFactory(
+function setRecipe(recipes) {
+  const recipeCard =
+  elmtFactory(
     'div',
     { class: 'card' },
+    // { class: 'card grid-item' },
+    // { class: 'card bricklayer-column' },
     elmtFactory('img', {
       // src: 'http://lorempixel.com/400/200/food',
       src: 'https://dummyimage.com/600x300/918c91/ffffff',
@@ -23,7 +28,11 @@ function setRecipe (recipes) {
           'div',
           { class: 'card-subtitle' },
           elmtFactory('i', { class: 'fas fa-clock' }),
-          elmtFactory('p', { class: 'subtitle-text' }, `${recipes.time} minutes`)
+          elmtFactory(
+            'p',
+            { class: 'subtitle-text' },
+            `${recipes.time} minutes`
+          )
         )
       ),
       elmtFactory(
@@ -42,8 +51,10 @@ function setRecipe (recipes) {
   // INGREDIENTS LIST CREATION
   const cardListItem = recipeCard.getElementsByClassName('card-list')[0];
   for (i = 0; i < recipes.ingredients.length; i++) {
-    if (recipes.ingredients[i].unit == undefined) recipes.ingredients[i].unit = '';
-    if (recipes.ingredients[i].quantity == undefined) recipes.ingredients[i].quantity = '';
+    if (recipes.ingredients[i].unit == undefined)
+      recipes.ingredients[i].unit = '';
+    if (recipes.ingredients[i].quantity == undefined)
+      recipes.ingredients[i].quantity = '';
     const cardItem = elmtFactory(
       'li',
       { class: 'ingredient' },
@@ -54,5 +65,11 @@ function setRecipe (recipes) {
   }
 
   // DOM INTEGRATION
+  // bricksizer.appendChild(recipeCard);
   recipesSection.appendChild(recipeCard);
-};
+  // const cardHeights = []
+  const height = recipeCard.offsetHeight
+  // // console.log(height);
+  // cardHeights.push(height)
+  // console.log(cardHeights);
+}
