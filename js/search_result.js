@@ -21,7 +21,7 @@ function searchRecipe() {
 
 // FONCTION
 // AFFICHE SELECTION(S)
-// cree tableau choix
+// cree tableau [choix]
 const choices = [];
 function displaySelection(event) {
   const selected = event.target;
@@ -30,10 +30,9 @@ function displaySelection(event) {
     selected.classList.remove('selected');
   // affecte "selected" au nouveau choix
   selected.classList.add('selected');
-  // ajoute au tableau choix (sans doublons)
+  // ajoute au tableau [choix] (sans doublons)
   if (!choices.includes(selected)) {
     choices.push(selected);
-    console.log(choices);
     // cree tag(s) correspondant(s)
     createTag(selected);
     // detecte dernier choix
@@ -48,17 +47,21 @@ function displaySelection(event) {
     if (selected.classList.contains('ustensils-option'))
       lastSelection.classList.add('ustensils-result-btn');
   }
+  // -----------------------------------------------------------------------------
+  console.log(choices);
+  // -----------------------------------------------------------------------------
+
   fetch('recipes.json')
     .then((response) => response.json())
     .then((data) => {
       const recipes = data.recipes;
-      // cree tableau(x) recette(s) choisie(s)
+      // cree tableau(x) [recette(s) a afficher]
       let recipesToDisplay = [];
       // ajoute recette(s) correspondant au(x) choix
       choices.forEach((choice) => {
         recipesToDisplay.push(getRecipesByChoice(recipes, choice.textContent));
       });
-      // fusionne tableaux recettes choisie(s)
+      // fusionne tableaux [recette(s) a afficher]
       function merge(recipesToDisplay) {
         return recipesToDisplay.reduce(
           (acc, val) => acc.concat(Array.isArray(val) ? merge(val) : val),
@@ -93,7 +96,7 @@ function displaySelection(event) {
     });
     return recipesByChoice;
   }
-  // supprime cartes deja affichees
+  // supprime cartes recettes deja affichees
   const recipeSection = document.querySelector('#recipes');
   recipeSection.innerHTML = '';
 }

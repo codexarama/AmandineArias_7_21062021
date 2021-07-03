@@ -65,23 +65,21 @@ function createTag(selectedTag) {
   );
   tagsCollection.append(tag);
   // supprime tag
-  // retire attribut 'selected' de l'element dans liste options
-  removeTag = document.querySelectorAll('.selected-result');
-  removeTag.forEach((btn) =>
-    btn.addEventListener('click', (event) => {
-      event.preventDefault();
-      if (tag.contains(event.target)) {
-        selectedTag.classList.remove('selected');
-        const selectedTagIndex = choices.indexOf(selectedTag);
-        console.log(selectedTagIndex);
-        // choices.forEach((choice) => {if (!choice.classList.contains('selected')) choices.splice})
-        // choices.splice(selectedTagIndex)
-        // if (selectedTagIndex) choices.splice(selectedTagIndex)
-        btn.remove(tag);
-      }
-      console.log(choices);
-    })
-  );
+  tag.addEventListener('click', () => {
+    // si clic sur "x"
+    // retire attribut "selected"
+    selectedTag.classList.remove('selected');
+    // recupere index
+    const tagIndex = choices.indexOf(selectedTag);
+    // supprime du tableau [choices]
+    choices.splice(tagIndex, 1);
+    // -----------------------------------------------------------------------------
+    console.log(choices);
+    // -----------------------------------------------------------------------------
+    // supprime bouton correspondant
+    tag.remove(tag);
+    // return choices // ne renvoie rien
+  });
 }
 
 // cree message d'alerte si aucun critère de recherche ne correspond

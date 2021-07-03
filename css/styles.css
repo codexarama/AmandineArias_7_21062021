@@ -277,11 +277,17 @@ a:visited {
 
 /* card styles */
 #recipes {
-  column-count: 3;
+  /* column-count: 3; */
+  display: flex;
+  flex-wrap: wrap;
 }
 .card {
-  width: 100%;
-  margin-top: 1.25rem;
+  /* width: 100%; */
+  /* margin: auto;
+  margin-top: 1.25rem; */
+  width: 30%;
+  height: fit-content;
+  margin: 1.25rem;
   display: inline-block;
   border: none;
 }
