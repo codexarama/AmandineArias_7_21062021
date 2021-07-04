@@ -72,6 +72,9 @@ function displaySelection(event) {
       const uniqueRecipe = [...new Set(merge(recipesToDisplay))];
       // affiche recettes correspondant au(x) choix
       for (let i = 0; i < uniqueRecipe.length; i++) {
+        // ---------------------------------------------------------------------
+        // if (uniqueRecipe.length < 2) document.querySelector('#recipes').style.maxHeight = '800px'
+        // ---------------------------------------------------------------------
         setRecipe(uniqueRecipe[i]);
       }
     });
@@ -83,6 +86,9 @@ function displaySelection(event) {
       recipe.ingredients.forEach((i) => {
         if (i.ingredient === choice) {
           isIngredient = true;
+          // ---------------------------------------------------------------------
+          // masquer son homologue dans [ingredients]
+          // ---------------------------------------------------------------------
         }
       });
       console.log(choice);

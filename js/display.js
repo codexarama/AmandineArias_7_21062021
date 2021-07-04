@@ -3,6 +3,7 @@ fetch('recipes.json')
   .then((data) => {
     const recipes = data.recipes;
 
+    // AFFICHE CARTES RECETTES (non triees)
     // for (let i = 0; i < recipes.length; i++) {
     //   setRecipe(recipes[i]);
     // }
@@ -15,13 +16,17 @@ fetch('recipes.json')
     }
     console.log(recipes);
 
-    // recupere taille de chaque carte (px)
-    const cards = document.querySelectorAll('.card')
-      const cardHeight = []
-      cards.forEach((card) => cardHeight.push(card.offsetHeight))
-      console.log(cardHeight);
-
-
+    // --------------------------------------------------------------------
+    // // recupere taille de chaque carte (px)
+    // const cards = document.querySelectorAll('.card')
+    //   const cardHeight = []
+    //   cards.forEach((card) => cardHeight.push(card.offsetHeight))
+    //   console.log(cardHeight);
+    //   for(let i = 0; i < cardHeight.length; i++) {
+    //     console.log((i - 3)); // ok
+    //     // cardHeight[i].style.top = '-150px'
+    //     // if (i > 2) cardHeight[i].style.top = ((cardHeight[i - 3] - 5) * 2) + "px"
+    //   }
 
     // RECHERCHE RECETTES PAR : nom, description, ingrédients
     // cree tableau [recherche principale] (ordre alphabetique)

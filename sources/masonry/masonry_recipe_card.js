@@ -1,13 +1,20 @@
 // DOM ELEMENT
 const recipesSection = document.querySelector('#recipes');
+// var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
+// const bricksizer =  document.querySelector('.bricklayer-column-sizer')
 
 // RECIPE CARD CREATION (model)
 function setRecipe(recipes) {
   const recipeCard =
+    // elmtFactory('div', { class: 'masonry-item'},
     elmtFactory(
       'div',
       { class: 'card masonry-content' },
+      // { class: 'card masonry-brick' },
+      // { class: 'card grid-item' },
+      // { class: 'card bricklayer-column' },
       elmtFactory('img', {
+        // src: 'http://lorempixel.com/400/200/food',
         src: 'https://dummyimage.com/600x300/918c91/ffffff',
         class: 'card-img-top',
         alt: '...',
@@ -42,6 +49,7 @@ function setRecipe(recipes) {
         )
       )
     );
+  // );
 
   // INGREDIENTS LIST CREATION
   const cardListItem = recipeCard.getElementsByClassName('card-list')[0];
