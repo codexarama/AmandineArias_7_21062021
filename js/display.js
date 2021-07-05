@@ -42,6 +42,7 @@ fetch('recipes.json')
           mainSearch.push(item.ingredient);
         });
       });
+
       // cree liste nom, description, ingrédients (DOM)
       mainSearch.forEach((item) => {
         createmainList(item);
@@ -62,6 +63,7 @@ fetch('recipes.json')
           }
         });
       });
+
       // trie ingredients par ordre alphabétique
       ingredients.sort();
       // cree liste ingredients (DOM)
@@ -82,6 +84,7 @@ fetch('recipes.json')
           appliances.push(recipe.appliance);
         }
       });
+
       // trie ingredients par ordre alphabétique
       appliances.sort();
       // cree liste appareils (DOM)
@@ -104,6 +107,7 @@ fetch('recipes.json')
           }
         });
       });
+      
       // trie ustensiles par ordre alphabétique
       ustensils.sort();
       // cree liste appareils (DOM)
@@ -119,25 +123,28 @@ fetch('recipes.json')
     const generalSearch = document.querySelector('.search-bar');
     const recipeOption = document.querySelectorAll('.recipe-option');
     for (let i = 0; i < recipeOption.length; i++) {
-      searchRecipe(generalSearch, mainChoice, recipeOption[i]);
+      lookForCorrespondance(generalSearch, mainChoice, recipeOption[i]);
     }
+
     // via barre de recherche "ingredients"
     const ingredientSearch = document.querySelector('#search-ingredients');
     const ingredientsOption = document.querySelectorAll('.ingredients-option');
     for (let i = 0; i < ingredientsOption.length; i++) {
-      searchRecipe(ingredientSearch, ingredientsChoice, ingredientsOption[i]);
+      lookForCorrespondance(ingredientSearch, ingredientsChoice, ingredientsOption[i]);
     }
+
     // via barre de recherche "appareils"
     const applianceSearch = document.querySelector('#search-appliances');
     const appliancesOption = document.querySelectorAll('.appliances-option');
     for (let i = 0; i < appliancesOption.length; i++) {
-      searchRecipe(applianceSearch, appliancesChoice, appliancesOption[i]);
+      lookForCorrespondance(applianceSearch, appliancesChoice, appliancesOption[i]);
     }
+
     // via barre de recherche "ustensiles"
     const ustensilSearch = document.querySelector('#search-ustensils');
     const ustensilsOption = document.querySelectorAll('.ustensils-option');
     for (let i = 0; i < ustensilsOption.length; i++) {
-      searchRecipe(ustensilSearch, ustensilsChoice, ustensilsOption[i]);
+      lookForCorrespondance(ustensilSearch, ustensilsChoice, ustensilsOption[i]);
     }
 
     // AFFICHE SELECTION(S)

@@ -32,10 +32,10 @@ function setRecipe(recipes) {
       elmtFactory(
         'div',
         { class: 'card-content' },
-        elmtFactory('ul', { class: 'card-subcontent card-list' }),
+        elmtFactory('ul', { class: 'card-subcontent card-list scroll-description' }),
         elmtFactory(
           'p',
-          { class: 'card-subcontent subcontent-text' },
+          { class: 'card-subcontent subcontent-text scroll-description' },
           `${recipes.description}`
         )
       )
