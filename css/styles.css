@@ -21,7 +21,6 @@ ul {
 }
 li {
   list-style: none;
-  display: inline-block;
 }
 a,
 a:visited {
