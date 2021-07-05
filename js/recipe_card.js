@@ -1,18 +1,12 @@
 // DOM ELEMENT
 const recipesSection = document.querySelector('#recipes');
-// var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
-// const bricksizer =  document.querySelector('.bricklayer-column-sizer')
 
 // RECIPE CARD CREATION (model)
 function setRecipe(recipes) {
-  const recipeCard =
-  elmtFactory(
+  const recipeCard = elmtFactory(
     'div',
     { class: 'card' },
-    // { class: 'card grid-item' },
-    // { class: 'card bricklayer-column' },
     elmtFactory('img', {
-      // src: 'http://lorempixel.com/400/200/food',
       src: 'https://dummyimage.com/600x300/918c91/ffffff',
       class: 'card-img-top',
       alt: '...',
@@ -60,16 +54,9 @@ function setRecipe(recipes) {
       { class: 'ingredient' },
       `${recipes.ingredients[i].ingredient} : ${recipes.ingredients[i].quantity} ${recipes.ingredients[i].unit}`
     );
-
     cardListItem.appendChild(cardItem);
   }
 
   // DOM INTEGRATION
-  // bricksizer.appendChild(recipeCard);
   recipesSection.appendChild(recipeCard);
-  // const cardHeights = []
-  const height = recipeCard.offsetHeight
-  // // console.log(height);
-  // cardHeights.push(height)
-  // console.log(cardHeights);
 }
