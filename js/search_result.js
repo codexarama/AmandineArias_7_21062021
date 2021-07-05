@@ -1,26 +1,26 @@
 // FONCTION
 // RESULTATS RECHERCHE (from main search bar)
-const generalSearch = document.querySelector('.search-bar');
 // detecte et montre correspondances
-function searchRecipe() {
-  const recipeOption = document.querySelectorAll('.recipe-option');
-  const filter = generalSearch.value.toUpperCase();
-  for (let i = 0; i < recipeOption.length; i++) {
-    const textValue = recipeOption[i].textContent || recipeOption[i].innerText;
-    // if (textValue.length > 3 && textValue.toUpperCase().indexOf(filter) > -1) {
+function searchRecipe(input, list, options) {
+  input.addEventListener('keyup', () => {
+    filter = input.value.toUpperCase();
+    const textValue = options.textContent || options.innerText;
+    // if (textValue.length > 3 && textValue.toUpperCase().indexOf(filter) > -1) {}
     if (textValue.toUpperCase().indexOf(filter) > -1) {
-      mainChoice.style.display = 'flex';
-      recipeOption[i].style.display = '';
-      recipeOption[i].classList.add('matches');
+      list.style.display = 'flex';
+      options.style.display = '';
+      options.classList.add('matches');
     } else {
-      recipeOption[i].style.display = 'none';
-      recipeOption[i].classList.remove('matches');
+      options.style.display = 'none';
+      options.classList.remove('matches');
     }
-  }
+  });
 }
 
 // FONCTION
 // AFFICHE SELECTION(S)
+// DOM element
+const recipeSection = document.querySelector('#recipes');
 // cree tableau [choix]
 const choices = [];
 function displaySelection(event) {
@@ -72,10 +72,17 @@ function displaySelection(event) {
       const uniqueRecipe = [...new Set(merge(recipesToDisplay))];
       // affiche recettes correspondant au(x) choix
       for (let i = 0; i < uniqueRecipe.length; i++) {
-        // ---------------------------------------------------------------------
-        // if (uniqueRecipe.length < 2) document.querySelector('#recipes').style.maxHeight = '800px'
-        // ---------------------------------------------------------------------
         setRecipe(uniqueRecipe[i]);
+        console.log(uniqueRecipe.length);
+        // ne fonctionne pas ---------------------------------------------------
+        // if (uniqueRecipe.length <= 2) {
+        // ok sans condition ---------------------------------------------------
+        // console.log('coucou');
+        // recipesSection.style.maxHeight = '800px';
+        // ---------------------------------------------------------------------
+        // }
+        // else document.querySelector('#recipes').style.maxHeight = 'unset';
+        // ---------------------------------------------------------------------
       }
     });
   // recupere recettes correspondant au(x) choix
@@ -95,6 +102,8 @@ function displaySelection(event) {
       if (
         recipe.name === choice ||
         recipe.description === choice ||
+        recipe.appliance === choice ||
+        recipe.ustensils.forEach((ustensil) => ustensil === choice) ||
         isIngredient == true
       ) {
         recipesByChoice.push(recipe);
@@ -103,7 +112,6 @@ function displaySelection(event) {
     return recipesByChoice;
   }
   // supprime cartes recettes deja affichees
-  const recipeSection = document.querySelector('#recipes');
   recipeSection.innerHTML = '';
 }
 

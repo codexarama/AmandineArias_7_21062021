@@ -114,16 +114,38 @@ fetch('recipes.json')
     setUstensils();
 
     // AFFICHE LISTE RESULTATS RECHERCHES
-    generalSearch.addEventListener('keyup', searchRecipe);
-    // searches.forEach((search) => {
-    //   search.addEventListener('keyup', searchRecipe);
-    //   // console.log(search);
-    // });
+    // appel fonction "searchRecipe(input, list, options)"
+    // via barre de recherche principale
+    const generalSearch = document.querySelector('.search-bar');
+    const recipeOption = document.querySelectorAll('.recipe-option');
+    for (let i = 0; i < recipeOption.length; i++) {
+      searchRecipe(generalSearch, mainChoice, recipeOption[i]);
+    }
+    // via barre de recherche "ingredients"
+    const ingredientSearch = document.querySelector('#search-ingredients');
+    const ingredientsOption = document.querySelectorAll('.ingredients-option');
+    for (let i = 0; i < ingredientsOption.length; i++) {
+      searchRecipe(ingredientSearch, ingredientsChoice, ingredientsOption[i]);
+    }
+    // via barre de recherche "appareils"
+    const applianceSearch = document.querySelector('#search-appliances');
+    const appliancesOption = document.querySelectorAll('.appliances-option');
+    for (let i = 0; i < appliancesOption.length; i++) {
+      searchRecipe(applianceSearch, appliancesChoice, appliancesOption[i]);
+    }
+    // via barre de recherche "ustensiles"
+    const ustensilSearch = document.querySelector('#search-ustensils');
+    const ustensilsOption = document.querySelectorAll('.ustensils-option');
+    for (let i = 0; i < ustensilsOption.length; i++) {
+      searchRecipe(ustensilSearch, ustensilsChoice, ustensilsOption[i]);
+    }
+
     // AFFICHE SELECTION(S)
     const searchList = document.querySelectorAll('[role="option"]');
     searchList.forEach((item) =>
       item.addEventListener('click', displaySelection)
     );
+
     // AFFICHE MESSAGE ERREUR SI AUCUN CRITERE NE CORRESPOND
     generalSearch.addEventListener('keyup', checkMatches);
   });
