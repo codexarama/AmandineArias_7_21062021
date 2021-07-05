@@ -15,7 +15,6 @@ tagLabel.forEach((label) => {
     tagInput.setAttribute('placeholder', 'Rechercher');
     tagInput.style.display = 'block';
     tagInput.style.width = '5rem';
-    tagBtn.style.borderRadius = '0.25rem 0.25rem 0 0'
   });
 });
 
@@ -36,6 +35,7 @@ tagArrow.forEach((arrow) => {
     event.preventDefault();
     tagBox.classList.toggle('open');
     tagBtn.style.width = '40rem';
+    tagBtn.style.borderRadius = '0.25rem 0.25rem 0 0'
     tagLabel.style.display = 'none';
 
     searchTag.setAttribute(
@@ -50,6 +50,7 @@ tagArrow.forEach((arrow) => {
     if (!tagBox.classList.contains('open')) {
       searchTag.style.display = 'none';
       tagBtn.style.width = '8.25rem';
+      tagBtn.style.borderRadius = '0.25rem'
       tagsList.style.display = 'none';
       tagLabel.style.display = 'inline-block';
     }
@@ -70,8 +71,14 @@ tagArrow.forEach((arrow) => {
       tagLabel.style.display = 'none';
       searchTag.style.display = 'flex';
       searchTag.focus();
-      tagBtn.style.borderRadius = '0.25rem 0.25rem 0 0'
-      tagsList.style.borderRadius = '0 0.25rem 0.25rem 0.25rem'
     }
   });
+
+  // 
+  console.log(searchTag.value.length);
+  if (searchTag.value.length > 0) {
+    tagBtn.style.borderRadius = '0.25rem 0.25rem 0 0'
+    tagsList.style.borderRadius = '0 0.25rem 0.25rem 0.25rem'
+  }
+
 });

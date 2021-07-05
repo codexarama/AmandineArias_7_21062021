@@ -9,8 +9,13 @@ function lookForCorrespondance(input, list, options) {
     // if (textValue.length > 3 && textValue.toUpperCase().indexOf(filter) > -1) {}
     if (textValue.toUpperCase().indexOf(searchInput) > -1) {
       list.style.display = 'flex';
+      list.style.borderRadius = '0 0.25rem 0.25rem 0.25rem'
       options.style.display = '';
       options.classList.add('matches');
+      const tagBtn = document.querySelectorAll('.tag-btn');
+      console.log(tagBtn);
+      tagBtn.forEach((btn) => btn.style.borderRadius = '0.25rem 0.25rem 0 0')
+
     } else {
       options.style.display = 'none';
       options.classList.remove('matches');
