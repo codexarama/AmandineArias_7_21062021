@@ -73,12 +73,4 @@ tagArrow.forEach((arrow) => {
       searchTag.focus();
     }
   });
-
-  // 
-  console.log(searchTag.value.length);
-  if (searchTag.value.length > 0) {
-    tagBtn.style.borderRadius = '0.25rem 0.25rem 0 0'
-    tagsList.style.borderRadius = '0 0.25rem 0.25rem 0.25rem'
-  }
-
 });
