@@ -1,21 +1,15 @@
 // RESULTATS RECHERCHE
 // detecte et montre correspondances
-function lookForCorrespondance(input, list, options) {
+function setMatches(input, list, options) {
   input.addEventListener('keyup', () => {
     const searchInput = input.value.toUpperCase();
     // const searchInput = input.value.normalize("NFCK");
     const textValue = options.textContent;
 
-    // if (textValue.length > 3 && textValue.toUpperCase().indexOf(filter) > -1) {}
     if (textValue.toUpperCase().indexOf(searchInput) > -1) {
       list.style.display = 'flex';
-      list.style.borderRadius = '0 0.25rem 0.25rem 0.25rem'
       options.style.display = '';
       options.classList.add('matches');
-      const tagBtn = document.querySelectorAll('.tag-btn');
-      console.log(tagBtn);
-      tagBtn.forEach((btn) => btn.style.borderRadius = '0.25rem 0.25rem 0 0')
-
     } else {
       options.style.display = 'none';
       options.classList.remove('matches');
@@ -29,6 +23,7 @@ const recipeSection = document.querySelector('#recipes');
 
 // cree tableau [choix]
 const choices = [];
+
 function displaySelection(event) {
   const selected = event.target;
 
@@ -64,6 +59,7 @@ function displaySelection(event) {
   console.log(choices);
   // -----------------------------------------------------------------------------
 
+  // AFFICHE RECETTES CORRESPONDANT AU(X) RECHERCHE(S)
   fetch('recipes.json')
     .then((response) => response.json())
     .then((data) => {
@@ -77,64 +73,53 @@ function displaySelection(event) {
         recipesToDisplay.push(getRecipesByChoice(recipes, choice.textContent));
       });
 
-      // fusionne tableaux [recette(s) a afficher]
-      function merge(recipesToDisplay) {
-        return recipesToDisplay.reduce(
-          (acc, val) => acc.concat(Array.isArray(val) ? merge(val) : val),
-          []
-        );
-      }
-
-      // supprime doublons
+      // cree tableau [recettes à afficher] sans doublons
       const uniqueRecipe = [...new Set(merge(recipesToDisplay))];
 
-      // affiche recettes correspondant au(x) choix
+      // affiche recettes
       for (let i = 0; i < uniqueRecipe.length; i++) {
         setRecipe(uniqueRecipe[i]);
         console.log(uniqueRecipe.length);
-        // ne fonctionne pas ---------------------------------------------------
-        // if (uniqueRecipe.length <= 2) {
-        // ok sans condition ---------------------------------------------------
-        // console.log('coucou');
-        // recipesSection.style.maxHeight = '800px';
-        // ---------------------------------------------------------------------
-        // }
-        // else document.querySelector('#recipes').style.maxHeight = 'unset';
-        // ---------------------------------------------------------------------
       }
     });
-
-  // recupere recettes correspondant au(x) choix
-  function getRecipesByChoice(recipes, choice) {
-    recipesByChoice = [];
-    recipes.forEach((recipe) => {
-      let isIngredient = false;
-      recipe.ingredients.forEach((i) => {
-        if (i.ingredient === choice) {
-          isIngredient = true;
-          // ---------------------------------------------------------------------
-          // masquer son homologue dans [ingredients]
-          // ---------------------------------------------------------------------
-        }
-      });
-      console.log(choice);
-
-      if (
-        recipe.name === choice ||
-        recipe.description === choice ||
-        recipe.appliance === choice ||
-        recipe.ustensils.forEach((ustensil) => ustensil === choice) ||
-        isIngredient == true
-      ) {
-        recipesByChoice.push(recipe);
-      }
-    });
-
-    return recipesByChoice;
-  }
 
   // supprime cartes recettes deja affichees
   recipeSection.innerHTML = '';
+}
+
+// recupere recettes correspondant au(x) choix
+function getRecipesByChoice(recipes, choice) {
+  recipesByChoice = [];
+  recipes.forEach((recipe) => {
+    let isIngredient = false;
+    recipe.ingredients.forEach((i) => {
+      if (i.ingredient === choice) {
+        isIngredient = true;
+      }
+    });
+
+    console.log(choice);
+
+    if (
+      recipe.name === choice ||
+      recipe.description === choice ||
+      recipe.appliance === choice ||
+      recipe.ustensils.forEach((ustensil) => ustensil === choice) ||
+      isIngredient == true
+    ) {
+      recipesByChoice.push(recipe);
+    }
+  });
+
+  return recipesByChoice;
+}
+
+// fusionne tableaux [recettes à afficher]
+function merge(recipesToDisplay) {
+  return recipesToDisplay.reduce(
+    (acc, val) => acc.concat(Array.isArray(val) ? merge(val) : val),
+    []
+  );
 }
 
 // AFFICHE MESSAGE SI AUCUN CRITERE DE RECHERCHE NE CORRESPOND
