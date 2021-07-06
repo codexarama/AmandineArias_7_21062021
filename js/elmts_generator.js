@@ -1,18 +1,21 @@
 // GENERATEUR ELEMENTS DOM
 
-// cree liste recettes
+// CREE LISTE RECETTES
 const mainChoice = document.querySelector('#search-recipe');
+
 function createmainList(item) {
   const mainList = elmtFactory(
     'li',
     { role: 'option', class: 'recipe-option' },
     `${item}`
   );
+
   mainChoice.append(mainList);
 }
 
-// cree liste ingredients
+// CREE LISTE INGREDIENTS
 const ingredientsChoice = document.getElementById('ingredients-list');
+
 function createIngredient(item) {
   const ingredientsOption = elmtFactory(
     'li',
@@ -22,11 +25,13 @@ function createIngredient(item) {
     },
     `${item}`
   );
+
   ingredientsChoice.append(ingredientsOption);
 }
 
-// cree liste appareils
+// CREE LISTE APPAREILS
 const appliancesChoice = document.getElementById('appliances-list');
+
 function createAppliance(item) {
   const appliancesOption = elmtFactory(
     'li',
@@ -36,11 +41,13 @@ function createAppliance(item) {
     },
     `${item}`
   );
+
   appliancesChoice.append(appliancesOption);
 }
 
-// cree liste ustensiles
+// CREE LISTE USTENSILES
 const ustensilsChoice = document.getElementById('ustensils-list');
+
 function createUstensil(item) {
   const ustensilsOption = elmtFactory(
     'li',
@@ -50,12 +57,14 @@ function createUstensil(item) {
     },
     `${item}`
   );
+
   ustensilsChoice.append(ustensilsOption);
 }
 
-// cree tag selection(s)
+// CREE TAG SELECTION(S)
 const searchList = document.querySelectorAll('[role="option"]');
 const tagsCollection = document.querySelector('#tags-collection');
+
 function createTag(selectedTag) {
   const tag = elmtFactory(
     'button',
@@ -63,22 +72,68 @@ function createTag(selectedTag) {
     selectedTag.textContent,
     elmtFactory('i', { class: 'far fa-times-circle' })
   );
+
   tagsCollection.append(tag);
-  // supprime tag
+
+  // SUPPRIME TAG
   tag.addEventListener('click', () => {
+
     // si clic sur "x"
     // retire attribut "selected"
     selectedTag.classList.remove('selected');
+
     // recupere index
     const tagIndex = choices.indexOf(selectedTag);
+
     // supprime du tableau [choices]
     choices.splice(tagIndex, 1);
+
     // -----------------------------------------------------------------------------
     console.log(choices);
     // -----------------------------------------------------------------------------
+
     // supprime bouton correspondant
     tag.remove(tag);
-    // return choices // ne renvoie rien
+
+    // AFFICHE RECETTES APRES SUPPRESSION CHOIX
+    fetch('recipes.json')
+      .then((response) => response.json())
+      .then((data) => {
+        const recipes = data.recipes;
+
+        // cree tableau(x) [recette(s) a afficher]
+        let recipesToDisplay = [];
+
+        // ajoute recette(s) correspondant au(x) choix APRES SUPPRESSION(S)
+        choices.forEach((choice) => {
+          recipesToDisplay.push(
+            getRecipesByChoice(recipes, choice.textContent)
+          );
+        });
+
+        // cree tableau [recettes à afficher] sans doublons
+        const uniqueRecipe = [...new Set(merge(recipesToDisplay))];
+
+        // affiche recettes
+        for (let i = 0; i < uniqueRecipe.length; i++) {
+          setRecipe(uniqueRecipe[i]);
+          console.log(uniqueRecipe.length);
+        }
+
+        // AFFICHE TOUTES LES RECETTES SI TABLEAU [choix] vide
+        if (recipesToDisplay.length === 0) {
+
+          let sortedRecipes = [];
+
+          for (let i = 0; i < recipes.length; i++) {
+            sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
+            setRecipe(sortedRecipes[i]);
+          }
+        }
+      });
+
+    // supprime cartes recettes deja affichees
+    recipeSection.innerHTML = '';
   });
 }
 
@@ -96,5 +151,6 @@ function createAlert() {
       'Vous pouvez chercher « Tarte aux pommes », « Poisson », etc.'
     )
   );
+
   tagsCollection.appendChild(alert);
 }
