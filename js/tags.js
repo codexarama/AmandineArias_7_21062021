@@ -46,6 +46,7 @@ tagArrow.forEach((arrow) => {
     searchTag.style.display = 'block';
     searchTag.focus();
     tagsList.style.display = 'flex';
+    tagsList.style.borderRadius = '0 0 0.25rem 0.25rem'
 
     if (!tagBox.classList.contains('open')) {
       searchTag.style.display = 'none';
@@ -71,6 +72,7 @@ tagArrow.forEach((arrow) => {
       tagLabel.style.display = 'none';
       searchTag.style.display = 'flex';
       searchTag.focus();
+      tagsList.style.borderRadius = '0.25rem'
     }
   });
 });

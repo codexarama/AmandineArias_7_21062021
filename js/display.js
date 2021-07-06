@@ -9,28 +9,19 @@ fetch('recipes.json')
     // }
 
     // AFFICHE CARTES RECETTES (ordre alphabetique)
+    // cree tableau [recettes triees]
     let sortedRecipes = [];
+
     for (let i = 0; i < recipes.length; i++) {
       sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
       setRecipe(sortedRecipes[i]);
     }
     console.log(recipes);
 
-    // --------------------------------------------------------------------
-    // // recupere taille de chaque carte (px)
-    // const cards = document.querySelectorAll('.card')
-    //   const cardHeight = []
-    //   cards.forEach((card) => cardHeight.push(card.offsetHeight))
-    //   console.log(cardHeight);
-    //   for(let i = 0; i < cardHeight.length; i++) {
-    //     console.log((i - 3)); // ok
-    //     // cardHeight[i].style.top = '-150px'
-    //     // if (i > 2) cardHeight[i].style.top = ((cardHeight[i - 3] - 5) * 2) + "px"
-    //   }
-
     // RECHERCHE RECETTES PAR : nom, description, ingrédients
     // cree tableau [recherche principale] (ordre alphabetique)
-    let mainSearch = [];
+    const mainSearch = [];
+
     function setMainSearch() {
       recipes.forEach((recipe) => {
         // ajoute noms recettes
@@ -52,7 +43,8 @@ fetch('recipes.json')
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     // cree tableau [ingredients]
-    let ingredients = [];
+    const ingredients = [];
+
     function setIngredients() {
       recipes.forEach((recipe) => {
         recipe.ingredients.forEach((item) => {
@@ -75,7 +67,8 @@ fetch('recipes.json')
 
     // AFFICHE LISTE APPAREILS (sans doublons)
     // cree tableau [appareils]
-    let appliances = [];
+    const appliances = [];
+
     function setAppliances() {
       recipes.forEach((recipe) => {
         // supprime doublons
@@ -96,7 +89,8 @@ fetch('recipes.json')
 
     // AFFICHE LISTE USTENSILES (sans doublons)
     // cree tableau [ustensiles]
-    let ustensils = [];
+    const ustensils = [];
+
     function setUstensils() {
       recipes.forEach((recipe) => {
         recipe.ustensils.forEach((ustensil) => {
@@ -107,7 +101,7 @@ fetch('recipes.json')
           }
         });
       });
-      
+
       // trie ustensiles par ordre alphabétique
       ustensils.sort();
       // cree liste appareils (DOM)
@@ -117,41 +111,40 @@ fetch('recipes.json')
     }
     setUstensils();
 
+    // AFFICHE SELECTION(S)
+    const searchList = document.querySelectorAll('[role="option"]');
+    searchList.forEach((item) =>
+      item.addEventListener('click', displaySelection)
+    );
+
     // AFFICHE LISTE RESULTATS RECHERCHES
-    // appel fonction "searchRecipe(input, list, options)"
     // via barre de recherche principale
     const generalSearch = document.querySelector('.search-bar');
     const recipeOption = document.querySelectorAll('.recipe-option');
     for (let i = 0; i < recipeOption.length; i++) {
-      lookForCorrespondance(generalSearch, mainChoice, recipeOption[i]);
+      setMatches(generalSearch, mainChoice, recipeOption[i]);
     }
 
     // via barre de recherche "ingredients"
     const ingredientSearch = document.querySelector('#search-ingredients');
     const ingredientsOption = document.querySelectorAll('.ingredients-option');
     for (let i = 0; i < ingredientsOption.length; i++) {
-      lookForCorrespondance(ingredientSearch, ingredientsChoice, ingredientsOption[i]);
+      setMatches(ingredientSearch, ingredientsChoice, ingredientsOption[i]);
     }
 
     // via barre de recherche "appareils"
     const applianceSearch = document.querySelector('#search-appliances');
     const appliancesOption = document.querySelectorAll('.appliances-option');
     for (let i = 0; i < appliancesOption.length; i++) {
-      lookForCorrespondance(applianceSearch, appliancesChoice, appliancesOption[i]);
+      setMatches(applianceSearch, appliancesChoice, appliancesOption[i]);
     }
 
     // via barre de recherche "ustensiles"
     const ustensilSearch = document.querySelector('#search-ustensils');
     const ustensilsOption = document.querySelectorAll('.ustensils-option');
     for (let i = 0; i < ustensilsOption.length; i++) {
-      lookForCorrespondance(ustensilSearch, ustensilsChoice, ustensilsOption[i]);
+      setMatches(ustensilSearch, ustensilsChoice, ustensilsOption[i]);
     }
-
-    // AFFICHE SELECTION(S)
-    const searchList = document.querySelectorAll('[role="option"]');
-    searchList.forEach((item) =>
-      item.addEventListener('click', displaySelection)
-    );
 
     // AFFICHE MESSAGE ERREUR SI AUCUN CRITERE NE CORRESPOND
     generalSearch.addEventListener('keyup', checkMatches);
