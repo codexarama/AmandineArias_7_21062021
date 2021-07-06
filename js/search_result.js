@@ -6,7 +6,8 @@ function setMatches(input, list, options) {
     // const searchInput = input.value.normalize("NFCK");
     const textValue = options.textContent;
 
-    if (textValue.toUpperCase().indexOf(searchInput) > -1) {
+    // recherche apres saisie d'au moins 3 caracteres
+    if (searchInput.length > 2 && textValue.toUpperCase().indexOf(searchInput) > -1) {
       list.style.display = 'flex';
       options.style.display = '';
       options.classList.add('matches');
@@ -14,6 +15,16 @@ function setMatches(input, list, options) {
       options.style.display = 'none';
       options.classList.remove('matches');
     }
+
+    // recherche dès premier caractere saisi
+    // if (textValue.toUpperCase().indexOf(searchInput) > -1) {
+    //   list.style.display = 'flex';
+    //   options.style.display = '';
+    //   options.classList.add('matches');
+    // } else {
+    //   options.style.display = 'none';
+    //   options.classList.remove('matches');
+    // }
   });
 }
 
