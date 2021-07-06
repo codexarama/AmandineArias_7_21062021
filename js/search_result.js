@@ -19,7 +19,7 @@ function setMatches(input, list, options) {
       options.classList.remove('matches');
     }
 
-    // recherche dès premier caractere saisi
+    // // recherche dès 1er caractere saisi --------------------------------------
     // if (textValue.toUpperCase().indexOf(searchInput) > -1) {
     //   list.style.display = 'flex';
     //   options.style.display = '';
@@ -27,7 +27,7 @@ function setMatches(input, list, options) {
     // } else {
     //   options.style.display = 'none';
     //   options.classList.remove('matches');
-    // }
+    // } ------------------------------------------------------------------------
   });
 }
 
@@ -142,12 +142,28 @@ function merge(recipesToDisplay) {
 }
 
 // AFFICHE MESSAGE SI AUCUN CRITERE DE RECHERCHE NE CORRESPOND
+// apres saisie d'au moins 3 caracteres
 createAlert();
 
 function checkMatches() {
   const searchMatches = document.querySelectorAll('.matches');
   const alert = document.querySelector('.alert-msg');
-  if (searchMatches.length === 0) alert.style.display = 'block';
+  const generalSearch = document.querySelector('.search-bar');
+  const mainInput = generalSearch.value.toUpperCase();
+
+  if (mainInput.length > 2 && searchMatches.length === 0)
+    alert.style.display = 'block';
   // masque message dans le cas contraire
   else alert.style.display = 'none';
 }
+
+// // recherche dès 1er caractere saisi ------------------------------------------
+// function checkMatches() {
+//   const searchMatches = document.querySelectorAll('.matches');
+//   const alert = document.querySelector('.alert-msg');
+
+//   if (searchMatches.length === 0) alert.style.display = 'block';
+
+//   // masque message dans le cas contraire
+//   else alert.style.display = 'none';
+// } ----------------------------------------------------------------------------

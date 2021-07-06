@@ -147,5 +147,5 @@ fetch('recipes.json')
     }
 
     // AFFICHE MESSAGE ERREUR SI AUCUN CRITERE NE CORRESPOND
-    // generalSearch.addEventListener('keyup', checkMatches);
+    generalSearch.addEventListener('keyup', checkMatches);
   });
