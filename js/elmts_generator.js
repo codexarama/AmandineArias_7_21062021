@@ -77,7 +77,6 @@ function createTag(selectedTag) {
 
   // SUPPRIME TAG
   tag.addEventListener('click', () => {
-
     // si clic sur "x"
     // retire attribut "selected"
     selectedTag.classList.remove('selected');
@@ -89,7 +88,7 @@ function createTag(selectedTag) {
     choices.splice(tagIndex, 1);
 
     // -----------------------------------------------------------------------------
-    console.log(choices);
+    console.log(choices); // affiche elements du tableau [choices]
     // -----------------------------------------------------------------------------
 
     // supprime bouton correspondant
@@ -117,12 +116,14 @@ function createTag(selectedTag) {
         // affiche recettes
         for (let i = 0; i < uniqueRecipe.length; i++) {
           setRecipe(uniqueRecipe[i]);
-          console.log(uniqueRecipe.length);
+
+          // -----------------------------------------------------------------------------
+          console.log(uniqueRecipe.length); // affiche nb recettes correspondant au(x) choix
+          // -----------------------------------------------------------------------------
         }
 
         // AFFICHE TOUTES LES RECETTES SI TABLEAU [choix] vide
         if (recipesToDisplay.length === 0) {
-
           let sortedRecipes = [];
 
           for (let i = 0; i < recipes.length; i++) {

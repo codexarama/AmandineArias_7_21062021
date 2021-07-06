@@ -7,7 +7,10 @@ function setMatches(input, list, options) {
     const textValue = options.textContent;
 
     // recherche apres saisie d'au moins 3 caracteres
-    if (searchInput.length > 2 && textValue.toUpperCase().indexOf(searchInput) > -1) {
+    if (
+      searchInput.length > 2 &&
+      textValue.toUpperCase().indexOf(searchInput) > -1
+    ) {
       list.style.display = 'flex';
       options.style.display = '';
       options.classList.add('matches');
@@ -67,7 +70,7 @@ function displaySelection(event) {
   }
 
   // -----------------------------------------------------------------------------
-  console.log(choices);
+  console.log(choices); // affiche elements du tableau [choices]
   // -----------------------------------------------------------------------------
 
   // AFFICHE RECETTES CORRESPONDANT AU(X) RECHERCHE(S)
@@ -90,7 +93,10 @@ function displaySelection(event) {
       // affiche recettes
       for (let i = 0; i < uniqueRecipe.length; i++) {
         setRecipe(uniqueRecipe[i]);
-        console.log(uniqueRecipe.length);
+
+        // -----------------------------------------------------------------------------
+        console.log(uniqueRecipe.length); // affiche nb recettes correspondant au(x) choix
+        // -----------------------------------------------------------------------------
       }
     });
 
@@ -109,7 +115,9 @@ function getRecipesByChoice(recipes, choice) {
       }
     });
 
-    console.log(choice);
+    // -----------------------------------------------------------------------------
+    console.log(choice); // affiche nom selection et boucle generee
+    // -----------------------------------------------------------------------------
 
     if (
       recipe.name === choice ||
