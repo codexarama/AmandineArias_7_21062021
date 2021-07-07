@@ -94,36 +94,16 @@ function createTag(selectedTag) {
     // supprime bouton correspondant
     tag.remove(tag);
 
-    // AFFICHE RECETTES APRES SUPPRESSION CHOIX
+    // AFFICHE RECETTE(S) RESTANTE(S) APRES SUPPRESSION SELECTION(S)
+    getRecipesToDisplay();
+
+    // AFFICHE TOUTES LES RECETTES SI TABLEAU [choix] vide
     fetch('recipes.json')
       .then((response) => response.json())
       .then((data) => {
         const recipes = data.recipes;
 
-        // cree tableau(x) [recette(s) a afficher]
-        let recipesToDisplay = [];
-
-        // ajoute recette(s) correspondant au(x) choix APRES SUPPRESSION(S)
-        choices.forEach((choice) => {
-          recipesToDisplay.push(
-            getRecipesByChoice(recipes, choice.textContent)
-          );
-        });
-
-        // cree tableau [recettes à afficher] sans doublons
-        const uniqueRecipe = [...new Set(merge(recipesToDisplay))];
-
-        // affiche recettes
-        for (let i = 0; i < uniqueRecipe.length; i++) {
-          setRecipe(uniqueRecipe[i]);
-
-          // -----------------------------------------------------------------------------
-          console.log(uniqueRecipe.length); // affiche nb recettes correspondant au(x) choix
-          // -----------------------------------------------------------------------------
-        }
-
-        // AFFICHE TOUTES LES RECETTES SI TABLEAU [choix] vide
-        if (recipesToDisplay.length === 0) {
+        if (choices.length === 0) {
           let sortedRecipes = [];
 
           for (let i = 0; i < recipes.length; i++) {

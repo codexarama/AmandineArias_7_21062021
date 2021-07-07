@@ -73,32 +73,8 @@ function displaySelection(event) {
   console.log(choices); // affiche elements du tableau [choices]
   // -----------------------------------------------------------------------------
 
-  // AFFICHE RECETTES CORRESPONDANT AU(X) RECHERCHE(S)
-  fetch('recipes.json')
-    .then((response) => response.json())
-    .then((data) => {
-      const recipes = data.recipes;
-
-      // cree tableau(x) [recette(s) a afficher]
-      let recipesToDisplay = [];
-
-      // ajoute recette(s) correspondant au(x) choix
-      choices.forEach((choice) => {
-        recipesToDisplay.push(getRecipesByChoice(recipes, choice.textContent));
-      });
-
-      // cree tableau [recettes à afficher] sans doublons
-      const uniqueRecipe = [...new Set(merge(recipesToDisplay))];
-
-      // affiche recettes
-      for (let i = 0; i < uniqueRecipe.length; i++) {
-        setRecipe(uniqueRecipe[i]);
-
-        // -----------------------------------------------------------------------------
-        console.log(uniqueRecipe.length); // affiche nb recettes correspondant au(x) choix
-        // -----------------------------------------------------------------------------
-      }
-    });
+  // affiche recettes correspondant au(x) recherche(s)
+  getRecipesToDisplay();
 
   // supprime cartes recettes deja affichees
   recipeSection.innerHTML = '';
@@ -139,6 +115,36 @@ function merge(recipesToDisplay) {
     (acc, val) => acc.concat(Array.isArray(val) ? merge(val) : val),
     []
   );
+}
+
+// AFFICHE RECETTES CORRESPONDANT AU(X) RECHERCHE(S)
+function getRecipesToDisplay() {
+  fetch('recipes.json')
+    .then((response) => response.json())
+    .then((data) => {
+      const recipes = data.recipes;
+
+      // cree tableau(x) [recette(s) a afficher]
+      let recipesToDisplay = [];
+
+      // ajoute recette(s) correspondant au(x) choix
+      choices.forEach((choice) => {
+        recipesToDisplay.push(getRecipesByChoice(recipes, choice.textContent));
+      });
+
+      // cree tableau [recettes à afficher] sans doublons
+      const uniqueRecipe = [...new Set(merge(recipesToDisplay))];
+
+      // affiche recettes
+      for (let i = 0; i < uniqueRecipe.length; i++) {
+        setRecipe(uniqueRecipe[i]);
+
+        // -----------------------------------------------------------------------------
+        console.log(uniqueRecipe.length); // affiche nb recettes correspondant au(x) choix
+        // -----------------------------------------------------------------------------
+      }
+      return recipesToDisplay;
+    });
 }
 
 // AFFICHE MESSAGE SI AUCUN CRITERE DE RECHERCHE NE CORRESPOND
