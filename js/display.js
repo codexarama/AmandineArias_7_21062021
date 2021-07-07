@@ -16,7 +16,10 @@ fetch('recipes.json')
       sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
       setRecipe(sortedRecipes[i]);
     }
-    console.log(recipes);
+
+    // -----------------------------------------------------------------------------
+    console.log(recipes); // affiche tableau de toutes les recettes
+    // -----------------------------------------------------------------------------
 
     // RECHERCHE RECETTES PAR : nom, description, ingrédients
     // cree tableau [recherche principale] (ordre alphabetique)
