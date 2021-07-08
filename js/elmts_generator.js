@@ -1,20 +1,20 @@
 // GENERATEUR ELEMENTS DOM
 
 // CREE LISTE RECETTES
-const mainChoice = document.querySelector('#search-recipe');
+const mainList = document.querySelector('#search-recipe');
 
-function createmainList(item) {
-  const mainList = elmtFactory(
+function createMain(item) {
+  const mainOption = elmtFactory(
     'li',
     { role: 'option', class: 'recipe-option' },
     `${item}`
   );
 
-  mainChoice.append(mainList);
+  mainList.append(mainOption);
 }
 
 // CREE LISTE INGREDIENTS
-const ingredientsChoice = document.getElementById('ingredients-list');
+const ingredientsList = document.getElementById('ingredients-list');
 
 function createIngredient(item) {
   const ingredientsOption = elmtFactory(
@@ -26,11 +26,11 @@ function createIngredient(item) {
     `${item}`
   );
 
-  ingredientsChoice.append(ingredientsOption);
+  ingredientsList.append(ingredientsOption);
 }
 
 // CREE LISTE APPAREILS
-const appliancesChoice = document.getElementById('appliances-list');
+const appliancesList = document.getElementById('appliances-list');
 
 function createAppliance(item) {
   const appliancesOption = elmtFactory(
@@ -42,11 +42,11 @@ function createAppliance(item) {
     `${item}`
   );
 
-  appliancesChoice.append(appliancesOption);
+  appliancesList.append(appliancesOption);
 }
 
 // CREE LISTE USTENSILES
-const ustensilsChoice = document.getElementById('ustensils-list');
+const ustensilsList = document.getElementById('ustensils-list');
 
 function createUstensil(item) {
   const ustensilsOption = elmtFactory(
@@ -58,7 +58,7 @@ function createUstensil(item) {
     `${item}`
   );
 
-  ustensilsChoice.append(ustensilsOption);
+  ustensilsList.append(ustensilsOption);
 }
 
 // CREE TAG SELECTION(S)
@@ -68,7 +68,7 @@ const tagsCollection = document.querySelector('#tags-collection');
 function createTag(selectedTag) {
   const tag = elmtFactory(
     'button',
-    { role: 'button', class: 'selected-result tag-btn' },
+    { role: 'button', class: 'selection tag-btn' },
     selectedTag.textContent,
     elmtFactory('i', { class: 'far fa-times-circle' })
   );
@@ -94,27 +94,31 @@ function createTag(selectedTag) {
     // supprime bouton correspondant
     tag.remove(tag);
 
-    // AFFICHE RECETTE(S) RESTANTE(S) APRES SUPPRESSION SELECTION(S)
-    getRecipesToDisplay();
+    // affiche recette(s) restante(s) apres suppression selection(s)
+    displayRecipesMatch();
 
-    // AFFICHE TOUTES LES RECETTES SI TABLEAU [choix] vide
-    fetch('recipes.json')
-      .then((response) => response.json())
-      .then((data) => {
-        const recipes = data.recipes;
-
-        if (choices.length === 0) {
-          let sortedRecipes = [];
-
-          for (let i = 0; i < recipes.length; i++) {
-            sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
-            setRecipe(sortedRecipes[i]);
-          }
-        }
-      });
+    // affiche toutes les recettes si tableau [choix] vide
+    displayAllSortedRecipes ()
 
     // supprime cartes recettes deja affichees
     recipeSection.innerHTML = '';
+  });
+}
+
+function displayAllSortedRecipes () {
+  fetch('recipes.json')
+  .then((response) => response.json())
+  .then((data) => {
+    const recipes = data.recipes;
+
+    if (choices.length === 0) {
+      let sortedRecipes = [];
+
+      for (let i = 0; i < recipes.length; i++) {
+        sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
+        setRecipe(sortedRecipes[i]);
+      }
+    }
   });
 }
 
