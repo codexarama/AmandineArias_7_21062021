@@ -1,25 +1,72 @@
 // RESULTATS RECHERCHE
-// detecte et montre correspondances
-function setMatches(input, list, options) {
+// detecte et affiche correspondances
+
+function setMatches(input, list, option) {
   input.addEventListener('keyup', () => {
     const searchInput = input.value.toUpperCase();
     // const searchInput = input.value.normalize("NFCK");
-    const textValue = options.textContent;
+    const textValue = option.textContent;
 
-    // recherche apres saisie d'au moins 3 caracteres
+    // recherche correspondance(s) apres saisie d'au moins 3 caracteres
     if (
       searchInput.length > 2 &&
       textValue.toUpperCase().indexOf(searchInput) > -1
     ) {
       list.style.display = 'flex';
-      options.style.display = '';
-      options.classList.add('matches');
+      option.style.display = '';
+      option.classList.add('matches');
+
+      // displayRecipesMatch(); // ne foncitonne pas
+
+      fetch('recipes.json')
+        .then((response) => response.json())
+        .then((data) => {
+          const recipes = data.recipes;
+
+          getRecipes(recipes, textValue);
+          recipesByMatch.forEach((match) => {
+            setRecipe(match);
+          });
+
+          // UTILISER L'ATTRIBUT data-name DES CARTES RECETTES -------------------
+          // POUR SUPPRIMER LES DOUBLONS -----------------------------------------
+
+          // -----------------------------------------------------------------------------
+
+
+          
+          // NE FONCTIONNE PAS ---------------------------------------------------
+          // // cree tableau(x) [recette(s) a afficher]
+          // let recipesToDisplay = [];
+
+          // // ajoute recette(s) correspondant au(x) choix
+          // choices.forEach((textValue) => {
+          //   recipesToDisplay.push(getRecipes(recipes, textValue));
+          // });
+
+          // // cree tableau [recettes à afficher] sans doublons
+          // const uniqueRecipe = [...new Set(merge(recipesToDisplay))];
+
+          // // affiche recettes
+          // for (let i = 0; i < uniqueRecipe.length; i++) {
+          //   setRecipe(uniqueRecipe[i]);
+
+          //   // -----------------------------------------------------------------------------
+          //   console.log(uniqueRecipe.length); // affiche nb recettes correspondant au(x) choix
+          //   // -----------------------------------------------------------------------------
+          // }
+          // -----------------------------------------------------------------------------
+        });
+
+      // supprime cartes recettes deja affichees
+      recipeSection.innerHTML = '';
+
     } else {
-      options.style.display = 'none';
-      options.classList.remove('matches');
+      option.style.display = 'none';
+      option.classList.remove('matches');
     }
 
-    // // recherche dès 1er caractere saisi --------------------------------------
+    // // recherche correspondance(s) dès 1er caractere saisi -------------------
     // if (textValue.toUpperCase().indexOf(searchInput) > -1) {
     //   list.style.display = 'flex';
     //   options.style.display = '';
@@ -74,40 +121,77 @@ function displaySelection(event) {
   // -----------------------------------------------------------------------------
 
   // affiche recettes correspondant au(x) recherche(s)
-  getRecipesToDisplay();
+  displayRecipesMatch();
 
   // supprime cartes recettes deja affichees
   recipeSection.innerHTML = '';
 }
 
 // recupere recettes correspondant au(x) choix
-function getRecipesByChoice(recipes, choice) {
-  recipesByChoice = [];
+function getRecipes(recipes, option) {
+  recipesByMatch = [];
   recipes.forEach((recipe) => {
     let isIngredient = false;
     recipe.ingredients.forEach((i) => {
-      if (i.ingredient === choice) {
+      if (i.ingredient === option) {
         isIngredient = true;
       }
     });
 
     // -----------------------------------------------------------------------------
-    console.log(choice); // affiche nom selection et boucle generee
+    // console.log(option); // affiche nom selection
     // -----------------------------------------------------------------------------
 
     if (
-      recipe.name === choice ||
-      recipe.description === choice ||
-      recipe.appliance === choice ||
-      recipe.ustensils.forEach((ustensil) => ustensil === choice) ||
+      recipe.name === option ||
+      recipe.description === option ||
+      recipe.appliance === option ||
+      recipe.ustensils.forEach((ustensil) => ustensil === option) ||
       isIngredient == true
     ) {
-      recipesByChoice.push(recipe);
+      recipesByMatch.push(recipe);
     }
   });
 
-  return recipesByChoice;
+  // -----------------------------------------------------------------------------
+  console.log(recipesByMatch);
+  // -----------------------------------------------------------------------------
+
+  return recipesByMatch;
 }
+
+// // recupere recettes correspondant au(x) choix
+// function getRecipes(recipes, choice) {
+//   recipesByMatch = [];
+//   recipes.forEach((recipe) => {
+//     let isIngredient = false;
+//     recipe.ingredients.forEach((i) => {
+//       if (i.ingredient === choice) {
+//         isIngredient = true;
+//       }
+//     });
+
+//     // -----------------------------------------------------------------------------
+//     console.log(choice); // affiche nom selection et boucle generee
+//     // -----------------------------------------------------------------------------
+
+//     if (
+//       recipe.name === choice ||
+//       recipe.description === choice ||
+//       recipe.appliance === choice ||
+//       recipe.ustensils.forEach((ustensil) => ustensil === choice) ||
+//       isIngredient == true
+//     ) {
+//       recipesByMatch.push(recipe);
+//     }
+//   });
+
+//   // -----------------------------------------------------------------------------
+//   console.log(recipesByMatch);
+//   // -----------------------------------------------------------------------------
+
+//   return recipesByMatch;
+// }
 
 // fusionne tableaux [recettes à afficher]
 function merge(recipesToDisplay) {
@@ -118,7 +202,7 @@ function merge(recipesToDisplay) {
 }
 
 // AFFICHE RECETTES CORRESPONDANT AU(X) RECHERCHE(S)
-function getRecipesToDisplay() {
+function displayRecipesMatch() {
   fetch('recipes.json')
     .then((response) => response.json())
     .then((data) => {
@@ -128,8 +212,10 @@ function getRecipesToDisplay() {
       let recipesToDisplay = [];
 
       // ajoute recette(s) correspondant au(x) choix
-      choices.forEach((choice) => {
-        recipesToDisplay.push(getRecipesByChoice(recipes, choice.textContent));
+      // choices.forEach((textValue) => {
+      //   recipesToDisplay.push(getRecipes(recipes, textValue));
+      choices.forEach((option) => {
+        recipesToDisplay.push(getRecipes(recipes, option.textContent));
       });
 
       // cree tableau [recettes à afficher] sans doublons
@@ -151,7 +237,7 @@ function getRecipesToDisplay() {
 // apres saisie d'au moins 3 caracteres
 createAlert();
 
-function checkMatches() {
+function noMatch() {
   const searchMatches = document.querySelectorAll('.matches');
   const alert = document.querySelector('.alert-msg');
   const generalSearch = document.querySelector('.search-bar');
@@ -164,7 +250,7 @@ function checkMatches() {
 }
 
 // // recherche dès 1er caractere saisi ------------------------------------------
-// function checkMatches() {
+// function noMatch() {
 //   const searchMatches = document.querySelectorAll('.matches');
 //   const alert = document.querySelector('.alert-msg');
 

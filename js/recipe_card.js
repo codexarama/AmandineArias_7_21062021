@@ -32,7 +32,9 @@ function setRecipe(recipes) {
       elmtFactory(
         'div',
         { class: 'card-content' },
-        elmtFactory('ul', { class: 'card-subcontent card-list scroll-description' }),
+        elmtFactory('ul', {
+          class: 'card-subcontent card-list scroll-description',
+        }),
         elmtFactory(
           'p',
           { class: 'card-subcontent subcontent-text scroll-description' },
@@ -59,4 +61,5 @@ function setRecipe(recipes) {
 
   // DOM INTEGRATION
   recipesSection.appendChild(recipeCard);
+  recipeCard.setAttribute('data-name', `${recipes.name}`)
 }
