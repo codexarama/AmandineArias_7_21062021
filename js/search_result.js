@@ -22,9 +22,10 @@ function setMatches(input, list, option) {
         .then((response) => response.json())
         .then((data) => {
           const recipes = data.recipes;
-
-          getRecipes(recipes, textValue);
-          recipesByMatch.forEach((match) => {
+          const noDoublon = [...new Set(recipesByMatchFromInputs)];
+          console.log(noDoublon);
+          matchedRecipes = getRecipes(recipes, textValue);
+          matchedRecipes.forEach((match) => {
             setRecipe(match);
           });
 
@@ -34,7 +35,7 @@ function setMatches(input, list, option) {
           // -----------------------------------------------------------------------------
 
 
-          
+
           // NE FONCTIONNE PAS ---------------------------------------------------
           // // cree tableau(x) [recette(s) a afficher]
           // let recipesToDisplay = [];
@@ -128,8 +129,57 @@ function displaySelection(event) {
   return choices;
 }
 
+let recipesByMatchFromInputs = [];
+
 // recupere recettes correspondant au(x) choix
 function getRecipes(recipes, option) {
+  recipes.forEach((recipe) => {
+
+    let isIngredient = false;
+    recipe.ingredients.forEach((i) => {
+      if (i.ingredient === option) {
+        isIngredient = true;
+      }
+    });
+
+    // -----------------------------------------------------------------------------
+    // console.log(option); // affiche nom selection
+    // -----------------------------------------------------------------------------
+
+
+    if (
+      recipe.name === option ||
+      recipe.description === option ||
+      recipe.appliance === option ||
+      recipe.ustensils.forEach((ustensil) => ustensil === option) ||
+      isIngredient == true
+    ) {
+      //console.log(recipe);
+      let isDoublon = false;
+      recipesByMatchFromInputs.forEach(r => {
+        if (r.name === recipe.name) {
+          isDoublon = true;
+        }
+      });
+
+      if (!isDoublon) {
+        recipesByMatchFromInputs.push(recipe);
+      }
+
+    }
+  });
+
+  // -----------------------------------------------------------------------------
+  // console.log(recipesByMatchFromInputs);
+  // -----------------------------------------------------------------------------
+
+  return recipesByMatchFromInputs;
+}
+
+// recupere recettes correspondant au(x) choix
+function getRecipes(recipes, option) {
+
+  // cree tableau recettes par correspondance
   recipesByMatch = [];
   recipes.forEach((recipe) => {
     let isIngredient = false;
@@ -161,38 +211,8 @@ function getRecipes(recipes, option) {
   return recipesByMatch;
 }
 
-// // recupere recettes correspondant au(x) choix
-// function getRecipes(recipes, choice) {
-//   recipesByMatch = [];
-//   recipes.forEach((recipe) => {
-//     let isIngredient = false;
-//     recipe.ingredients.forEach((i) => {
-//       if (i.ingredient === choice) {
-//         isIngredient = true;
-//       }
-//     });
 
-//     // -----------------------------------------------------------------------------
-//     console.log(choice); // affiche nom selection et boucle generee
-//     // -----------------------------------------------------------------------------
 
-//     if (
-//       recipe.name === choice ||
-//       recipe.description === choice ||
-//       recipe.appliance === choice ||
-//       recipe.ustensils.forEach((ustensil) => ustensil === choice) ||
-//       isIngredient == true
-//     ) {
-//       recipesByMatch.push(recipe);
-//     }
-//   });
-
-//   // -----------------------------------------------------------------------------
-//   console.log(recipesByMatch);
-//   // -----------------------------------------------------------------------------
-
-//   return recipesByMatch;
-// }
 
 // fusionne tableaux [recettes à afficher]
 function merge(recipesToDisplay) {
