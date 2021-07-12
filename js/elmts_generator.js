@@ -1,85 +1,63 @@
+// DOM parent elements
+const mainList = document.querySelector("#search-recipe");
+const ingredientsList = document.getElementById("ingredients-list");
+const appliancesList = document.getElementById("appliances-list");
+const ustensilsList = document.getElementById("ustensils-list");
+
 // GENERATEUR ELEMENTS DOM
-
-// CREE LISTE RECETTES
-const mainList = document.querySelector('#search-recipe');
-
-function createMain(item) {
-  const mainOption = elmtFactory(
-    'li',
-    { role: 'option', class: 'recipe-option' },
-    `${item}`
-  );
-
-  mainList.append(mainOption);
-}
-
-// CREE LISTE INGREDIENTS
-const ingredientsList = document.getElementById('ingredients-list');
-
-function createIngredient(item) {
-  const ingredientsOption = elmtFactory(
-    'li',
+// CREE LISTES OPTIONS
+function createTagOption(item, category, list) {
+  const option = elmtFactory(
+    "li",
     {
-      role: 'option',
-      class: 'ingredients-option',
+      role: "option",
+      class: category + "-option",
     },
     `${item}`
   );
-
-  ingredientsList.append(ingredientsOption);
+  list.append(option);
 }
 
-// CREE LISTE APPAREILS
-const appliancesList = document.getElementById('appliances-list');
-
-function createAppliance(item) {
-  const appliancesOption = elmtFactory(
-    'li',
-    {
-      role: 'option',
-      class: 'appliances-option',
-    },
-    `${item}`
-  );
-
-  appliancesList.append(appliancesOption);
+// cree liste ingredients (DOM)
+function setIngredientsList(category) {
+  category.forEach((item) => {
+    createTagOption(item, "ingredients", ingredientsList);
+  });
 }
 
-// CREE LISTE USTENSILES
-const ustensilsList = document.getElementById('ustensils-list');
+// cree liste appareils (DOM)
+function setAppliancesList(category) {
+  category.forEach((item) => {
+    createTagOption(item, "appliances", appliancesList);
+  });
+}
 
-function createUstensil(item) {
-  const ustensilsOption = elmtFactory(
-    'li',
-    {
-      role: 'option',
-      class: 'ustensils-option',
-    },
-    `${item}`
-  );
-
-  ustensilsList.append(ustensilsOption);
+// cree liste ustensiles (DOM)
+function setUstensilsList(category) {
+  category.forEach((item) => {
+    createTagOption(item, "ustensils", ustensilsList);
+  });
 }
 
 // CREE TAG SELECTION(S)
-const searchList = document.querySelectorAll('[role="option"]');
-const tagsCollection = document.querySelector('#tags-collection');
+// DOM element
+const tagsCollection = document.querySelector("#tags-collection");
 
 function createTag(selectedTag) {
   const tag = elmtFactory(
-    'button',
-    { role: 'button', class: 'selection tag-btn' },
+    "button",
+    { role: "button", class: "selection tag-btn" },
     selectedTag.textContent,
-    elmtFactory('i', { class: 'far fa-times-circle' })
+    elmtFactory("i", { class: "far fa-times-circle" })
   );
 
   tagsCollection.append(tag);
 
   // SUPPRIME TAG
-  tag.addEventListener('click', () => {
+  tag.addEventListener("click", () => {
     // si clic sur "x"
     // retire attribut "selected"
-    selectedTag.classList.remove('selected');
+    selectedTag.classList.remove("selected");
 
     // recupere index
     const tagIndex = choices.indexOf(selectedTag);
@@ -95,45 +73,45 @@ function createTag(selectedTag) {
     tag.remove(tag);
 
     // affiche recette(s) restante(s) apres suppression selection(s)
-    displayRecipesMatch();
+    displaySelectedRecipes();
 
     // affiche toutes les recettes si tableau [choix] vide
-    displayAllSortedRecipes ()
+    displayAllSortedRecipes();
 
     // supprime cartes recettes deja affichees
-    recipeSection.innerHTML = '';
+    recipeSection.innerHTML = "";
   });
 }
 
-function displayAllSortedRecipes () {
-  fetch('recipes.json')
-  .then((response) => response.json())
-  .then((data) => {
-    const recipes = data.recipes;
+function displayAllSortedRecipes() {
+  fetch("recipes.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const recipes = data.recipes;
 
-    if (choices.length === 0) {
-      let sortedRecipes = [];
+      if (choices.length === 0) {
+        let sortedRecipes = [];
 
-      for (let i = 0; i < recipes.length; i++) {
-        sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
-        setRecipe(sortedRecipes[i]);
+        for (let i = 0; i < recipes.length; i++) {
+          sortedRecipes.push(recipes.sort(filterBy("name"))[i]);
+          setRecipe(sortedRecipes[i]);
+        }
       }
-    }
-  });
+    });
 }
 
-// cree message d'alerte si aucun critère de recherche ne correspond
+// CREE MESSAGE D'ALERTE SI AUCUN CRITERE DE RECHERCHE NE CORRESPOND
 function createAlert() {
   const alert = elmtFactory(
-    'div',
-    { class: 'alert-msg' },
-    elmtFactory('img', { src: '/images/oops.png' }),
-    elmtFactory('p', {}, 'OOPS'),
-    elmtFactory('p', {}, 'Aucun résultat ne correspond à votre critère...'),
+    "div",
+    { class: "alert-msg" },
+    elmtFactory("img", { src: "/images/oops.png" }),
+    elmtFactory("p", {}, "OOPS"),
+    elmtFactory("p", {}, "Aucun résultat ne correspond à votre critère..."),
     elmtFactory(
-      'p',
+      "p",
       {},
-      'Vous pouvez chercher « Tarte aux pommes », « Poisson », etc.'
+      "Vous pouvez chercher « Tarte aux pommes », « Poisson », etc."
     )
   );
 

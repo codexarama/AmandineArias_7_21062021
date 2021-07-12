@@ -26,16 +26,14 @@ const tagArrow = document.querySelectorAll('.tag-arrow');
 tagArrow.forEach((arrow) => {
   const tagBox = arrow.parentNode.parentNode;
   const tagBtn = arrow.parentNode;
-  const tagLabel = tagBtn.children[0];
-  const searchTag = tagBtn.children[1];
+  const tagLabel = tagBox.children[0].children[0];
+  const searchTag = arrow.previousElementSibling;
   const tagsList = tagBox.children[1];
 
   // HANDLE OPEN FILTER BOXES EVENTS
   arrow.addEventListener('click', (event) => {
     event.preventDefault();
     tagBox.classList.toggle('open');
-    tagBtn.style.width = '40rem';
-    tagBtn.style.borderRadius = '0.25rem 0.25rem 0 0'
     tagLabel.style.display = 'none';
 
     searchTag.setAttribute(
@@ -50,8 +48,6 @@ tagArrow.forEach((arrow) => {
 
     if (!tagBox.classList.contains('open')) {
       searchTag.style.display = 'none';
-      tagBtn.style.width = '8.25rem';
-      tagBtn.style.borderRadius = '0.25rem'
       tagsList.style.display = 'none';
       tagLabel.style.display = 'inline-block';
     }
@@ -62,10 +58,8 @@ tagArrow.forEach((arrow) => {
     if (!arrow.contains(e.target)) {
       tagBox.classList.remove('open');
       tagLabel.style.display = 'flex';
-      tagBtn.style.width = '8.25rem';
       searchTag.style.display = 'none';
       tagsList.style.display = 'none';
-      tagBtn.style.borderRadius = '0.25rem'
     }
 
     if (tagLabel.contains(e.target)) {
