@@ -1,144 +1,124 @@
-// // RESULTATS RECHERCHE
-// // detecte et affiche correspondances
+// RESULTATS RECHERCHE PAR INPUT PRINCIPAL -----------------------------------------
+// DOM ELEMENT
+const mainSearch = document.querySelector('.search-bar');
 
-// function setMatches(input, list, option) {
-//   input.addEventListener("keyup", () => {
-//     const searchInput = input.value.toUpperCase();
-//     // const searchInput = input.value.normalize("NFCK");
-//     const textValue = option.textContent;
+// detecte et affiche correspondances
+function recipesMatches(recipes) {
+  // DOM element
+  const recipesCard = document.querySelectorAll('.card');
 
-//     // recherche correspondance(s) apres saisie d'au moins 3 caracteres
-//     if (
-//       searchInput.length > 2 &&
-//       textValue.toUpperCase().indexOf(searchInput) > -1
-//     ) {
-//       option.style.display = "";
-//       option.classList.add("matches");
+  mainSearch.addEventListener('keyup', (e) => {
+    const inputValue = normString(e.target.value);
 
-//       // recupere et affiche recette(s) correspondante(s)
-//       fetch("recipes.json")
-//         .then((response) => response.json())
-//         .then((data) => {
-//           const recipes = data.recipes;
-//           const noDoublon = [...new Set(recipesByMatchFromInputs)];
-//           console.log(noDoublon);
-//           matchedRecipes = getRecipesFromSearchInput(recipes, textValue);
-//           matchedRecipes.forEach((match) => {
-//             setRecipe(match);
-//           });
-//         });
+    if (inputValue.length > 2) {
+      const recipesByMatch = recipes.filter((recipe) => {
+        const name = normString(recipe.name);
+        const description = normString(recipe.description);
 
-//       // supprime cartes recettes deja affichees
-//       recipeSection.innerHTML = "";
-//     } else {
-//       option.style.display = "none";
-//       option.classList.remove("matches");
-//     }
+        return (
+          name.includes(inputValue) ||
+          description.includes(inputValue) ||
+          recipe.ingredients.some((i) =>
+            normString(i.ingredient).includes(inputValue)
+          )
+        );
+      });
 
-//     // // recherche correspondance(s) dès 1er caractere saisi -------------------
-//     // if (textValue.toUpperCase().indexOf(searchInput) > -1) {
-//     //   list.style.display = 'flex';
-//     //   options.style.display = '';
-//     //   options.classList.add('matches');
-//     // } else {
-//     //   options.style.display = 'none';
-//     //   options.classList.remove('matches');
-//     // } ------------------------------------------------------------------------
-//   });
-// }
+      // -------------------------
+      console.log(recipesByMatch);
+      // -------------------------
 
-// // RECUPERE RECETTES CORRESPONDANT AU(X) CHOIX
-// // APPELLEE AU KEYUP EVENT DANS INPUT
+      // AFFICHE MESSAGE ERREUR SI AUCUN CRITERE NE CORRESPOND
+      noMatch(recipesByMatch);
 
-// // cree tableau correspondance(s) avec saisie input
-// let recipesByMatchFromInputs = [];
+      // supprime cartes recettes deja affichees
+      recipeSection.innerHTML = '';
 
-// function getRecipesFromSearchInput(recipes, option) {
-//   recipes.forEach((recipe) => {
-//     let isIngredient = false;
-//     recipe.ingredients.forEach((i) => {
-//       if (i.ingredient === option) {
-//         isIngredient = true;
-//       }
-//     });
+      // affiche recettes correspondant au(x) resultat(s) de la recherche
+      recipesByMatch.forEach((match) => {
+        setRecipe(match);
+      });
 
-//     // -----------------------------------------------------------------------------
-//     console.log(option); // affiche nom selection
-//     // -----------------------------------------------------------------------------
+      // ajoute 'match' au(x) carte(s) recette(s) affichee(s)
+      // NE FONCTIONNE PAS ----------------------------------------------------------
+      recipesCard.forEach((card) => {
+        console.log('coucou'); // ok
+        card.classList.add('match');
+      });
 
-//     if (
-//       recipe.name === option ||
-//       recipe.description === option ||
-//       recipe.appliance === option ||
-//       recipe.ustensils.forEach((ustensil) => ustensil === option) ||
-//       isIngredient == true
-//     ) {
-//       // console.log(recipe);
-//       let isDoublon = false;
-//       recipesByMatchFromInputs.forEach((r) => {
-//         if (r.name === recipe.name) {
-//           isDoublon = true;
-//         }
-//       });
+      // reinitialise toutes les recherches si aucune correspondance
+      if (recipesByMatch.length === 0)
+        recipes.forEach((recipe) => setRecipe(recipe));
 
-//       if (!isDoublon) {
-//         recipesByMatchFromInputs.push(recipe);
-//         // recipesByMatchFromInputs.forEach((item) => {
-//         //   if (!recipesByMatchFromInputs.includes(item))
-//         //     recipesByMatchFromInputs.push(recipe);
-//         // });
-//         // const noDoublon = [...new Set(recipesByMatchFromInputs)];
-//         // console.log(noDoublon);
-//       }
-//     }
-//   });
+      //   removeDataDOMRecipes();
+      //   createDataDOMRecipes(recipesByMatch);
+      //   displayInfoMessage(recipesByMatch);
+      // } else {
+      //   // Create full recipes and all tags
+      //   removeDataDOMRecipes();
+      //   createDataDOMRecipes(recipes);
+      //   displayInfoMessage(recipes);
 
-//   // -----------------------------------------------------------------------------
-//   console.log(recipesByMatchFromInputs);
-//   // -----------------------------------------------------------------------------
+      //   // Delete selected tags if user restart a research
+      //   const tagsChildren = tagsSelectedContainer.childNodes;
+      //   tagsChildren.forEach(tagChild => {
+      //     tagChild.remove();
+      //   });
+    }
+  });
+}
 
-//   return recipesByMatchFromInputs;
-// }
+// MESSAGE SI AUCUN CRITERE DE RECHERCHE NE CORRESPOND
+// apres saisie d'au moins 3 caracteres
 
-// ______________________________________________________________________________________________________________________________________________
+createAlert();
 
-// RESULTATS RECHERCHE PAR TAG(S)
+function noMatch(search) {
+  // const searchMatches = document.querySelectorAll('.matches');
+  const alert = document.querySelector('.alert-msg');
+
+  if (search.length === 0) {
+    alert.style.display = 'block';
+  }
+  // masque message dans le cas contraire
+  else alert.style.display = 'none';
+}
+
+// RESULTATS RECHERCHE PAR TAG(S) ---------------------------------------------------
 // detecte et affiche correspondance(s)
 
 function setTagsMatches(input, list, option) {
-  input.addEventListener("keyup", () => {
+  input.addEventListener('keyup', () => {
     const searchInput = input.value.toUpperCase();
     const textValue = option.textContent.toUpperCase();
 
     if (textValue.indexOf(searchInput) > -1) {
-      list.style.display = "flex";
-      option.style.display = "";
-      option.classList.add("matches");
+      list.style.display = 'flex';
+      option.style.display = '';
+      option.classList.add('matches');
     } else {
-      option.style.display = "none";
-      option.classList.remove("matches");
+      option.style.display = 'none';
+      option.classList.remove('matches');
     }
   });
 }
 
 // AFFICHE SELECTION(S)
 // DOM element
-const recipeSection = document.querySelector("#recipes");
+const recipeSection = document.querySelector('#recipes');
 
 // cree tableau [choix]
 const choices = [];
 
-// function displaySelection(event) {
-//   const selected = event.target;
 function displaySelection(event) {
   const selected = event.target;
 
   // retire "selected" du choix precedent
-  if (selected.classList.contains("selected"))
-    selected.classList.remove("selected");
+  if (selected.classList.contains('selected'))
+    selected.classList.remove('selected');
 
   // affecte "selected" au nouveau choix
-  selected.classList.add("selected");
+  selected.classList.add('selected');
 
   // ajoute au tableau [choix] (sans doublons)
   if (!choices.includes(selected)) {
@@ -148,53 +128,51 @@ function displaySelection(event) {
     createTag(selected);
 
     // attribue code couleur selon categorie
-    customiseTag(selected, "ingredients");
-    customiseTag(selected, "appliances");
-    customiseTag(selected, "ustensils");
+    customiseTag(selected, 'ingredients');
+    customiseTag(selected, 'appliances');
+    customiseTag(selected, 'ustensils');
   }
 
-  // -----------------------------------------------------------------------------
-  console.log(choices); // affiche elements du tableau [choices]
-  // -----------------------------------------------------------------------------
+  // ------------------
+  console.log(choices);
+  // ------------------
 
   // affiche recettes correspondant au(x) recherche(s)
   displaySelectedRecipes();
 
   // supprime cartes recettes deja affichees
-  recipeSection.innerHTML = "";
+  recipeSection.innerHTML = '';
   return choices;
 }
 
 // CUSTOMISE BOUTONS CREES A CHAQUE SELECTION DE TAG SELON CATEGORIE
 function customiseTag(selected, category) {
-  const lastSelection = document.querySelector("#tags-collection").lastChild;
+  const lastSelection = document.querySelector('#tags-collection').lastChild;
 
-  if (selected.classList.contains(category + "-option"))
-    lastSelection.classList.add(category + "-result-btn");
+  if (selected.classList.contains(category + '-option'))
+    lastSelection.classList.add(category + '-result-btn');
 }
 
 // RECUPERE RECETTES CORRESPONDANT AU(X) CHOIX
 // APPELLEE AU CLIC EVENT SUR OPTION DANS LISTE et SUR TAG DE SUPPRESSION
 function getRecipesByTag(recipes, option) {
   // cree tableau recettes par correspondance
-  recipesByTag = [];
+  const recipesByTag = [];
 
   recipes.forEach((recipe) => {
     let isIngredient = false;
+
     recipe.ingredients.forEach((ingredients) => {
       if (ingredients.ingredient === option) {
         isIngredient = true;
       }
     });
 
-    // -----------------------------------------------------------------------------
-    console.log(option); // affiche nom selection
-    // -----------------------------------------------------------------------------
+    // -----------------
+    console.log(option);
+    // -----------------
 
     if (
-      // recipe.ingredients.forEach((ingredients) => {
-      //   ingredients.ingredient === option
-      // }) ||
       isIngredient == true ||
       recipe.appliance === option ||
       recipe.ustensils.forEach((ustensil) => ustensil === option)
@@ -203,9 +181,9 @@ function getRecipesByTag(recipes, option) {
     }
   });
 
-  // -----------------------------------------------------------------------------
+  // -----------------------
   console.log(recipesByTag);
-  // -----------------------------------------------------------------------------
+  // -----------------------
 
   return recipesByTag;
 }
@@ -220,7 +198,7 @@ function merge(recipesToDisplay) {
 
 // AFFICHE RECETTES CORRESPONDANT AU(X) RECHERCHE(S)
 function displaySelectedRecipes() {
-  fetch("recipes.json")
+  fetch('recipes.json')
     .then((response) => response.json())
     .then((data) => {
       const recipes = data.recipes;
@@ -229,8 +207,6 @@ function displaySelectedRecipes() {
       let recipesToDisplay = [];
 
       // ajoute recette(s) correspondant au(x) choix
-      // choices.forEach((textValue) => {
-      //   recipesToDisplay.push(getRecipesByTag(recipes, textValue));
       choices.forEach((option) => {
         recipesToDisplay.push(getRecipesByTag(recipes, option.textContent));
       });
@@ -242,37 +218,10 @@ function displaySelectedRecipes() {
       for (let i = 0; i < uniqueRecipe.length; i++) {
         setRecipe(uniqueRecipe[i]);
 
-        // -----------------------------------------------------------------------------
-        console.log(uniqueRecipe.length); // affiche nb recettes correspondant au(x) choix
-        // -----------------------------------------------------------------------------
+        // ------------------------------
+        // console.log(uniqueRecipe.length);
+        // ------------------------------
       }
       return recipesToDisplay;
     });
 }
-
-// AFFICHE MESSAGE SI AUCUN CRITERE DE RECHERCHE NE CORRESPOND
-// apres saisie d'au moins 3 caracteres
-createAlert();
-
-function noMatch() {
-  const searchMatches = document.querySelectorAll(".matches");
-  const alert = document.querySelector(".alert-msg");
-  const generalSearch = document.querySelector(".search-bar");
-  const mainInput = generalSearch.value.toUpperCase();
-
-  if (mainInput.length > 2 && searchMatches.length === 0)
-    alert.style.display = "block";
-  // masque message dans le cas contraire
-  else alert.style.display = "none";
-}
-
-// // recherche dès 1er caractere saisi ------------------------------------------
-// function noMatch() {
-//   const searchMatches = document.querySelectorAll('.matches');
-//   const alert = document.querySelector('.alert-msg');
-
-//   if (searchMatches.length === 0) alert.style.display = 'block';
-
-//   // masque message dans le cas contraire
-//   else alert.style.display = 'none';
-// } ------------------------------------------------------------------------------

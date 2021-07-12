@@ -1,4 +1,4 @@
-fetch("recipes.json")
+fetch('recipes.json')
   .then((response) => response.json())
   .then((data) => {
     const recipes = data.recipes;
@@ -13,29 +13,29 @@ fetch("recipes.json")
     let sortedRecipes = [];
 
     for (let i = 0; i < recipes.length; i++) {
-      sortedRecipes.push(recipes.sort(filterBy("name"))[i]);
+      sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
       setRecipe(sortedRecipes[i]);
     }
     console.log(recipes);
 
     // RECHERCHE RECETTES PAR : nom, description, ingrédients
     // cree tableau [recherche principale] (ordre alphabetique)
-    // const main = [];
-    // setMain(main);
-    // // console.log(main);
+    const main = [];
+    setMain(main);
+    // console.log(main);
 
-    // function setMain(category) {
-    //   recipes.forEach((recipe) => {
-    //     // ajoute noms recettes
-    //     category.push(recipe.name);
-    //     // ajoute descriptions
-    //     category.push(recipe.description);
-    //     recipe.ingredients.forEach((item) => {
-    //       // ajoute ingredients
-    //       category.push(item.ingredient);
-    //     });
-    //   });
-    // }
+    function setMain(category) {
+      recipes.forEach((recipe) => {
+        // ajoute noms recettes
+        category.push(recipe.name);
+        // ajoute descriptions
+        category.push(recipe.description);
+        recipe.ingredients.forEach((item) => {
+          // ajoute ingredients
+          category.push(item.ingredient);
+        });
+      });
+    }
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     // cree tableau [ingredients]
@@ -101,42 +101,27 @@ fetch("recipes.json")
       setUstensilsList(category);
     }
 
-    // AFFICHE LISTE RESULTATS RECHERCHES
-
-    // // A FINALISER --------------------------------------------------------------
-    // // via barre de recherche principale
-    const mainSearch = document.querySelector(".search-bar");
-    // const recipeOption = document.querySelectorAll(".recipe-option");
-    // for (let i = 0; i < recipeOption.length; i++) {
-    //   setMatches(mainSearch, mainList, recipeOption[i]);
-    // }
-    // // --------------------------------------------------------------------------
-
-    // // A FINALISER --------------------------------------------------------------
-    // const recipeCards = document.querySelectorAll(".card");
-    // for (let i = 0; i < recipeCards.length; i++) {
-    //   if (recipeSection.innerHTML == "")
-    //     console.log(recipeCards[i].dataset.name);
-    // }
-    // // --------------------------------------------------------------------------
+    // AFFICHE RESULTATS RECHERCHES
+    // via barre de recherche principale
+    recipesMatches (recipes)
 
     // via barre de recherche "ingredients"
-    const ingredientSearch = document.querySelector("#search-ingredients");
-    const ingredientsOption = document.querySelectorAll(".ingredients-option");
+    const ingredientSearch = document.querySelector('#search-ingredients');
+    const ingredientsOption = document.querySelectorAll('.ingredients-option');
     for (let i = 0; i < ingredientsOption.length; i++) {
       setTagsMatches(ingredientSearch, ingredientsList, ingredientsOption[i]);
     }
 
     // via barre de recherche "appareils"
-    const applianceSearch = document.querySelector("#search-appliances");
-    const appliancesOption = document.querySelectorAll(".appliances-option");
+    const applianceSearch = document.querySelector('#search-appliances');
+    const appliancesOption = document.querySelectorAll('.appliances-option');
     for (let i = 0; i < appliancesOption.length; i++) {
       setTagsMatches(applianceSearch, appliancesList, appliancesOption[i]);
     }
 
     // via barre de recherche "ustensiles"
-    const ustensilSearch = document.querySelector("#search-ustensils");
-    const ustensilsOption = document.querySelectorAll(".ustensils-option");
+    const ustensilSearch = document.querySelector('#search-ustensils');
+    const ustensilsOption = document.querySelectorAll('.ustensils-option');
     for (let i = 0; i < ustensilsOption.length; i++) {
       setTagsMatches(ustensilSearch, ustensilsList, ustensilsOption[i]);
     }
@@ -144,9 +129,6 @@ fetch("recipes.json")
     // AFFICHE SELECTION(S)
     const searchList = document.querySelectorAll('[role="option"]');
     searchList.forEach((item) =>
-      item.addEventListener("click", displaySelection)
+      item.addEventListener('click', displaySelection)
     );
-
-    // AFFICHE MESSAGE ERREUR SI AUCUN CRITERE NE CORRESPOND
-    mainSearch.addEventListener("keyup", noMatch);
   });

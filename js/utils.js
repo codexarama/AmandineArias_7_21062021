@@ -1,4 +1,4 @@
-// FUNCTION : SORT BY...
+// TRI PAR...
 function filterBy(key, order = 'asc') {
   return function sort(a, b) {
     // pas de tri (propriété ou objet nul)
@@ -20,7 +20,7 @@ function filterBy(key, order = 'asc') {
   };
 }
 
-// FUNCTION : DOM ELEMENTS CREATION
+// CREATION DOM ELEMENTS
 // FACTORY METHOD : type + attributes + nodes
 const elmtFactory = (type, attribute, ...children) => {
   let elmt = document.createElement(type);
@@ -36,4 +36,20 @@ const elmtFactory = (type, attribute, ...children) => {
   });
 
   return elmt;
+};
+
+// NORMALISE TEXTE
+const normString = (string) => {
+  string = string
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
+  string = string.toLowerCase();
+
+  string = string
+    .replace(/œ/g, "oe")
+    .replace(/æ/g, "ae")
+    .replace(/[']/g, " ");
+
+  return string;
 };
