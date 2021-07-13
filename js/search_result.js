@@ -4,20 +4,14 @@ const mainSearch = document.querySelector('.search-bar');
 
 // detecte et affiche correspondances
 function recipesMatches(recipes) {
-  // DOM element
-  const recipesCard = document.querySelectorAll('.card');
-
   mainSearch.addEventListener('keyup', (e) => {
     const inputValue = normString(e.target.value);
 
     if (inputValue.length > 2) {
       const recipesByMatch = recipes.filter((recipe) => {
-        const name = normString(recipe.name);
-        const description = normString(recipe.description);
-
         return (
-          name.includes(inputValue) ||
-          description.includes(inputValue) ||
+          normString(recipe.name).includes(inputValue) ||
+          normString(recipe.description).includes(inputValue) ||
           recipe.ingredients.some((i) =>
             normString(i.ingredient).includes(inputValue)
           )
@@ -39,59 +33,65 @@ function recipesMatches(recipes) {
         setRecipe(match);
       });
 
-      // ajoute 'match' au(x) carte(s) recette(s) affichee(s)
-      // NE FONCTIONNE PAS ----------------------------------------------------------
-      recipesCard.forEach((card) => {
-        console.log('coucou'); // ok
-        card.classList.add('match');
+      // actualise listes tags (ingrédients, appareils, ustensiles)
+      const searchList = document.querySelectorAll('[role="option"]');
+      searchList.forEach((item) => {
+        getRecipesByTag(recipesByMatch, item.textContent);
+        item.style.display = 'none';
+
+        recipesByMatch.forEach((match) => {
+          let isIngredient = false;
+
+          match.ingredients.forEach((ingredients) => {
+            if (ingredients.ingredient === item.textContent) {
+              isIngredient = true;
+            }
+          });
+
+          if (
+            isIngredient == true ||
+            match.appliance === item.textContent ||
+            match.ustensils.forEach((ustensil) => ustensil === item.textContent)
+          )
+            item.style.display = 'block';
+        });
       });
 
-      // reinitialise toutes les recherches si aucune correspondance
+      // reinitialise recettes si aucune correspondance avec recherche
       if (recipesByMatch.length === 0)
         recipes.forEach((recipe) => setRecipe(recipe));
-
-      //   removeDataDOMRecipes();
-      //   createDataDOMRecipes(recipesByMatch);
-      //   displayInfoMessage(recipesByMatch);
-      // } else {
-      //   // Create full recipes and all tags
-      //   removeDataDOMRecipes();
-      //   createDataDOMRecipes(recipes);
-      //   displayInfoMessage(recipes);
-
-      //   // Delete selected tags if user restart a research
-      //   const tagsChildren = tagsSelectedContainer.childNodes;
-      //   tagsChildren.forEach(tagChild => {
-      //     tagChild.remove();
-      //   });
     }
   });
 }
 
 // MESSAGE SI AUCUN CRITERE DE RECHERCHE NE CORRESPOND
-// apres saisie d'au moins 3 caracteres
-
 createAlert();
 
 function noMatch(search) {
-  // const searchMatches = document.querySelectorAll('.matches');
+  // DOM elements
   const alert = document.querySelector('.alert-msg');
+  const selectedTags = document.querySelectorAll('.selection');
 
+  // affiche message d'alerte
+  // supprime sélection(s) s'il y en a
   if (search.length === 0) {
     alert.style.display = 'block';
+    selectedTags.forEach((tag) => tag.remove(tag));
   }
-  // masque message dans le cas contraire
+
+  // masque message d'alerte
   else alert.style.display = 'none';
 }
 
-// RESULTATS RECHERCHE PAR TAG(S) ---------------------------------------------------
+// RESULTATS RECHERCHE PAR TAG(S) -----------------------------------------------
 // detecte et affiche correspondance(s)
-
 function setTagsMatches(input, list, option) {
   input.addEventListener('keyup', () => {
     const searchInput = input.value.toUpperCase();
     const textValue = option.textContent.toUpperCase();
 
+    // affiche / masque tag(s) selon correspondance
+    // ajoute / supprime attribut ("matches") selon correspondance
     if (textValue.indexOf(searchInput) > -1) {
       list.style.display = 'flex';
       option.style.display = '';
@@ -103,7 +103,7 @@ function setTagsMatches(input, list, option) {
   });
 }
 
-// AFFICHE SELECTION(S)
+// AFFICHE SELECTION(S) TAG(S) -------------------------------------------------
 // DOM element
 const recipeSection = document.querySelector('#recipes');
 
@@ -137,11 +137,13 @@ function displaySelection(event) {
   console.log(choices);
   // ------------------
 
-  // affiche recettes correspondant au(x) recherche(s)
+  // affiche recettes correspondant au(x) recherche(s) par tag
   displaySelectedRecipes();
 
   // supprime cartes recettes deja affichees
   recipeSection.innerHTML = '';
+
+  // retourne tableau [choix]
   return choices;
 }
 
@@ -153,8 +155,8 @@ function customiseTag(selected, category) {
     lastSelection.classList.add(category + '-result-btn');
 }
 
-// RECUPERE RECETTES CORRESPONDANT AU(X) CHOIX
-// APPELLEE AU CLIC EVENT SUR OPTION DANS LISTE et SUR TAG DE SUPPRESSION
+// RECUPERE RECETTES CORRESPONDANT AU(X) CHOIX PAR TAG(S)
+// (appellee au clic event sur option dans liste et sur tag de suppression)
 function getRecipesByTag(recipes, option) {
   // cree tableau recettes par correspondance
   const recipesByTag = [];
@@ -169,7 +171,7 @@ function getRecipesByTag(recipes, option) {
     });
 
     // -----------------
-    console.log(option);
+    // console.log(option);
     // -----------------
 
     if (
@@ -182,7 +184,7 @@ function getRecipesByTag(recipes, option) {
   });
 
   // -----------------------
-  console.log(recipesByTag);
+  // console.log(recipesByTag);
   // -----------------------
 
   return recipesByTag;
@@ -211,16 +213,12 @@ function displaySelectedRecipes() {
         recipesToDisplay.push(getRecipesByTag(recipes, option.textContent));
       });
 
-      // cree tableau [recettes à afficher] sans doublons
+      // supprime doublons [recettes à afficher]
       const uniqueRecipe = [...new Set(merge(recipesToDisplay))];
 
       // affiche recettes
       for (let i = 0; i < uniqueRecipe.length; i++) {
         setRecipe(uniqueRecipe[i]);
-
-        // ------------------------------
-        // console.log(uniqueRecipe.length);
-        // ------------------------------
       }
       return recipesToDisplay;
     });
