@@ -1,17 +1,17 @@
-// DOM parent elements
-const mainList = document.querySelector("#search-recipe");
-const ingredientsList = document.getElementById("ingredients-list");
-const appliancesList = document.getElementById("appliances-list");
-const ustensilsList = document.getElementById("ustensils-list");
+// DOM parents elements
+const mainList = document.querySelector('#search-recipe');
+const ingredientsList = document.getElementById('ingredients-list');
+const appliancesList = document.getElementById('appliances-list');
+const ustensilsList = document.getElementById('ustensils-list');
 
 // GENERATEUR ELEMENTS DOM
-// CREE LISTES OPTIONS
+// CANEVAS LISTES OPTIONS (factory pattern)
 function createTagOption(item, category, list) {
   const option = elmtFactory(
-    "li",
+    'li',
     {
-      role: "option",
-      class: category + "-option",
+      role: 'option',
+      class: category + '-option',
     },
     `${item}`
   );
@@ -21,43 +21,43 @@ function createTagOption(item, category, list) {
 // cree liste ingredients (DOM)
 function setIngredientsList(category) {
   category.forEach((item) => {
-    createTagOption(item, "ingredients", ingredientsList);
+    createTagOption(item, 'ingredients', ingredientsList);
   });
 }
 
 // cree liste appareils (DOM)
 function setAppliancesList(category) {
   category.forEach((item) => {
-    createTagOption(item, "appliances", appliancesList);
+    createTagOption(item, 'appliances', appliancesList);
   });
 }
 
 // cree liste ustensiles (DOM)
 function setUstensilsList(category) {
   category.forEach((item) => {
-    createTagOption(item, "ustensils", ustensilsList);
+    createTagOption(item, 'ustensils', ustensilsList);
   });
 }
 
-// CREE TAG SELECTION(S)
+// CANEVAS TAG(S) SELECTION(S) (factory pattern)
 // DOM element
-const tagsCollection = document.querySelector("#tags-collection");
+const tagsCollection = document.querySelector('#tags-collection');
 
 function createTag(selectedTag) {
   const tag = elmtFactory(
-    "button",
-    { role: "button", class: "selection tag-btn" },
+    'button',
+    { role: 'button', class: 'selection tag-btn' },
     selectedTag.textContent,
-    elmtFactory("i", { class: "far fa-times-circle" })
+    elmtFactory('i', { class: 'far fa-times-circle' })
   );
 
   tagsCollection.append(tag);
 
-  // SUPPRIME TAG
-  tag.addEventListener("click", () => {
+  // SUPPRIME TAG(S)
+  tag.addEventListener('click', () => {
     // si clic sur "x"
     // retire attribut "selected"
-    selectedTag.classList.remove("selected");
+    selectedTag.classList.remove('selected');
 
     // recupere index
     const tagIndex = choices.indexOf(selectedTag);
@@ -65,9 +65,9 @@ function createTag(selectedTag) {
     // supprime du tableau [choices]
     choices.splice(tagIndex, 1);
 
-    // -----------------------------------------------------------------------------
-    console.log(choices); // affiche elements du tableau [choices]
-    // -----------------------------------------------------------------------------
+    // ------------------
+    console.log(choices);
+    // ------------------
 
     // supprime bouton correspondant
     tag.remove(tag);
@@ -79,12 +79,12 @@ function createTag(selectedTag) {
     displayAllSortedRecipes();
 
     // supprime cartes recettes deja affichees
-    recipeSection.innerHTML = "";
+    recipeSection.innerHTML = '';
   });
 }
 
 function displayAllSortedRecipes() {
-  fetch("recipes.json")
+  fetch('recipes.json')
     .then((response) => response.json())
     .then((data) => {
       const recipes = data.recipes;
@@ -93,25 +93,25 @@ function displayAllSortedRecipes() {
         let sortedRecipes = [];
 
         for (let i = 0; i < recipes.length; i++) {
-          sortedRecipes.push(recipes.sort(filterBy("name"))[i]);
+          sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
           setRecipe(sortedRecipes[i]);
         }
       }
     });
 }
 
-// CREE MESSAGE D'ALERTE SI AUCUN CRITERE DE RECHERCHE NE CORRESPOND
+// CANEVAS MESSAGE D'ALERTE (fatory pattern)
 function createAlert() {
   const alert = elmtFactory(
-    "div",
-    { class: "alert-msg" },
-    elmtFactory("img", { src: "/images/oops.png" }),
-    elmtFactory("p", {}, "OOPS"),
-    elmtFactory("p", {}, "Aucun résultat ne correspond à votre critère..."),
+    'div',
+    { class: 'alert-msg' },
+    elmtFactory('img', { src: '/images/oops.png' }),
+    elmtFactory('p', {}, 'OOPS'),
+    elmtFactory('p', {}, 'Aucun résultat ne correspond à votre critère...'),
     elmtFactory(
-      "p",
+      'p',
       {},
-      "Vous pouvez chercher « Tarte aux pommes », « Poisson », etc."
+      'Vous pouvez chercher « Tarte aux pommes », « Poisson », etc.'
     )
   );
 

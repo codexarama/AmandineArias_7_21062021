@@ -18,25 +18,6 @@ fetch('recipes.json')
     }
     console.log(recipes);
 
-    // RECHERCHE RECETTES PAR : nom, description, ingrédients
-    // cree tableau [recherche principale] (ordre alphabetique)
-    const main = [];
-    setMain(main);
-    // console.log(main);
-
-    function setMain(category) {
-      recipes.forEach((recipe) => {
-        // ajoute noms recettes
-        category.push(recipe.name);
-        // ajoute descriptions
-        category.push(recipe.description);
-        recipe.ingredients.forEach((item) => {
-          // ajoute ingredients
-          category.push(item.ingredient);
-        });
-      });
-    }
-
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     // cree tableau [ingredients]
     const ingredients = [];
@@ -103,7 +84,7 @@ fetch('recipes.json')
 
     // AFFICHE RESULTATS RECHERCHES
     // via barre de recherche principale
-    recipesMatches (recipes)
+    recipesMatches(recipes);
 
     // via barre de recherche "ingredients"
     const ingredientSearch = document.querySelector('#search-ingredients');
