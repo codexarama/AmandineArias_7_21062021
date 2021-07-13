@@ -1,68 +1,46 @@
-// GENERATEUR ELEMENTS DOM
-
-// CREE LISTE RECETTES
+// DOM parents elements
 const mainList = document.querySelector('#search-recipe');
-
-function createMain(item) {
-  const mainOption = elmtFactory(
-    'li',
-    { role: 'option', class: 'recipe-option' },
-    `${item}`
-  );
-
-  mainList.append(mainOption);
-}
-
-// CREE LISTE INGREDIENTS
 const ingredientsList = document.getElementById('ingredients-list');
-
-function createIngredient(item) {
-  const ingredientsOption = elmtFactory(
-    'li',
-    {
-      role: 'option',
-      class: 'ingredients-option',
-    },
-    `${item}`
-  );
-
-  ingredientsList.append(ingredientsOption);
-}
-
-// CREE LISTE APPAREILS
 const appliancesList = document.getElementById('appliances-list');
-
-function createAppliance(item) {
-  const appliancesOption = elmtFactory(
-    'li',
-    {
-      role: 'option',
-      class: 'appliances-option',
-    },
-    `${item}`
-  );
-
-  appliancesList.append(appliancesOption);
-}
-
-// CREE LISTE USTENSILES
 const ustensilsList = document.getElementById('ustensils-list');
 
-function createUstensil(item) {
-  const ustensilsOption = elmtFactory(
+// GENERATEUR ELEMENTS DOM
+// CANEVAS LISTES OPTIONS (factory pattern)
+function createTagOption(item, category, list) {
+  const option = elmtFactory(
     'li',
     {
       role: 'option',
-      class: 'ustensils-option',
+      class: category + '-option',
     },
     `${item}`
   );
-
-  ustensilsList.append(ustensilsOption);
+  list.append(option);
 }
 
-// CREE TAG SELECTION(S)
-const searchList = document.querySelectorAll('[role="option"]');
+// cree liste ingredients (DOM)
+function setIngredientsList(category) {
+  category.forEach((item) => {
+    createTagOption(item, 'ingredients', ingredientsList);
+  });
+}
+
+// cree liste appareils (DOM)
+function setAppliancesList(category) {
+  category.forEach((item) => {
+    createTagOption(item, 'appliances', appliancesList);
+  });
+}
+
+// cree liste ustensiles (DOM)
+function setUstensilsList(category) {
+  category.forEach((item) => {
+    createTagOption(item, 'ustensils', ustensilsList);
+  });
+}
+
+// CANEVAS TAG(S) SELECTION(S) (factory pattern)
+// DOM element
 const tagsCollection = document.querySelector('#tags-collection');
 
 function createTag(selectedTag) {
@@ -75,7 +53,7 @@ function createTag(selectedTag) {
 
   tagsCollection.append(tag);
 
-  // SUPPRIME TAG
+  // SUPPRIME TAG(S)
   tag.addEventListener('click', () => {
     // si clic sur "x"
     // retire attribut "selected"
@@ -87,42 +65,42 @@ function createTag(selectedTag) {
     // supprime du tableau [choices]
     choices.splice(tagIndex, 1);
 
-    // -----------------------------------------------------------------------------
-    console.log(choices); // affiche elements du tableau [choices]
-    // -----------------------------------------------------------------------------
+    // ------------------
+    console.log(choices);
+    // ------------------
 
     // supprime bouton correspondant
     tag.remove(tag);
 
     // affiche recette(s) restante(s) apres suppression selection(s)
-    displayRecipesMatch();
+    displaySelectedRecipes();
 
     // affiche toutes les recettes si tableau [choix] vide
-    displayAllSortedRecipes ()
+    displayAllSortedRecipes();
 
     // supprime cartes recettes deja affichees
     recipeSection.innerHTML = '';
   });
 }
 
-function displayAllSortedRecipes () {
+function displayAllSortedRecipes() {
   fetch('recipes.json')
-  .then((response) => response.json())
-  .then((data) => {
-    const recipes = data.recipes;
+    .then((response) => response.json())
+    .then((data) => {
+      const recipes = data.recipes;
 
-    if (choices.length === 0) {
-      let sortedRecipes = [];
+      if (choices.length === 0) {
+        let sortedRecipes = [];
 
-      for (let i = 0; i < recipes.length; i++) {
-        sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
-        setRecipe(sortedRecipes[i]);
+        for (let i = 0; i < recipes.length; i++) {
+          sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
+          setRecipe(sortedRecipes[i]);
+        }
       }
-    }
-  });
+    });
 }
 
-// cree message d'alerte si aucun critère de recherche ne correspond
+// CANEVAS MESSAGE D'ALERTE (fatory pattern)
 function createAlert() {
   const alert = elmtFactory(
     'div',
