@@ -3,20 +3,13 @@ fetch('recipes.json')
   .then((data) => {
     const recipes = data.recipes;
 
-    // AFFICHE CARTES RECETTES (non triees)
-    // for (let i = 0; i < recipes.length; i++) {
-    //   setRecipe(recipes[i]);
-    // }
+    // AFFICHE CARTES RECETTES (triees par ordre alphabetique)
+    setRecipe(quicksortLomuto(recipes, 0, recipes.length - 1))
+    // cannot read property 'length' of undefined
+    // at setRecipe (recipe_card.js:49)
 
-    // AFFICHE CARTES RECETTES (ordre alphabetique)
-    // cree tableau [recettes triees]
-    let sortedRecipes = [];
-
-    for (let i = 0; i < recipes.length; i++) {
-      sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
-      setRecipe(sortedRecipes[i]);
-    }
-    console.log(recipes);
+    console.log(quicksortLomuto(recipes, 0, recipes.length - 1));
+    const ing = recipes.forEach((recipe) => console.log(recipe.ingredients[0].unit))
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     // cree tableau [ingredients]
