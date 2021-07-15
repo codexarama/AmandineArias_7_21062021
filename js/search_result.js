@@ -36,7 +36,6 @@ function recipesMatches(recipes) {
       // actualise listes tags (ingrédients, appareils, ustensiles)
       const searchList = document.querySelectorAll('[role="option"]');
       searchList.forEach((item) => {
-        getRecipesByTag(recipesByMatch, item.textContent);
         item.style.display = 'none';
 
         recipesByMatch.forEach((match) => {
@@ -87,12 +86,12 @@ function noMatch(search) {
 // detecte et affiche correspondance(s)
 function setTagsMatches(input, list, option) {
   input.addEventListener('keyup', () => {
-    const searchInput = input.value.toUpperCase();
-    const textValue = option.textContent.toUpperCase();
+    const inputValue = normString(input.value);
+    const textValue = normString(option.textContent);
 
     // affiche / masque tag(s) selon correspondance
     // ajoute / supprime attribut ("matches") selon correspondance
-    if (textValue.indexOf(searchInput) > -1) {
+    if (textValue.indexOf(inputValue) > -1) {
       list.style.display = 'flex';
       option.style.display = '';
       option.classList.add('matches');
@@ -170,24 +169,24 @@ function getRecipesByTag(recipes, option) {
       }
     });
 
-    // -----------------
+    // --------------------
     // console.log(option);
-    // -----------------
+    // --------------------
 
     if (
       isIngredient == true ||
       recipe.appliance === option ||
       recipe.ustensils.forEach((ustensil) => ustensil === option)
-    ) {
+    )
       recipesByTag.push(recipe);
-    }
   });
 
-  // -----------------------
+  // --------------------------
   // console.log(recipesByTag);
-  // -----------------------
+  // --------------------------
 
   return recipesByTag;
+
 }
 
 // fusionne tableaux [recettes à afficher]
@@ -208,10 +207,10 @@ function displaySelectedRecipes() {
       // cree tableau(x) [recette(s) a afficher]
       let recipesToDisplay = [];
 
-      // ajoute recette(s) correspondant au(x) choix
-      choices.forEach((option) => {
-        recipesToDisplay.push(getRecipesByTag(recipes, option.textContent));
-      });
+// ajoute recette(s) correspondant au(x) choix
+choices.forEach((option) => {
+  recipesToDisplay.push(getRecipesByTag(recipes, option.textContent));
+});
 
       // supprime doublons [recettes à afficher]
       const uniqueRecipe = [...new Set(merge(recipesToDisplay))];
