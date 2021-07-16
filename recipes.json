@@ -1041,7 +1041,7 @@
           "quantity": 1
         },
         {
-          "ingredient": "Aillé",
+          "ingredient": "Ail",
           "quantity": 2,
           "unit": "gousses"
         }
@@ -1334,7 +1334,7 @@
       "time": 20,
       "description": "Fouettez les oeufs, le sucre et le lait. tremper les tranches de pain. Le cuire au four pendant environ 10 minutes à 180°. Servir",
       "appliance": "Four",
-      "ustensils": ["Fouet", "Cuillère à soupe"]
+      "ustensils": ["Bol", "Fouet", "Cuillère à soupe"]
     },
     {
       "id": 39,
