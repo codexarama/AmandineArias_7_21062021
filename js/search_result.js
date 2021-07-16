@@ -155,9 +155,9 @@ function customiseTag(selected, category) {
 }
 
 // RECUPERE RECETTES CORRESPONDANT AU(X) CHOIX PAR TAG(S)
-// (appellee au clic event sur option dans liste et sur tag de suppression)
+// (au clic sur option dans liste et sur tag de suppression)
 function getRecipesByTag(recipes, option) {
-  // cree tableau recettes par correspondance
+  // cree tableau recettes correspondant
   const recipesByTag = [];
 
   recipes.forEach((recipe) => {

@@ -76,26 +76,21 @@ function createTag(selectedTag) {
     displaySelectedRecipes();
 
     // affiche toutes les recettes si tableau [choix] vide
-    displayAllSortedRecipes();
+    resetRecipes()
 
     // supprime cartes recettes deja affichees
     recipeSection.innerHTML = '';
   });
 }
 
-function displayAllSortedRecipes() {
+function resetRecipes() {
   fetch('recipes.json')
     .then((response) => response.json())
     .then((data) => {
       const recipes = data.recipes;
 
       if (choices.length === 0) {
-        let sortedRecipes = [];
-
-        for (let i = 0; i < recipes.length; i++) {
-          sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
-          setRecipe(sortedRecipes[i]);
-        }
+        displaySortedRecipes(recipes);
       }
     });
 }

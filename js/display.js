@@ -3,13 +3,9 @@ fetch('recipes.json')
   .then((data) => {
     const recipes = data.recipes;
 
-    // AFFICHE CARTES RECETTES (triees par ordre alphabetique)
-    setRecipe(quicksortLomuto(recipes, 0, recipes.length - 1))
-    // cannot read property 'length' of undefined
-    // at setRecipe (recipe_card.js:49)
-
-    console.log(quicksortLomuto(recipes, 0, recipes.length - 1));
-    const ing = recipes.forEach((recipe) => console.log(recipe.ingredients[0].unit))
+    // TRIE CARTES RECETTES (ordre alphabetique)
+    // AFFICHE CARTES RECETTES
+    displaySortedRecipes(recipes)
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     // cree tableau [ingredients]
@@ -28,7 +24,8 @@ fetch('recipes.json')
       });
 
       // trie par ordre alphabétique
-      category.sort();
+      quicksortGeneric(category, 0, category.length - 1);
+
       // cree liste (DOM)
       setIngredientsList(category);
     }
@@ -36,6 +33,7 @@ fetch('recipes.json')
     // AFFICHE LISTE APPAREILS (sans doublons)
     // cree tableau [appareils]
     const appliances = [];
+    // console.log(appliances);
     setAppliances(appliances);
 
     function setAppliances(category) {
@@ -48,7 +46,8 @@ fetch('recipes.json')
       });
 
       // trie par ordre alphabétique
-      category.sort();
+      quicksortGeneric(category, 0, category.length - 1); // ok
+
       // cree liste (DOM)
       setAppliancesList(category);
     }
@@ -70,7 +69,8 @@ fetch('recipes.json')
       });
 
       // trie par ordre alphabétique
-      category.sort();
+      quicksortGeneric(category, 0, category.length - 1);
+
       // cree liste (DOM)
       setUstensilsList(category);
     }

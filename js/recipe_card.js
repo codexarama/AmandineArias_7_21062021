@@ -46,18 +46,19 @@ function setRecipe(recipes) {
 
   // INGREDIENTS LIST CREATION
   const cardListItem = recipeCard.getElementsByClassName('card-list')[0];
-  // Cannot read property 'length' of undefined
 
-  recipes.forEach((ingredients) => {
-    if (ingredients.unit == undefined) ingredients.unit = '';
-    if (ingredients.quantity == undefined) ingredients.quantity == '';
+  for (i = 0; i < recipes.ingredients.length; i++) {
+    if (recipes.ingredients[i].unit == undefined)
+      recipes.ingredients[i].unit = '';
+    if (recipes.ingredients[i].quantity == undefined)
+      recipes.ingredients[i].quantity = '';
     const cardItem = elmtFactory(
       'li',
       { class: 'ingredient' },
-      `${recipes.ingredients} : ${ingredients.quantity} ${ingredients.unit}`
+      `${recipes.ingredients[i].ingredient} : ${recipes.ingredients[i].quantity} ${recipes.ingredients[i].unit}`
     );
     cardListItem.appendChild(cardItem);
-  });
+  }
 
   // DOM INTEGRATION
   recipesSection.appendChild(recipeCard);
