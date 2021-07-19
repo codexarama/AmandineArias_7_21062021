@@ -20,6 +20,13 @@ function filterBy(key, order = 'asc') {
   };
 }
 
+// TRIE CARTES RECETTES (ordre alphabetique)
+function displaySortedRecipes(recipes) {
+  for (let i = 0; i < recipes.length; i++) {
+    setRecipe(recipes.sort(filterBy('name'))[i]);
+  }
+}
+
 // CREATION DOM ELEMENTS
 // FACTORY METHOD : type + attributes + nodes
 const elmtFactory = (type, attribute, ...children) => {
@@ -40,16 +47,11 @@ const elmtFactory = (type, attribute, ...children) => {
 
 // NORMALISE TEXTE
 const normString = (string) => {
-  string = string
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+  string = string.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
   string = string.toLowerCase();
 
-  string = string
-    .replace(/œ/g, "oe")
-    .replace(/æ/g, "ae")
-    .replace(/[']/g, " ");
+  string = string.replace(/œ/g, 'oe').replace(/æ/g, 'ae').replace(/[']/g, ' ');
 
   return string;
 };
