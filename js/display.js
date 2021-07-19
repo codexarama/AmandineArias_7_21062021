@@ -9,17 +9,8 @@ fetch('recipes.json')
     // }
 
     // AFFICHE CARTES RECETTES (ordre alphabetique)
-    // cree tableau [recettes triees]
-    let sortedRecipes = [];
-
-    for (let i = 0; i < recipes.length; i++) {
-      sortedRecipes.push(recipes.sort(filterBy('name'))[i]);
-      setRecipe(sortedRecipes[i]);
-    }
-
-    // -----------------------------------------------------------------------------
-    console.log(recipes); // affiche tableau de toutes les recettes
-    // -----------------------------------------------------------------------------
+    displaySortedRecipes(recipes);
+    console.log(recipes);
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     // cree tableau [ingredients]
