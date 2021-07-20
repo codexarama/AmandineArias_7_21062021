@@ -10,6 +10,7 @@ function setRecipe(recipes) {
       src: 'https://dummyimage.com/600x300/918c91/ffffff',
       class: 'card-img-top',
       alt: '...',
+      loading: 'lazy'
     }),
     elmtFactory(
       'div',
