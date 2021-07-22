@@ -19,8 +19,8 @@ const elmtFactory = (type, attribute, ...children) => {
 // TRIE CARTES RECETTES (ordre alphabetique)
 // AFFICHE CARTES RECETTES
 function displaySortedRecipes(recipes) {
-  quicksortHoare(recipes, 0, recipes.length - 1);
-  console.log(quicksortHoare(recipes, 0, recipes.length - 1));
+  quicksortLomuto(recipes, 0, recipes.length - 1);
+  console.log(quicksortLomuto(recipes, 0, recipes.length - 1));
 
   for (let i = 0; i < recipes.length; i++) {
     setRecipe(recipes[i]);
