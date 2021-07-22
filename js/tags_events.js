@@ -1,31 +1,13 @@
-// GENERATEUR DOM element : selected tag btn
-const tagsCollection = document.querySelector('#tags-result');
-function createTag(selectedTag) {
-  const tag = elmtFactory(
-    'button',
-    { class: 'selected-tag tag-btn' },
-    selectedTag.textContent,
-    elmtFactory('i', { class: 'far fa-times-circle' })
-  );
-  tagsCollection.append(tag);
-  // supprime tag
-  removeTag = document.querySelectorAll('.selected-tag');
-  removeTag.forEach((btn) =>
-    btn.addEventListener('click', (event) => {
-      event.preventDefault();
-      if (tag.contains(event.target)) {
-        tag.style.display = 'none';
-      }
-    })
-  );
-}
+// TAGS EVENTS
+// ingredients, appareils, ustensiles
 
-// TYPE TEXT IN TAG INPUT
 // MAIN DOM ELEMENT
 const tagLabel = document.querySelectorAll('.tag-label');
+
 // DEPENDANT DOM ELEMENTS
 tagLabel.forEach((label) => {
   const tagInput = label.parentNode.children[1];
+
   // HANDLE TEXT INPUT ACCESS
   label.addEventListener('click', (event) => {
     event.preventDefault();
@@ -39,40 +21,52 @@ tagLabel.forEach((label) => {
 // OPEN / CLOSE FILTER BOXES by clicking on the arrow
 // MAIN DOM ELEMENT
 const tagArrow = document.querySelectorAll('.tag-arrow');
+
 // DEPENDANT DOM ELEMENTS
 tagArrow.forEach((arrow) => {
   const tagBox = arrow.parentNode.parentNode;
   const tagBtn = arrow.parentNode;
-  const tagLabel = tagBtn.children[0];
-  const searchTag = tagBtn.children[1];
+  const tagLabel = tagBox.children[0].children[0];
+  const searchTag = arrow.previousElementSibling;
   const tagsList = tagBox.children[1];
+
   // HANDLE OPEN FILTER BOXES EVENTS
   arrow.addEventListener('click', (event) => {
     event.preventDefault();
     tagBox.classList.toggle('open');
-    tagBtn.style.width = '40rem';
     tagLabel.style.display = 'none';
+
     searchTag.setAttribute(
       'placeholder',
       'Rechercher des ' + tagBtn.textContent.toLowerCase().trim()
     );
+
     searchTag.style.display = 'block';
     searchTag.focus();
-    tagsList.style.display = 'block';
+    tagsList.style.display = 'flex';
+    tagsList.style.borderRadius = '0 0 0.25rem 0.25rem'
+
+    if (!tagBox.classList.contains('open')) {
+      searchTag.style.display = 'none';
+      tagsList.style.display = 'none';
+      tagLabel.style.display = 'inline-block';
+    }
   });
+
   // CLOSE FILTER BOXES WITHOUT TARGET
   window.addEventListener('click', function (e) {
     if (!arrow.contains(e.target)) {
       tagBox.classList.remove('open');
       tagLabel.style.display = 'flex';
-      tagBtn.style.width = '8.25rem';
       searchTag.style.display = 'none';
       tagsList.style.display = 'none';
     }
+
     if (tagLabel.contains(e.target)) {
       tagLabel.style.display = 'none';
       searchTag.style.display = 'flex';
       searchTag.focus();
+      tagsList.style.borderRadius = '0.25rem'
     }
   });
 });

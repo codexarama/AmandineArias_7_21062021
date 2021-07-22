@@ -17,6 +17,10 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./css/styles.css" />
+    <!-- <link
+      rel="stylesheet"
+      href="./css/bricklayer.min.css"
+    /> -->
     <title>Les Petits Plats</title>
   </head>
   <body>
@@ -26,10 +30,10 @@
         alt="logo Les petits plats"
         class="mx-auto d-block"
       />
-      <section class="container my-3 search">
+      <section class="container my-3">
         <form class="input-group">
           <input
-            class="form-control search-bar p-3"
+            class="form-control search search-bar p-3"
             type="text"
             placeholder="Rechercher un ingrédient, un appareil, des ustensiles ou une recette"
             aria-describedby="search-icon"
@@ -40,11 +44,10 @@
             </button>
           </div>
         </form>
-        <ul id="search-list" role="listbox"></ul>
+        <ul role="listbox" id="search-recipe"></ul>
       </section>
-      <section id="tags-result" class="my-3">
-      </section>
-      <nav id="tags-group" class="my-3">
+      <section id="tags-collection" class="my-3"></section>
+      <nav class="my-3 tags-group">
         <div class="tag-box">
           <button id="ingredients-btn" class="tag-btn">
             <label for="search-ingredients" class="tag-label"
@@ -65,10 +68,12 @@
           ></ul>
         </div>
         <div class="tag-box">
-          <button id="appliance-btn" class="tag-btn">
-            <label for="search-appliance" class="tag-label">Appareils</label>
+          <button id="appliances-btn" class="tag-btn">
+            <label for="search-appliances" class="tag-label"
+              >Appareils</label
+            >
             <input
-              id="search-appliance"
+              id="search-appliances"
               class="search-tag"
               type="text"
               placeholder=""
@@ -96,10 +101,11 @@
       <section id="recipes"></section>
     </main>
     <script type="text/javascript" src="./js/utils.js"></script>
+    <script type="text/javascript" src="./js/quick_sort_Hoare.js"></script>
+    <script type="text/javascript" src="./js/elmts_generator.js"></script>
     <script type="text/javascript" src="./js/recipe_card.js"></script>
     <script type="text/javascript" src="./js/display.js"></script>
     <script type="text/javascript" src="./js/search_result.js"></script>
-    <script type="text/javascript" src="./js/tags.js"></script>
-    <script type="text/javascript" src="./js/insertion_sort.js"></script>
+    <script type="text/javascript" src="./js/tags_events.js"></script>
   </body>
 </html>

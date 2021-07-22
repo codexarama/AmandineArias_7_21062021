@@ -3,107 +3,106 @@ fetch('recipes.json')
   .then((data) => {
     const recipes = data.recipes;
 
+    // TRIE CARTES RECETTES (ordre alphabetique)
+    // AFFICHE CARTES RECETTES
+    displaySortedRecipes(recipes)
+
     // AFFICHE LISTE INGREDIENTS (sans doublons)
-    const ingredientsChoice = document.getElementById('ingredients-list');
-    function setIngredients() {
-      let ingredients = [];
+    // cree tableau [ingredients]
+    const ingredients = [];
+    setIngredients(ingredients);
+
+    function setIngredients(category) {
       recipes.forEach((recipe) => {
         recipe.ingredients.forEach((item) => {
           // supprime doublons
-          if (!ingredients.includes(item.ingredient)) {
-            ingredients.push(item.ingredient);
-            // cree DOM elements
-            const ingredientsOption = elmtFactory(
-              'li',
-              {
-                id: recipe.id,
-                role: 'option',
-                class: 'ingredients-option tag',
-              },
-              elmtFactory(
-                'a',
-                { href: '#', class: 'ingredients-link tag-link' },
-                `${item.ingredient}`
-              )
-            );
-            ingredientsChoice.append(ingredientsOption);
+          if (!category.includes(item.ingredient)) {
+            // ajoute ingredients
+            category.push(item.ingredient);
           }
         });
       });
-      return ingredients;
+
+      // trie par ordre alphabétique
+      quicksortGeneric(category, 0, category.length - 1);
+
+      // cree liste (DOM)
+      setIngredientsList(category);
     }
-    setIngredients();
-    // ne fonctionne pas
-    // setIngredients().sort(filterBy('ingredient')); // ne fonctionne pas
 
     // AFFICHE LISTE APPAREILS (sans doublons)
-    const appliancesChoice = document.getElementById('appliances-list');
-    function setAppliances() {
-      let appliances = [];
+    // cree tableau [appareils]
+    const appliances = [];
+    // console.log(appliances);
+    setAppliances(appliances);
+
+    function setAppliances(category) {
       recipes.forEach((recipe) => {
-        if (!appliances.includes(recipe.appliance)) {
-          // supprime doublons
-          appliances.push(recipe.appliance);
-          // cree DOM elements
-          const appliancesOption = elmtFactory(
-            'li',
-            {
-              id: recipe.id,
-              role: 'option',
-              class: 'appliances-option tag',
-            },
-            elmtFactory(
-              'a',
-              { href: '#', class: 'appliances-link tag-link' },
-              `${recipe.appliance}`
-            )
-          );
-          appliancesChoice.append(appliancesOption);
+        // supprime doublons
+        if (!category.includes(recipe.appliance)) {
+          // ajoute appareils
+          category.push(recipe.appliance);
         }
       });
-      return appliances;
-    }
-    setAppliances();
 
-    // AFFICHE LISTE USTENSILS (sans doublons)
-    const ustensilsChoice = document.getElementById('ustensils-list');
-    function setUstensils() {
-      let ustensils = [];
+      // trie par ordre alphabétique
+      quicksortGeneric(category, 0, category.length - 1); // ok
+
+      // cree liste (DOM)
+      setAppliancesList(category);
+    }
+
+    // AFFICHE LISTE USTENSILES (sans doublons)
+    // cree tableau [ustensiles]
+    const ustensils = [];
+    setUstensils(ustensils);
+
+    function setUstensils(category) {
       recipes.forEach((recipe) => {
         recipe.ustensils.forEach((ustensil) => {
           // supprime doublons
-          if (!ustensils.includes(ustensil)) {
-            ustensils.push(ustensil);
-            // cree DOM elements
-            const ustensilsOption = elmtFactory(
-              'li',
-              {
-                id: recipe.id,
-                role: 'option',
-                class: 'ustensils-option tag',
-              },
-              elmtFactory(
-                'a',
-                { href: '#', class: 'ustensils-link tag-link' },
-                `${ustensil}`
-              )
-            );
-            ustensilsChoice.append(ustensilsOption);
+          if (!category.includes(ustensil)) {
+            // ajoute ustensiles
+            category.push(ustensil);
           }
         });
       });
-      return ustensils;
-    }
-    setUstensils();
 
-    // AFFICHE LISTE NOMS RECETTES sous barre de recherche principale
-    recipes.forEach((recipe) => {
-      createRecipesList(recipe);
-    });
+      // trie par ordre alphabétique
+      quicksortGeneric(category, 0, category.length - 1);
 
-    // AFFICHE LES CARTES RECETTES (ordre alphabétique)
-    for (let i = 0; i < recipes.length; i++) {
-      // toutes les recettes par defaut
-      setRecipe(insertionSort(recipes)[i]);
+      // cree liste (DOM)
+      setUstensilsList(category);
     }
+
+    // AFFICHE RESULTATS RECHERCHES
+    // via barre de recherche principale
+    recipesMatches(recipes);
+
+    // via barre de recherche "ingredients"
+    const ingredientSearch = document.querySelector('#search-ingredients');
+    const ingredientsOption = document.querySelectorAll('.ingredients-option');
+    for (let i = 0; i < ingredientsOption.length; i++) {
+      setTagsMatches(ingredientSearch, ingredientsList, ingredientsOption[i]);
+    }
+
+    // via barre de recherche "appareils"
+    const applianceSearch = document.querySelector('#search-appliances');
+    const appliancesOption = document.querySelectorAll('.appliances-option');
+    for (let i = 0; i < appliancesOption.length; i++) {
+      setTagsMatches(applianceSearch, appliancesList, appliancesOption[i]);
+    }
+
+    // via barre de recherche "ustensiles"
+    const ustensilSearch = document.querySelector('#search-ustensils');
+    const ustensilsOption = document.querySelectorAll('.ustensils-option');
+    for (let i = 0; i < ustensilsOption.length; i++) {
+      setTagsMatches(ustensilSearch, ustensilsList, ustensilsOption[i]);
+    }
+
+    // AFFICHE SELECTION(S)
+    const searchList = document.querySelectorAll('[role="option"]');
+    searchList.forEach((item) =>
+      item.addEventListener('click', displaySelection)
+    );
   });
