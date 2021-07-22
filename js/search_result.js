@@ -92,7 +92,7 @@ function setTagsMatches(input, list, option) {
     // affiche / masque tag(s) selon correspondance
     // ajoute / supprime attribut ("matches") selon correspondance
     if (textValue.indexOf(inputValue) > -1) {
-      list.style.display = 'flex';
+      list.style.display = 'list-item';
       option.style.display = '';
       option.classList.add('matches');
     } else {
@@ -122,6 +122,9 @@ function displaySelection(event) {
   // ajoute au tableau [choix] (sans doublons)
   if (!choices.includes(selected)) {
     choices.push(selected);
+
+    // retire de la liste de choix
+    selected.style.display = 'none'
 
     // cree tag(s) correspondant(s)
     createTag(selected);
