@@ -24,7 +24,7 @@ fetch('recipes.json')
       });
 
       // trie par ordre alphabétique
-      quicksortGeneric(category, 0, category.length - 1);
+      category.sort()
 
       // cree liste (DOM)
       setIngredientsList(category);
@@ -46,7 +46,7 @@ fetch('recipes.json')
       });
 
       // trie par ordre alphabétique
-      quicksortGeneric(category, 0, category.length - 1); // ok
+      category.sort()
 
       // cree liste (DOM)
       setAppliancesList(category);
@@ -69,7 +69,7 @@ fetch('recipes.json')
       });
 
       // trie par ordre alphabétique
-      quicksortGeneric(category, 0, category.length - 1);
+      category.sort()
 
       // cree liste (DOM)
       setUstensilsList(category);
