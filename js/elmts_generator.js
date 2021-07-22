@@ -75,6 +75,9 @@ function createTag(selectedTag) {
     // affiche recette(s) restante(s) apres suppression selection(s)
     displaySelectedRecipes();
 
+    // restaure tag dans liste choix
+    selectedTag.style.display = 'list-item'
+
     // affiche toutes les recettes si tableau [choix] vide
     resetRecipes()
 
