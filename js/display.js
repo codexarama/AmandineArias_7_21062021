@@ -3,14 +3,9 @@ fetch('recipes.json')
   .then((data) => {
     const recipes = data.recipes;
 
-    // AFFICHE CARTES RECETTES (non triees)
-    // for (let i = 0; i < recipes.length; i++) {
-    //   setRecipe(recipes[i]);
-    // }
-
-    // AFFICHE CARTES RECETTES (ordre alphabetique)
-    displaySortedRecipes(recipes);
-    console.log(recipes);
+    // TRIE CARTES RECETTES (ordre alphabetique)
+    // AFFICHE CARTES RECETTES
+    displaySortedRecipes(recipes)
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     // cree tableau [ingredients]
@@ -29,7 +24,8 @@ fetch('recipes.json')
       });
 
       // trie par ordre alphabétique
-      category.sort();
+      quicksortGeneric(category, 0, category.length - 1);
+
       // cree liste (DOM)
       setIngredientsList(category);
     }
@@ -37,6 +33,7 @@ fetch('recipes.json')
     // AFFICHE LISTE APPAREILS (sans doublons)
     // cree tableau [appareils]
     const appliances = [];
+    // console.log(appliances);
     setAppliances(appliances);
 
     function setAppliances(category) {
@@ -49,7 +46,8 @@ fetch('recipes.json')
       });
 
       // trie par ordre alphabétique
-      category.sort();
+      quicksortGeneric(category, 0, category.length - 1); // ok
+
       // cree liste (DOM)
       setAppliancesList(category);
     }
@@ -71,7 +69,8 @@ fetch('recipes.json')
       });
 
       // trie par ordre alphabétique
-      category.sort();
+      quicksortGeneric(category, 0, category.length - 1);
+
       // cree liste (DOM)
       setUstensilsList(category);
     }
