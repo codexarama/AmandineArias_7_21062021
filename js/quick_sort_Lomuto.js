@@ -1,8 +1,8 @@
 // echange position elements
 function swap(recipes, i, j) {
-  var temp = recipes[i].name;
-  recipes[i].name = recipes[j].name;
-  recipes[j].name = temp;
+  var temp = recipes[i];
+  recipes[i] = recipes[j];
+  recipes[j] = temp;
 }
 
 function quicksortLomuto(recipes, left, right) {
