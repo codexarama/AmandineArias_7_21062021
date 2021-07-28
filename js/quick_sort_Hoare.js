@@ -1,9 +1,9 @@
 // QUICK SORT HOARE : trie recettes par nom
 // echange position elements
 function swapName(recipes, i, j) {
-  var temp = recipes[i].name;
-  recipes[i].name = recipes[j].name;
-  recipes[j].name = temp;
+  var temp = recipes[i];
+  recipes[i] = recipes[j];
+  recipes[j] = temp;
 }
 
 function quicksortHoare(recipes, left, right) {
