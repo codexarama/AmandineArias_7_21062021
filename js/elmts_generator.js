@@ -76,10 +76,10 @@ function createTag(selectedTag) {
     displaySelectedRecipes();
 
     // restaure tag dans liste choix
-    selectedTag.style.display = 'list-item'
+    selectedTag.style.display = 'list-item';
 
     // affiche toutes les recettes si tableau [choix] vide
-    resetRecipes()
+    resetRecipes();
 
     // supprime cartes recettes deja affichees
     recipeSection.innerHTML = '';
@@ -92,9 +92,7 @@ function resetRecipes() {
     .then((data) => {
       const recipes = data.recipes;
 
-      if (choices.length === 0) {
-        displaySortedRecipes(recipes);
-      }
+      if (choices.length === 0) displaySortedRecipes(recipes);
     });
 }
 
