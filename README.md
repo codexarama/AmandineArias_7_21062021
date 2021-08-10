@@ -20,20 +20,19 @@ rapidité et de fluidité pour retenir un maximum d’utilisateurs
 
 > Algorithmes de recherche
 
--[x] fiche d’investigation de fonctionnalité
--[x] 2 versions d'algorithme
--[x] tests de performance pour les 2 versions
--[x] recommandation de l'algorithme à conserver
+- [x] fiche d’investigation de fonctionnalité
+- [x] 2 versions d'algorithme
+- [x] tests de performance pour les 2 versions
+- [x] recommandation de l'algorithme à conserver
 
 > Web design
 
--[x] page d'accueil du site
+- [x] page d'accueil du site
 
 ## COMPETENCES DEVELOPPEES
 
--[x] Analyser un problème informatique
--[x] Développer un algorithme pour résoudre un problème
-
+- [x] Analyser un problème informatique
+- [x] Développer un algorithme pour résoudre un problème
 
 ## RESSOURCES FOURNIES
 
