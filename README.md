@@ -1,4 +1,4 @@
-# Les Petits Plats
+# LesPetitsPlats
 
 (projet fictif de formation)
 
