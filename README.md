@@ -2,7 +2,12 @@
 
 (projet fictif de formation)
 
-## CONTEXTE
+## PROBLEMATIQUE
+
+> Afin de se démarquer des sites concurrents, les résultats d’une recherche sur le site Les Petits Plats doivent être performants en termes de
+rapidité et de fluidité pour retenir un maximum d’utilisateurs
+
+## INTEGRATION
 
 Site de recettes de cuisine avec options de recherche multiples :
 
@@ -10,11 +15,6 @@ Site de recettes de cuisine avec options de recherche multiples :
 - par ingrédients
 - par appareils
 - par ustensiles
-
-## PROBLEMATIQUE
-
-> Afin de se démarquer des sites concurrents, les résultats d’une recherche sur le site Les Petits Plats doivent être performants en termes de
-rapidité et de fluidité pour retenir un maximum d’utilisateurs
 
 ## LIVRABLES
 
@@ -36,6 +36,6 @@ rapidité et de fluidité pour retenir un maximum d’utilisateurs
 
 ## RESSOURCES FOURNIES
 
-- base de données Json
-- maquette des pages web
-- cas d'utilisation
+- [base de données Json](https://github.com/OpenClassrooms-Student-Center/P11-front-end-search-engine/blob/master/recipes.js)
+- [maquette des pages web](https://www.figma.com/file/xqeE1ZKlHUWi2Efo8r73NK/UI-Design-Les-Petits-Plats-FR?node-id=0%3A1)
+- [cas d'utilisation](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P6+Algorithms/Cas+d%E2%80%99utilisation+%2303+Filtrer+les+recettes+dans+l%E2%80%99interface+utilisateur.pdf)
