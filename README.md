@@ -2,21 +2,20 @@
 
 (projet fictif de formation  n°05/11 avec OpenClassrooms)
 
-## PROBLEMATIQUE
+> PROBLEMATIQUE
 
-> Afin de se démarquer des sites concurrents, les résultats d’une recherche sur le site Les Petits Plats doivent être performants en termes de
-rapidité et de fluidité pour retenir un maximum d’utilisateurs
+Afin de se démarquer des sites concurrents, les résultats d’une recherche sur le site Les Petits Plats doivent être performants en termes de rapidité et de fluidité pour retenir un maximum d’utilisateurs
 
-## INTEGRATION
+> BESOIN
 
-Site de recettes de cuisine avec options de recherche multiples :
+Recherche de recettes de cuisine avec options multiples :
 
 - par nom
 - par ingrédients
 - par appareils
 - par ustensiles
 
-## LIVRABLES
+## Livrables
 
 > Algorithmes de recherche
 
@@ -29,12 +28,12 @@ Site de recettes de cuisine avec options de recherche multiples :
 
 - page d'accueil du site
 
-## COMPETENCES DEVELOPPEES
+## Compétences développées
 
 - [x] Analyser un problème informatique
 - [x] Développer un algorithme pour résoudre un problème
 
-## RESSOURCES FOURNIES
+## Ressources fournies
 
 - [base de données Json](https://github.com/OpenClassrooms-Student-Center/P11-front-end-search-engine/blob/master/recipes.js)
 - [maquette des pages web](https://www.figma.com/file/xqeE1ZKlHUWi2Efo8r73NK/UI-Design-Les-Petits-Plats-FR?node-id=0%3A1)
