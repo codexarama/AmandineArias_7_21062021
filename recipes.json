@@ -2,7 +2,7 @@
   "recipes": [
     {
       "id": 1,
-      "img": "Limonade de Coco.jpg",
+      "img": "Limonade de coco.jpg",
       "name": "Limonade de coco",
       "servings": 1,
       "ingredients": [
@@ -339,7 +339,7 @@
     },
     {
       "id": 10,
-      "img": "Tartiflette.jpg",
+      "img": "Tartiflette.jpeg",
       "name": "Tartiflette",
       "servings": 4,
       "ingredients": [
@@ -631,7 +631,7 @@
     },
     {
       "id": 18,
-      "img": "Smoothie ananas et vanille.jpg",
+      "img": "Smoothie ananas et vanille.jpeg",
       "name": "Smoothie ananas et vanille",
       "servings": 5,
       "ingredients": [
@@ -769,7 +769,7 @@
     },
     {
       "id": 22,
-      "img": "Fondant au chocolat.jpg",
+      "img": "Fondant au chocolat.jpeg",
       "name": "Fondant au chocolat",
       "servings": 4,
       "ingredients": [
@@ -846,7 +846,7 @@
     },
     {
       "id": 24,
-      "img": "Salade de pâtes.jpg",
+      "img": "Salade de pâtes.jpeg",
       "name": "Salade de pâtes",
       "servings": 4,
       "ingredients": [
@@ -1265,7 +1265,7 @@
     },
     {
       "id": 36,
-      "img": "Lasagnes courgettes et chèvre.jpg",
+      "img": "Lasagnes courgettes et chèvre.jpeg",
       "name": "Lasagnes courgettes et chèvre",
       "servings": 2,
       "ingredients": [
@@ -1438,7 +1438,7 @@
     },
     {
       "id": 41,
-      "img": "Mousse au chocolat.jpg",
+      "img": "Mousse au chocolat.jpeg",
       "name": "Mousse au chocolat",
       "servings": 4,
       "ingredients": [
@@ -1596,7 +1596,7 @@
     },
     {
       "id": 46,
-      "img": "Far breton.jpg",
+      "img": "Far breton.jpeg",
       "name": "Far breton",
       "servings": 6,
       "ingredients": [
@@ -1637,7 +1637,7 @@
     },
     {
       "id": 47,
-      "img": "Mousse au citron.jpg",
+      "img": "Mousse au citron.jpeg",
       "name": "Mousse au citron",
       "servings": 6,
       "ingredients": [
@@ -1705,7 +1705,7 @@
     },
     {
       "id": 49,
-      "img": "Smoothie tropical.jpg",
+      "img": "Smoothie tropical.jpeg",
       "name": "Smoothie tropical",
       "servings": 4,
       "ingredients": [
@@ -1739,7 +1739,7 @@
     },
     {
       "id": 50,
-      "img": "Frangipane.jpg",
+      "img": "Frangipane.jpeg",
       "name": "Frangipane",
       "servings": 2,
       "ingredients": [
