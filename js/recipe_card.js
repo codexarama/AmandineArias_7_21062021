@@ -7,7 +7,7 @@ function setRecipe(recipes) {
     'div',
     { class: 'card' },
     elmtFactory('img', {
-      src: 'https://dummyimage.com/600x300/918c91/ffffff',
+      src: `images/photos_recettes/${recipes.img}`,
       class: 'card-img-top',
       alt: '...',
       loading: 'lazy'
