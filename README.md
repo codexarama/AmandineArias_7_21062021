@@ -1,6 +1,6 @@
 # LesPetitsPlats
 
-(projet fictif de formation  n°05/11 avec OpenClassrooms)
+    Projet fictif de formation n°05/11 | OpenClassrooms
 
 > PROBLEMATIQUE
 
