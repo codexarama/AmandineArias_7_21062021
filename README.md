@@ -2,6 +2,10 @@
 
     Projet fictif de formation n°05/11 | OpenClassrooms
 
+**Home page**
+
+<kbd>![home page](./LesPetitsPlats.png)</kbd>
+
 > PROBLEMATIQUE
 
 Afin de se démarquer des sites concurrents, les résultats d’une recherche sur le site Les Petits Plats doivent être performants en termes de rapidité et de fluidité pour retenir un maximum d’utilisateurs
