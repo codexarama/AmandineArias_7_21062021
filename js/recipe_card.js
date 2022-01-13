@@ -62,5 +62,5 @@ function setRecipe(recipes) {
 
   // DOM INTEGRATION
   recipesSection.appendChild(recipeCard);
-  recipeCard.setAttribute('data-name', `${recipes.name}`)
+  recipeCard.setAttribute("data-name", `${recipes.name}`);
 }
