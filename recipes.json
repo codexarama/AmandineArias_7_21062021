@@ -680,7 +680,7 @@
           "unit": "grammes"
         },
         {
-          "ingredient": "Bananes",
+          "ingredient": "Banane",
           "quantity": 1
         }
       ],
@@ -1077,7 +1077,7 @@
         }
       ],
       "time": 60,
-      "description": "Mettre tous les ingrédients dans une cocotte. ajouter de l'eau pour recouvrir l'ensemble et laisser cuirre à petit feu pour 1 heure. Passer au mixer. Salez, poivrez. C'est prêt",
+      "description": "Mettre tous les ingrédients dans une cocotte. ajouter de l'eau pour recouvrir l'ensemble et laisser cuirre à petit feur pour 1 heure. Passer au mixer. Salez, poivrez. C'est prêt",
       "appliance": "Mixer",
       "ustensils": ["Casserole", "Cuillère en bois"]
     },
@@ -1345,8 +1345,8 @@
     },
     {
       "id": 38,
-      "img": "Pain Perdu.jpg",
-      "name": "Pain Perdu",
+      "img": "Pain perdu.jpg",
+      "name": "Pain perdu",
       "servings": 4,
       "ingredients": [
         {
@@ -1372,7 +1372,7 @@
       "time": 20,
       "description": "Fouettez les oeufs, le sucre et le lait. tremper les tranches de pain. Le cuire au four pendant environ 10 minutes à 180°. Servir",
       "appliance": "Four",
-      "ustensils": ["Bol", "Fouet", "Cuillère à soupe"]
+      "ustensils": ["Fouet", "Bol", "Cuillère à coupe"]
     },
     {
       "id": 39,
@@ -1590,7 +1590,7 @@
         }
       ],
       "time": 30,
-      "description": "Faire bouillir le lait ( on peut y ajouter de l'essence de vanille). Battre les oeufs et le sucre, ajouter la farine puis finalement ajouter le lait chaud. Remettre à feu doux pour faire épaissir en remuant pendant 5 à 10 minutes.",
+      "description": "Faire bouillir le lait ( on peut y ajouter de l'essence de vanille. Battre les oeufs et le sucre, ajouter la farine puis finalement ajouter le lait chaud. Remettre à feu doux pour faire épaissir en remuant pendant 5 à 10 minutes.",
       "appliance": "Casserole",
       "ustensils": ["Fouet", "Saladier"]
     },

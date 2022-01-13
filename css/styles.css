@@ -414,12 +414,22 @@ li {
     width: 100%;
   }
 
+  .selection {
+    width: auto;
+  }
+
   .tag-box {
     width: 100%;
     margin: 1rem 5rem;
   }
 
-  .tag-btn {
+  #tags-collection.tag-btn {
+    width: 100%;
+  }
+
+  #ingredients-btn,
+  #appliances-btn,
+  #ustensils-btn {
     width: 100%;
   }
 

@@ -47,7 +47,6 @@ function setRecipe(recipes) {
 
   // INGREDIENTS LIST CREATION
   const cardListItem = recipeCard.getElementsByClassName('card-list')[0];
-
   for (i = 0; i < recipes.ingredients.length; i++) {
     if (recipes.ingredients[i].unit == undefined)
       recipes.ingredients[i].unit = '';
@@ -63,5 +62,5 @@ function setRecipe(recipes) {
 
   // DOM INTEGRATION
   recipesSection.appendChild(recipeCard);
-  recipeCard.setAttribute('data-name', `${recipes.name}`);
+  recipeCard.setAttribute('data-name', `${recipes.name}`)
 }
