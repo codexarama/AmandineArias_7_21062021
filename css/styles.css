@@ -315,6 +315,7 @@ li {
   width: 30%;
   margin: 1.25rem 0;
   border: none;
+  cursor: pointer;
 }
 
 .card-img-top {
@@ -451,4 +452,45 @@ li {
     width: 100%;
     text-align: center;
   }
+}
+
+#modal {
+  display: none;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+#close-modal {
+  all: unset;
+  position: absolute;
+  top: -0.5rem;
+  z-index: 1;
+  cursor: pointer;
+  width: fit-content;
+  padding: 1rem 1.45rem;
+  /* border: 2.5px solid #e7e7e7;
+  border-radius: 50%;
+  background-color: #e7e7e7;
+  color: black; */
+  border: 2.5px solid black;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  font-weight: 700;
+}
+
+.selected {
+  width: 90%;
+  cursor: initial;
+}
+
+.selected img {
+  height: 500px;
+}
+
+.selected p {
+  width: 85%;
+  overflow: auto;
 }

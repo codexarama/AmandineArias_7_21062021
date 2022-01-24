@@ -3,9 +3,13 @@ const mainList = document.querySelector('#search-recipe');
 const ingredientsList = document.getElementById('ingredients-list');
 const appliancesList = document.getElementById('appliances-list');
 const ustensilsList = document.getElementById('ustensils-list');
+const sections = document.querySelectorAll('section, nav');
+const modal = document.getElementById('modal');
+const recipes = document.getElementById('recipes');
+const cards = document.getElementsByClassName('card');
 
 // GENERATEUR ELEMENTS DOM
-// CANEVAS LISTES OPTIONS (factory pattern)
+// CANEVAS LISTES d'OPTIONS (factory pattern)
 function createTagOption(item, category, list) {
   const option = elmtFactory(
     'li',
@@ -18,24 +22,10 @@ function createTagOption(item, category, list) {
   list.append(option);
 }
 
-// cree liste ingredients (DOM)
-function setIngredientsList(category) {
+// CANEVAS CATEGORIE de LISTE
+function setCategoryList(category, name, list) {
   category.forEach((item) => {
-    createTagOption(item, 'ingredients', ingredientsList);
-  });
-}
-
-// cree liste appareils (DOM)
-function setAppliancesList(category) {
-  category.forEach((item) => {
-    createTagOption(item, 'appliances', appliancesList);
-  });
-}
-
-// cree liste ustensiles (DOM)
-function setUstensilsList(category) {
-  category.forEach((item) => {
-    createTagOption(item, 'ustensils', ustensilsList);
+    return createTagOption(item, name, list);
   });
 }
 
@@ -113,3 +103,34 @@ function createAlert() {
 
   tagsCollection.appendChild(alert);
 }
+
+// SHOW - UNSHOW SELECTED RECIPE
+const showRecipe = () => {
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].addEventListener('click', (event) => {
+      event.preventDefault();
+
+      cards[i].classList.add('selected');
+      selectedRecipe = cards[i].classList.contains('selected');
+console.log(selectedRecipe);
+
+      for (let i = 0; i < sections.length; i++) {
+        sections[i].style.display = 'none';
+      }
+
+      modal.style.display = 'flex';
+      modal.append(cards[i]);
+    }, { once: true });
+  }
+};
+
+const closeModal = () => {
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].addEventListener('click', (event) => {
+      cards[i].classList.remove('selected');
+    });
+  }
+
+  location.reload();
+  return false;
+};
