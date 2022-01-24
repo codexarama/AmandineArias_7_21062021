@@ -315,6 +315,7 @@ li {
   width: 30%;
   margin: 1.25rem 0;
   border: none;
+  cursor: pointer;
 }
 
 .card-img-top {
@@ -466,6 +467,7 @@ li {
   position: absolute;
   top: -0.5rem;
   z-index: 1;
+  cursor: pointer;
   width: fit-content;
   padding: 1rem 1.45rem;
   /* border: 2.5px solid #e7e7e7;
@@ -481,6 +483,7 @@ li {
 
 .selected {
   width: 90%;
+  cursor: initial;
 }
 
 .selected img {

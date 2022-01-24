@@ -111,9 +111,10 @@ const showRecipe = () => {
   for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener('click', (event) => {
       event.preventDefault();
-      event.currentTarget = cards[i];
 
       cards[i].classList.add('selected');
+      selectedRecipe = cards[i].classList.contains('selected');
+console.log(selectedRecipe);
 
       for (let i = 0; i < sections.length; i++) {
         sections[i].style.display = 'none';
@@ -121,36 +122,17 @@ const showRecipe = () => {
 
       modal.style.display = 'flex';
       modal.append(cards[i]);
-    });
+    }, { once: true });
   }
 };
 
-// const unshowRecipe = () => {
-//   for (let i = 0; i < cards.length; i++) {
-//     cards[i].classList.remove('selected');
-//     modal.removeChild(cards[i]);
+const closeModal = () => {
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].addEventListener('click', (event) => {
+      cards[i].classList.remove('selected');
+    });
+  }
 
-//     for (let i = 0; i < sections.length; i++) {
-//       sections[i].style.display = 'flex';
-//     }
-
-//     modal.style.display = 'none';
-//     recipes.appendChild(cards[i]);
-//   }
-// };
-
-// const closeModal = () => {
-//   closeButton.addEventListener('click', function (event) {
-//     // const btn = event.currentTarget;
-//     // console.log(btn);
-//     // location.reload;
-//     modal.style.display = 'none';
-//   });
-// };
-
-// closeModal()
-
-// window.addEventListener('click', function (event) {
-//   // if (!event.target) unshowRecipe();
-//   if (!event.target.closest('#modal')) unshowRecipe();
-// });
+  location.reload();
+  return false;
+};
