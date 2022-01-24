@@ -5,7 +5,7 @@ fetch('recipes.json')
 
     // TRIE CARTES RECETTES (ordre alphabetique)
     // AFFICHE CARTES RECETTES
-    displaySortedRecipes(recipes)
+    displaySortedRecipes(recipes);
 
     // AFFICHE LISTE INGREDIENTS (sans doublons)
     // cree tableau [ingredients]
@@ -27,7 +27,7 @@ fetch('recipes.json')
       quicksortGeneric(category, 0, category.length - 1);
 
       // cree liste (DOM)
-      setIngredientsList(category);
+      setCategoryList(category, 'ingredients', ingredientsList);
     }
 
     // AFFICHE LISTE APPAREILS (sans doublons)
@@ -49,7 +49,7 @@ fetch('recipes.json')
       quicksortGeneric(category, 0, category.length - 1); // ok
 
       // cree liste (DOM)
-      setAppliancesList(category);
+      setCategoryList(category, 'appliances', appliancesList);
     }
 
     // AFFICHE LISTE USTENSILES (sans doublons)
@@ -72,7 +72,7 @@ fetch('recipes.json')
       quicksortGeneric(category, 0, category.length - 1);
 
       // cree liste (DOM)
-      setUstensilsList(category);
+      setCategoryList(category, 'ustensils', ustensilsList);
     }
 
     // AFFICHE RESULTATS RECHERCHES
@@ -105,4 +105,7 @@ fetch('recipes.json')
     searchList.forEach((item) =>
       item.addEventListener('click', displaySelection)
     );
+
+    // AFFICHE RECETTE SELECTIONNEE UNIQUMENT (modale)
+    showRecipe();
   });
