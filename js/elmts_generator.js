@@ -91,7 +91,7 @@ function createAlert() {
   const alert = elmtFactory(
     'div',
     { class: 'alert-msg' },
-    elmtFactory('img', { src: '/images/oops.png' }),
+    elmtFactory('img', { src: '../images/oops.png' }),
     elmtFactory('p', {}, 'OOPS'),
     elmtFactory('p', {}, 'Aucun résultat ne correspond à votre critère...'),
     elmtFactory(
