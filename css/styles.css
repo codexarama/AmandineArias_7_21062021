@@ -117,7 +117,7 @@ li {
   width: 50px;
 }
 
-.alert-msg p {
+.alert-msg p:not(:last-child) {
   font-weight: 700;
 }
 
